@@ -1,26 +1,30 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-navy: #0D1B2A;
+  --color-ink: #0A0F16;
+  --color-teal-300: #7CC5DE;
+  --color-teal-400: #3FA0C4;
+  --color-teal-500: #1B7EA6;
+  --color-teal-600: #166A8C;
+  --color-teal-700: #115672;
+  --color-sky-hpp: #4FB4E6;
+  --color-mist-50: #F4F8FB;
+  --color-mist-100: #E8F1F7;
+  --color-mist-200: #DCE9F2;
+  --color-paid: #0E9F6E;
+  --color-paid-bg: #E3F5EE;
+  --color-pending: #D97706;
+  --color-pending-bg: #FCF1E1;
+  --color-missing: #DC2626;
+  --color-missing-bg: #FBE9E9;
+  --color-phantom: #7C3AED;
+  --color-phantom-bg: #F0EAFB;
+  --font-display: var(--font-display);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-mist-50 text-ink font-sans;
 }
