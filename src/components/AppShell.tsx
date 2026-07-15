@@ -20,7 +20,7 @@ export function AppShell({ children }: AppShellProps) {
     <div className="min-h-screen bg-mist-50">
       <header className="bg-navy text-mist-100 shadow-sm">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-3 px-4 py-3 sm:px-6 lg:gap-x-6 lg:px-8">
-          <Link href="/" className="flex shrink-0 items-center" aria-label="HPP Patient Check-In home">
+          <Link href="/" className="flex shrink-0 items-center gap-3" aria-label="HPP Patient Check-In home">
             <Image
               src="/logo-white.png"
               alt="HPP Management Corp."
@@ -29,6 +29,11 @@ export function AppShell({ children }: AppShellProps) {
               priority
               className="h-9 w-auto"
             />
+            <span className="hidden items-center border-l border-white/20 pl-3 sm:flex">
+              <span className="font-display text-base font-semibold leading-tight text-white">
+                Patient Check-In
+              </span>
+            </span>
           </Link>
 
           <nav className="order-3 flex w-full flex-wrap items-center gap-1 border-t border-white/10 pt-2 lg:order-none lg:w-auto lg:border-0 lg:pt-0" aria-label="Main navigation">
