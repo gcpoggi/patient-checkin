@@ -147,13 +147,16 @@ const mandatoryMissing = [mariaVisit("2026-01-20"), mariaVisit("2026-01-27")];
 const otherMissing = shuffle(kendallJanuaryVisits.filter((visit) => visit.patientId !== "pt_0001")).slice(0, 7);
 const missingVisits = [...mandatoryMissing, ...otherMissing].filter(Boolean);
 const missingIds = new Set(missingVisits.map((visit) => visit.id));
-const eligible = kendallJanuaryVisits.filter((visit) => !missingIds.has(visit.id));
 
+// Every billable visit (all offices/months) becomes a claim EXCEPT the deliberate
+// missing set and non-clinical account-only encounters. Kendall January keeps exactly 9 "missing".
 const paidMandatory = mariaVisit("2026-01-06");
 const pendingMandatory = mariaVisit("2026-01-13");
-const paidVisits = [paidMandatory, ...shuffle(eligible.filter((visit) => visit !== paidMandatory && visit !== pendingMandatory)).slice(0, 104)].filter(Boolean);
-const paidIds = new Set(paidVisits.map((visit) => visit.id));
-const pendingVisits = [pendingMandatory, ...shuffle(eligible.filter((visit) => !paidIds.has(visit.id) && visit !== pendingMandatory)).slice(0, 17)].filter(Boolean);
+const paidMandatoryId = paidMandatory ? paidMandatory.id : null;
+const pendingMandatoryId = pendingMandatory ? pendingMandatory.id : null;
+const billedVisits = visits.filter(
+  (visit) => visit.eventType !== "account_only" && !missingIds.has(visit.id),
+);
 const payers = ["Medicare", "BCBS FL", "Aetna", "Cigna"];
 
 function claimForVisit(visit, id, fileStatus) {
@@ -180,10 +183,15 @@ function claimForVisit(visit, id, fileStatus) {
   };
 }
 
-const claims = [
-  ...paidVisits.map((visit, index) => claimForVisit(visit, `clm-${String(index + 1).padStart(4, "0")}`, "paid")),
-  ...pendingVisits.map((visit, index) => claimForVisit(visit, `clm-${String(index + 106).padStart(4, "0")}`, "submitted")),
-];
+let claimSeq = 0;
+const claims = billedVisits.map((visit) => {
+  claimSeq += 1;
+  let fileStatus;
+  if (visit.id === paidMandatoryId) fileStatus = "paid";
+  else if (visit.id === pendingMandatoryId) fileStatus = "submitted";
+  else fileStatus = random() < 0.14 ? "submitted" : "paid";
+  return claimForVisit(visit, `clm-${String(claimSeq).padStart(4, "0")}`, fileStatus);
+});
 
 const phantomPatient = patientById.get("pt_0003");
 claims.push(

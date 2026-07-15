@@ -78,11 +78,14 @@ export interface Claim {
 export type ReconStatus = "paid" | "pending" | "missing" | "phantom";
 
 export interface ReconciledRow {
-  id: string;
   status: ReconStatus;
-  patient: Patient | null;
-  visit: Visit | null;
   claim: Claim | null;
+  visit: Visit | null;
+  patientName: string;
+  office: OfficeId;
+  dateOfService: string;
+  billedAmount: number;
+  paidAmount: number;
 }
 
 export interface ClaimsKpis {
@@ -90,9 +93,10 @@ export interface ClaimsKpis {
   pending: number;
   missing: number;
   phantom: number;
-  totalBilled: number;
-  totalPaid: number;
-  outstanding: number;
+  billedTotal: number;
+  collectedTotal: number;
+  atRiskAmount: number;
+  collectionRate: number;
 }
 
 export interface SlotDayCell {

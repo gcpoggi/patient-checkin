@@ -1,9 +1,74 @@
 import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
 import { getStore } from "@/lib/store";
-import type { AttendanceMonth, AttendanceTotals, OfficeId, SlotDayCell, TimeSlot } from "@/lib/types";
+import { normalizeName, normalizePhone } from "@/lib/normalize";
+import type { AttendanceMonth, AttendanceTotals, ClaimsKpis, OfficeId, ReconciledRow, SlotDayCell, TimeSlot } from "@/lib/types";
 
 const emptyCell = (): SlotDayCell => ({ attended: 0, evals: 0, scheduled: 0, noShows: 0 });
 const emptyTotals = (): AttendanceTotals => ({ ...emptyCell(), ptFu: 0 });
+
+export function reconcileClaims(month: string, office?: OfficeId): { rows: ReconciledRow[]; kpis: ClaimsKpis } {
+  const store = getStore();
+  const claims = store.claims.filter(
+    (claim) => claim.dateOfService.startsWith(`${month}-`) && (!office || claim.office === office),
+  );
+  const visits = store.visits.filter(
+    (visit) => visit.date.startsWith(`${month}-`) && (!office || visit.office === office),
+  );
+  const matchedVisitIds = new Set<string>();
+  const rows: ReconciledRow[] = [];
+
+  for (const claim of claims) {
+    const patient = store.patients.find(
+      (candidate) =>
+        normalizeName(candidate.fullName) === normalizeName(claim.patientName) &&
+        (candidate.dob === claim.patientDob || normalizePhone(candidate.phone) === normalizePhone(claim.patientPhone)),
+    );
+    const visit = patient
+      ? visits.find(
+          (candidate) =>
+            candidate.patientId === patient.id &&
+            candidate.date === claim.dateOfService &&
+            candidate.office === claim.office &&
+            !matchedVisitIds.has(candidate.id),
+        ) ?? null
+      : null;
+    if (visit) matchedVisitIds.add(visit.id);
+    const status = visit
+      ? claim.fileStatus === "paid" && claim.paidAmount > 0 ? "paid" : "pending"
+      : "phantom";
+    rows.push({
+      status,
+      claim,
+      visit,
+      patientName: claim.patientName,
+      office: claim.office,
+      dateOfService: claim.dateOfService,
+      billedAmount: claim.billedAmount,
+      paidAmount: claim.paidAmount,
+    });
+  }
+
+  for (const visit of visits) {
+    if (matchedVisitIds.has(visit.id) || visit.eventType === "account_only") continue;
+    const patientName = store.patients.find((patient) => patient.id === visit.patientId)?.fullName ?? "Unknown patient";
+    rows.push({ status: "missing", claim: null, visit, patientName, office: visit.office, dateOfService: visit.date, billedAmount: 0, paidAmount: 0 });
+  }
+
+  const counts = (status: ReconciledRow["status"]) => rows.filter((row) => row.status === status).length;
+  const matchedClaims = rows.filter((row) => row.status === "paid" || row.status === "pending");
+  const matchedBilled = matchedClaims.reduce((sum, row) => sum + row.billedAmount, 0);
+  const collectedTotal = matchedClaims.reduce((sum, row) => sum + row.paidAmount, 0);
+  const missing = counts("missing");
+  const averageMatchedBilled = matchedClaims.length ? matchedBilled / matchedClaims.length : 0;
+  const kpis: ClaimsKpis = {
+    paid: counts("paid"), pending: counts("pending"), missing, phantom: counts("phantom"),
+    billedTotal: claims.reduce((sum, claim) => sum + claim.billedAmount, 0),
+    collectedTotal,
+    atRiskAmount: rows.filter((row) => row.status === "phantom").reduce((sum, row) => sum + row.billedAmount, 0) + missing * averageMatchedBilled,
+    collectionRate: matchedBilled ? collectedTotal / matchedBilled : 0,
+  };
+  return { rows, kpis };
+}
 
 export function buildAttendanceMonth(office: OfficeId, month: string): AttendanceMonth {
   const store = getStore();
