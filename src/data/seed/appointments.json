@@ -1,0 +1,7178 @@
+[
+  {
+    "id": "ap_00001",
+    "patientId": "pt_0001",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00002",
+    "patientId": "pt_0001",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00003",
+    "patientId": "pt_0001",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00004",
+    "patientId": "pt_0001",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00005",
+    "patientId": "pt_0001",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00006",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00007",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00008",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00009",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00010",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00011",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00012",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00013",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00014",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00015",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00016",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00017",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00018",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00019",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00020",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00021",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00022",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00023",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00024",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00025",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00026",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00027",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00028",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00029",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00030",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00031",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00032",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00033",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00034",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00035",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00036",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "15:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00037",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00038",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00039",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00040",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00041",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00042",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00043",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00044",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00045",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00046",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00047",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00048",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00049",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00050",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00051",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00052",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00053",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00054",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00055",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00056",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00057",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00058",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00059",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00060",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "09:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00061",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00062",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00063",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00064",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "10:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00065",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00066",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00067",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00068",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00069",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "14:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00070",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00071",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00072",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00073",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00074",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00075",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00076",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00077",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00078",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00079",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00080",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00081",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00082",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00083",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00084",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00085",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00086",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00087",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00088",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00089",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00090",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00091",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00092",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00093",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00094",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00095",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00096",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00097",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00098",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00099",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00100",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00101",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00102",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00103",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00104",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00105",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00106",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00107",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00108",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00109",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00110",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00111",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00112",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00113",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00114",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00115",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00116",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "15:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00117",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00118",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00119",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00120",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00121",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00122",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00123",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00124",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00125",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00126",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00127",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00128",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00129",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "16:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00130",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "10:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00131",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00132",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00133",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00134",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "15:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00135",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00136",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00137",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00138",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00139",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00140",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00141",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00142",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "16:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00143",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00144",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00145",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00146",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00147",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00148",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00149",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00150",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00151",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00152",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00153",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00154",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00155",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "15:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00156",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00157",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00158",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00159",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00160",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00161",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "14:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00162",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00163",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00164",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00165",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00166",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00167",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00168",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "11:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00169",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00170",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00171",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "15:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00172",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00173",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00174",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00175",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00176",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00177",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00178",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00179",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00180",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00181",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00182",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00183",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00184",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00185",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00186",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00187",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00188",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00189",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00190",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00191",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00192",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00193",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00194",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "13:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00195",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00196",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00197",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00198",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00199",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00200",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00201",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00202",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00203",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00204",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00205",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00206",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00207",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00208",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00209",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00210",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00211",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00212",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00213",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00214",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00215",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00216",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00217",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00218",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00219",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00220",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00221",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00222",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00223",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00224",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00225",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00226",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00227",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00228",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00229",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "13:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00230",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00231",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00232",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00233",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00234",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00235",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00236",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00237",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00238",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00239",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00240",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00241",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00242",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00243",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00244",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00245",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00246",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00247",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00248",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00249",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00250",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00251",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00252",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00253",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00254",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00255",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "13:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00256",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00257",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00258",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00259",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00260",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "13:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00261",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00262",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00263",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00264",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00265",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00266",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00267",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00268",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00269",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00270",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00271",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00272",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "09:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00273",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00274",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00275",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00276",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00277",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00278",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00279",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00280",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00281",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00282",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00283",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00284",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00285",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00286",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00287",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00288",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00289",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00290",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00291",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00292",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00293",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00294",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00295",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00296",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00297",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00298",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00299",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00300",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00301",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00302",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "13:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00303",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00304",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00305",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00306",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "15:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00307",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00308",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "07:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00309",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00310",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "11:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00311",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00312",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00313",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00314",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00315",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00316",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00317",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00318",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00319",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00320",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00321",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00322",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00323",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00324",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00325",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00326",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00327",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00328",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00329",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00330",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00331",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00332",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00333",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00334",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00335",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00336",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00337",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00338",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00339",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00340",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00341",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00342",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00343",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00344",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "15:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00345",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00346",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00347",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00348",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00349",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00350",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00351",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00352",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00353",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00354",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00355",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00356",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00357",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00358",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00359",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00360",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00361",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00362",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00363",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00364",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00365",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00366",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00367",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00368",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00369",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00370",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00371",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00372",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00373",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00374",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00375",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00376",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00377",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00378",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00379",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "16:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00380",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00381",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "15:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00382",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00383",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00384",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00385",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00386",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00387",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00388",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00389",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00390",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00391",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "08:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00392",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00393",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00394",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00395",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00396",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00397",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00398",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00399",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00400",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00401",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00402",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00403",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00404",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-28",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00405",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00406",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00407",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00408",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00409",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "09:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00410",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00411",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00412",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00413",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00414",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00415",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00416",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00417",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00418",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00419",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00420",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00421",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00422",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00423",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "15:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00424",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00425",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00426",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00427",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00428",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00429",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00430",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "10:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00431",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00432",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00433",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00434",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00435",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00436",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00437",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00438",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00439",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00440",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-08",
+    "slot": "11:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00441",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00442",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00443",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "08:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00444",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00445",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00446",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00447",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00448",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00449",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-07",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00450",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-01-13",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00451",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "08:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00452",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00453",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00454",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00455",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00456",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00457",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00458",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "16:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00459",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00460",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00461",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00462",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-20",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00463",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00464",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "14:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00465",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00466",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00467",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00468",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00469",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00470",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00471",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-29",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00472",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00473",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-23",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00474",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00475",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-26",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00476",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00477",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-21",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00478",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-01-14",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00479",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-01-27",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00480",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00481",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-12",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00482",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00483",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-01-09",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00484",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-01-22",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00485",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-01-16",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00486",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00487",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00488",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-01-15",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00489",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-01-06",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00490",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-01-02",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00491",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-01-19",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00492",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-01-30",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00493",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00494",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00495",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00496",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00497",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00498",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00499",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "11:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00500",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00501",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00502",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00503",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00504",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00505",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00506",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00507",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00508",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00509",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00510",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00511",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00512",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00513",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "10:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00514",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00515",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00516",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00517",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "13:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00518",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00519",
+    "patientId": "pt_0002",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00520",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00521",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00522",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00523",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "16:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00524",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00525",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00526",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00527",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00528",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00529",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00530",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00531",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00532",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00533",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00534",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00535",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00536",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00537",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00538",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00539",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00540",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00541",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00542",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00543",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00544",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00545",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00546",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00547",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00548",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00549",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00550",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00551",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00552",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "15:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00553",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00554",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00555",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00556",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00557",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "15:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00558",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00559",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00560",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00561",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00562",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00563",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00564",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00565",
+    "patientId": "pt_0002",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00566",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00567",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00568",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00569",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00570",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00571",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00572",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00573",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00574",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00575",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00576",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00577",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00578",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00579",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00580",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00581",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00582",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00583",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00584",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "10:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00585",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00586",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00587",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00588",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00589",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00590",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00591",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00592",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "14:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00593",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00594",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00595",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00596",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00597",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00598",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00599",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00600",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00601",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "09:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00602",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00603",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00604",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00605",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00606",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00607",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00608",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00609",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00610",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00611",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00612",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00613",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00614",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00615",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00616",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "11:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00617",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00618",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "15:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00619",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00620",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00621",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "07:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00622",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00623",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00624",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00625",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00626",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00627",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "13:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00628",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "10:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00629",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "09:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00630",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00631",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00632",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00633",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00634",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00635",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "14:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00636",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00637",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00638",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00639",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00640",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00641",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00642",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00643",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "15:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00644",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00645",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00646",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00647",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00648",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00649",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00650",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "15:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00651",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "11:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00652",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00653",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00654",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00655",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00656",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00657",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00658",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00659",
+    "patientId": "pt_0002",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00660",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00661",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00662",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00663",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00664",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00665",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00666",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "09:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00667",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00668",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00669",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00670",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00671",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00672",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00673",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00674",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00675",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00676",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00677",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00678",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00679",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00680",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00681",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00682",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00683",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00684",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00685",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00686",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "14:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00687",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00688",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00689",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00690",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00691",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00692",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00693",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00694",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00695",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00696",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00697",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00698",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00699",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "09:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00700",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00701",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00702",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00703",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00704",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00705",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "13:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00706",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "17:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00707",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00708",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00709",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00710",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00711",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00712",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00713",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00714",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00715",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00716",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00717",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00718",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00719",
+    "patientId": "pt_0002",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00720",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00721",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00722",
+    "patientId": "pt_0002",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00723",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00724",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00725",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00726",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-29",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00727",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00728",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00729",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00730",
+    "patientId": "pt_0022",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "16:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00731",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00732",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00733",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00734",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "13:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00735",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00736",
+    "patientId": "pt_0032",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00737",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00738",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00739",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "08:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00740",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00741",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00742",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00743",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00744",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00745",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00746",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "16:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00747",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00748",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00749",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00750",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-06",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00751",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-22",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00752",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "13:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00753",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00754",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00755",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00756",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00757",
+    "patientId": "pt_0010",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00758",
+    "patientId": "pt_0014",
+    "office": "ponce",
+    "date": "2026-01-13",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00759",
+    "patientId": "pt_0020",
+    "office": "ponce",
+    "date": "2026-01-15",
+    "slot": "14:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00760",
+    "patientId": "pt_0030",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00761",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00762",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "15:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00763",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "10:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00764",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00765",
+    "patientId": "pt_0002",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00766",
+    "patientId": "pt_0018",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00767",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-16",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00768",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-27",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00769",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00770",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-05",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00771",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00772",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-14",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00773",
+    "patientId": "pt_0024",
+    "office": "ponce",
+    "date": "2026-01-26",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00774",
+    "patientId": "pt_0006",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00775",
+    "patientId": "pt_0004",
+    "office": "ponce",
+    "date": "2026-01-08",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00776",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-30",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00777",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-12",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00778",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-07",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00779",
+    "patientId": "pt_0026",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00780",
+    "patientId": "pt_0036",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00781",
+    "patientId": "pt_0038",
+    "office": "ponce",
+    "date": "2026-01-23",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00782",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-20",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00783",
+    "patientId": "pt_0034",
+    "office": "ponce",
+    "date": "2026-01-19",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00784",
+    "patientId": "pt_0012",
+    "office": "ponce",
+    "date": "2026-01-28",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00785",
+    "patientId": "pt_0016",
+    "office": "ponce",
+    "date": "2026-01-02",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00786",
+    "patientId": "pt_0028",
+    "office": "ponce",
+    "date": "2026-01-09",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00787",
+    "patientId": "pt_0008",
+    "office": "ponce",
+    "date": "2026-01-21",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00788",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "10:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00789",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00790",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "14:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00791",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "11:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00792",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00793",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00794",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00795",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "15:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00796",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00797",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00798",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "09:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00799",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00800",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00801",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "11:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00802",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "07:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00803",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00804",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00805",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "07:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00806",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00807",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00808",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "07:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00809",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00810",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00811",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "09:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00812",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00813",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00814",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00815",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00816",
+    "patientId": "pt_0025",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00817",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "16:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00818",
+    "patientId": "pt_0035",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00819",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00820",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00821",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00822",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00823",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00824",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00825",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00826",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00827",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00828",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00829",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00830",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00831",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "16:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00832",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00833",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00834",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00835",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00836",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "16:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00837",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00838",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "10:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00839",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "17:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00840",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00841",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "11:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00842",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00843",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00844",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00845",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "15:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00846",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "09:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00847",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00848",
+    "patientId": "pt_0015",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "09:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00849",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00850",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "13:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00851",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "11:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00852",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "07:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00853",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "13:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00854",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00855",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00856",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00857",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "13:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00858",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00859",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00860",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00861",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00862",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "11:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00863",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "08:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00864",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "11:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00865",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "10:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00866",
+    "patientId": "pt_0017",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00867",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00868",
+    "patientId": "pt_0027",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00869",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "14:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00870",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00871",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00872",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00873",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00874",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "17:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00875",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "17:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00876",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "14:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00877",
+    "patientId": "pt_0005",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "08:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00878",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "10:00",
+    "type": "evaluation"
+  },
+  {
+    "id": "ap_00879",
+    "patientId": "pt_0011",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00880",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "08:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00881",
+    "patientId": "pt_0009",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00882",
+    "patientId": "pt_0013",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "09:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00883",
+    "patientId": "pt_0019",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "11:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00884",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "08:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00885",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "13:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00886",
+    "patientId": "pt_0023",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "16:00",
+    "type": "doctor"
+  },
+  {
+    "id": "ap_00887",
+    "patientId": "pt_0021",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "15:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00888",
+    "patientId": "pt_0029",
+    "office": "kendall",
+    "date": "2026-02-05",
+    "slot": "10:00",
+    "type": "followup"
+  },
+  {
+    "id": "ap_00889",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "17:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00890",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "14:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00891",
+    "patientId": "pt_0031",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "11:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00892",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-06",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00893",
+    "patientId": "pt_0033",
+    "office": "kendall",
+    "date": "2026-02-02",
+    "slot": "07:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00894",
+    "patientId": "pt_0037",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "16:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00895",
+    "patientId": "pt_0003",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "15:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00896",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-02-04",
+    "slot": "09:00",
+    "type": "therapy"
+  },
+  {
+    "id": "ap_00897",
+    "patientId": "pt_0007",
+    "office": "kendall",
+    "date": "2026-02-03",
+    "slot": "10:00",
+    "type": "therapy"
+  }
+]
