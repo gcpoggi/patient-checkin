@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { LoginForm } from "@/components/LoginForm";
 
 export default function LoginPage() {
@@ -7,15 +8,15 @@ export default function LoginPage() {
         <div className="absolute -right-28 -top-28 h-80 w-80 rounded-full border border-sky-hpp/15" />
         <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-teal-500/10" />
 
-        <div className="relative flex items-center gap-3" aria-label="HPP Management Corp.">
-          <svg viewBox="0 0 20 20" className="h-7 w-7 text-teal-400" aria-hidden="true">
-            <circle cx="10" cy="10" r="10" fill="currentColor" />
-            <circle cx="10" cy="10" r="4" className="text-sky-hpp" fill="currentColor" />
-          </svg>
-          <span className="leading-none">
-            <span className="block text-3xl font-bold tracking-wider text-white">HPP</span>
-            <span className="block text-[11px] tracking-wide text-mist-100">Management Corp.</span>
-          </span>
+        <div className="relative" aria-label="HPP Management Corp.">
+          <Image
+            src="/logo-white.png"
+            alt="HPP Management Corp."
+            width={867}
+            height={258}
+            priority
+            className="h-12 w-auto lg:h-14"
+          />
         </div>
 
         <div className="relative my-auto max-w-2xl py-16">
@@ -42,6 +43,14 @@ export default function LoginPage() {
       <section className="flex items-center justify-center px-4 py-10 sm:px-8 lg:px-16">
         <div className="w-full max-w-md rounded-xl border border-mist-200 bg-white p-7 shadow-[0_20px_50px_rgba(13,27,42,0.08)] sm:p-10">
           <div className="md:hidden">
+            <Image
+              src="/logo-dark.png"
+              alt="HPP Management Corp."
+              width={867}
+              height={258}
+              priority
+              className="mb-4 h-10 w-auto"
+            />
             <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">HPP Patient Check-In</p>
           </div>
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-navy md:mt-0">Sign in</h2>

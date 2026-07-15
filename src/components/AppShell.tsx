@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LogoutButton } from "@/components/LogoutButton";
 import { ResetDemoButton } from "@/components/ResetDemoButton";
@@ -19,15 +20,15 @@ export function AppShell({ children }: AppShellProps) {
     <div className="min-h-screen bg-mist-50">
       <header className="bg-navy text-mist-100 shadow-sm">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-3 px-4 py-3 sm:px-6 lg:gap-x-6 lg:px-8">
-          <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="HPP Patient Check-In home">
-            <svg viewBox="0 0 20 20" className="h-4 w-4 text-teal-400" aria-hidden="true">
-              <circle cx="10" cy="10" r="10" fill="currentColor" />
-              <circle cx="10" cy="10" r="4" className="text-sky-hpp" fill="currentColor" />
-            </svg>
-            <span className="leading-none">
-              <span className="block text-xl font-bold tracking-wider text-white">HPP</span>
-              <span className="block text-[9px] tracking-wide text-mist-100">Management Corp.</span>
-            </span>
+          <Link href="/" className="flex shrink-0 items-center" aria-label="HPP Patient Check-In home">
+            <Image
+              src="/logo-white.png"
+              alt="HPP Management Corp."
+              width={867}
+              height={258}
+              priority
+              className="h-9 w-auto"
+            />
           </Link>
 
           <nav className="order-3 flex w-full flex-wrap items-center gap-1 border-t border-white/10 pt-2 lg:order-none lg:w-auto lg:border-0 lg:pt-0" aria-label="Main navigation">
