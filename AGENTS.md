@@ -16,7 +16,7 @@ A "Practice Control Layer" for patient operations + billing oversight. It does N
 - **Phantom** — Phantom charge (billed but no service logged)
 
 ## Stack & versions (IMPORTANT — newer than your training data)
-- **Next.js 16.2.10** (App Router). Middleware is RENAMED to **`proxy.ts`** (root or `src/`). Use `export function proxy(request: NextRequest)`. Read `node_modules/next/dist/docs/01-app/01-getting-started/16-proxy.md` and `.../02-guides/authentication.md`.
+- **Next.js 16.2.10** (App Router). Middleware is RENAMED to **`proxy.ts`**. Because this project uses a `src/` dir, the file MUST live at **`src/proxy.ts`** (same level as `src/app`) — NOT the repo root, or it won't run. Use `export function proxy(request: NextRequest)`. Read `node_modules/next/dist/docs/01-app/01-getting-started/16-proxy.md` and `.../02-guides/authentication.md`.
 - **React 19.2**
 - **TypeScript** (strict), path alias `@/*` → `src/*`
 - **Tailwind CSS v4** — configured via `@import "tailwindcss";` and `@theme { ... }` in `src/app/globals.css`. NO `tailwind.config.js`. Define custom colors/fonts as CSS vars inside `@theme`.

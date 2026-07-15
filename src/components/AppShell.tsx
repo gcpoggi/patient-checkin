@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoutButton } from "@/components/LogoutButton";
 
 const navigation = [
   { label: "Dashboard", href: "/" },
@@ -52,14 +53,7 @@ export function AppShell({ children }: AppShellProps) {
             <span className="hidden rounded-full bg-white/10 px-3 py-1.5 text-xs text-mist-100 sm:inline-flex">
               pesilverio@hppcorp.com
             </span>
-            <form action="/api/auth/logout" method="post">
-              <button
-                type="submit"
-                className="rounded-lg border border-mist-200/30 px-3 py-1.5 text-xs font-semibold text-mist-100 transition-colors hover:border-teal-300 hover:text-teal-300"
-              >
-                Logout
-              </button>
-            </form>
+            <LogoutButton />
           </div>
         </div>
       </header>
