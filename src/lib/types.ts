@@ -102,13 +102,17 @@ export interface SlotDayCell {
   noShows: number;
 }
 
+export interface AttendanceTotals extends SlotDayCell {
+  ptFu: number;
+}
+
 export interface AttendanceMonth {
   office: OfficeId;
   month: string;
   slots: TimeSlot[];
   dates: string[];
   grid: Record<TimeSlot, Record<string, SlotDayCell>>;
-  dayTotals: Record<string, SlotDayCell>;
-  monthTotals: SlotDayCell & { ptFu: number };
-  yearToDate: SlotDayCell & { ptFu: number };
+  dayTotals: Record<string, AttendanceTotals>;
+  monthTotals: AttendanceTotals & { attendanceRate: number };
+  yearToDate: AttendanceTotals;
 }
