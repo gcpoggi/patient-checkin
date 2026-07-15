@@ -17,7 +17,9 @@ export function ClaimsDonut({ kpis }: { kpis: ClaimsKpis }) {
     <section className="rounded-xl border border-mist-200 bg-white p-5 shadow-sm">
       <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">Cross-check results</p>
       <h2 className="mt-1 font-display text-xl font-semibold text-navy">Claims status</h2>
-      <div className="relative mt-3 h-72" aria-label={`Claims status chart, ${total} total records`}>
+      {total === 0 ? (
+        <p className="flex h-72 items-center justify-center text-center text-sm text-slate-500">No claims or visits found for this period.</p>
+      ) : <div className="relative mt-3 h-72" aria-label={`Claims status chart, ${total} total records`}>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>
             <Pie data={data} dataKey="value" nameKey="name" innerRadius="62%" outerRadius="86%" paddingAngle={2} stroke="none">
@@ -30,7 +32,7 @@ export function ClaimsDonut({ kpis }: { kpis: ClaimsKpis }) {
           <span className="font-mono text-3xl font-semibold tabular-nums text-navy">{total}</span>
           <span className="text-xs uppercase tracking-widest text-slate-500">Total</span>
         </div>
-      </div>
+      </div>}
       <div className="grid grid-cols-2 gap-2 text-xs">
         {data.map((item) => <div key={item.name} className="flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: item.color }} /><span className="text-slate-600">{item.name}</span><span className="ml-auto font-mono tabular-nums text-navy">{item.value}</span></div>)}
       </div>

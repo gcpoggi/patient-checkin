@@ -21,6 +21,7 @@ export default async function AttendancePage({ searchParams }: AttendancePagePro
   const noShowRate = attendance.monthTotals.scheduled
     ? attendance.monthTotals.noShows / attendance.monthTotals.scheduled
     : 0;
+  const hasActivity = attendance.monthTotals.scheduled > 0 || attendance.monthTotals.attended > 0;
 
   return (
     <AppShell>
@@ -40,8 +41,17 @@ export default async function AttendancePage({ searchParams }: AttendancePagePro
         <StatCard label="No-show rate" value={`${(noShowRate * 100).toFixed(1)}%`} sub={`${attendance.monthTotals.noShows} no-shows`} />
       </section>
 
-      <div className="mt-6"><AttendanceBarChart attendance={attendance} /></div>
-      <div className="mt-6"><AttendanceGrid attendance={attendance} /></div>
+      {hasActivity ? (
+        <>
+          <div className="mt-6"><AttendanceBarChart attendance={attendance} /></div>
+          <div className="mt-6"><AttendanceGrid attendance={attendance} /></div>
+        </>
+      ) : (
+        <section className="mt-6 rounded-xl border border-dashed border-mist-200 bg-white px-6 py-16 text-center shadow-sm">
+          <h2 className="font-display text-xl font-semibold text-navy">No attendance activity</h2>
+          <p className="mt-2 text-sm text-slate-500">There are no scheduled appointments or recorded visits for this office and month.</p>
+        </section>
+      )}
     </AppShell>
   );
 }

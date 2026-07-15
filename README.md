@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HPP Patient Check-In
 
-## Getting Started
+HPP Patient Check-In is a practice control layer demo for patient operations and billing oversight. It records patient visits and cross-checks them against claims data to surface Paid, Pending, Missing, and Phantom outcomes.
 
-First, run the development server:
+## Tech stack
+
+- Next.js 16 App Router
+- TypeScript
+- Tailwind CSS v4
+- Recharts
+- SheetJS (`xlsx`)
+
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Demo login:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Email: `pesilverio@hppcorp.com`
+- Password: `1234`
 
-## Learn More
+## Demo script
 
-To learn more about Next.js, take a look at the following resources:
+1. Log in with the demo credentials.
+2. Open **Check-In** and look up **Maria Rodriguez**, an existing patient. Record a therapy visit.
+3. Open **Attendance** to see the visit reflected in the monthly attendance view.
+4. Return to **Check-In** and look up **Carlos Mendez**, who is not in the patient file. Register him as a new patient, then continue the check-in flow.
+5. Open **Claims** and walk through the four reconciliation views: **Paid**, **Pending**, **Missing**, and **Phantom**.
+6. Open **Feed Claims Data**. Download a sample CSV or XLSX from the app, then re-upload it to watch Missing decrease and Paid increase.
+7. Open **Reports** to show the Power BI Reports integration placeholder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use **Reset demo data** in the application header to restore the seeded state between presentations.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Data
 
-## Deploy on Vercel
+The demo uses an in-memory store seeded from `src/data/seed/*.json`. To regenerate the seed files, run:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+node scripts/generate-seed.mjs
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+On Vercel, a serverless cold start reverts the in-memory store to its seeded state. This is intentional and acceptable for the demo; the app is not designed for persistent production data.
+
+## Deploy
+
+Deploy with Vercel by connecting the GitHub repository. Vercel will auto-detect the Next.js framework and configure the build settings.

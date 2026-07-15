@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LogoutButton } from "@/components/LogoutButton";
+import { ResetDemoButton } from "@/components/ResetDemoButton";
 
 const navigation = [
   { label: "Dashboard", href: "/" },
@@ -17,7 +18,7 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <div className="min-h-screen bg-mist-50">
       <header className="bg-navy text-mist-100 shadow-sm">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 gap-y-3 px-4 py-3 sm:px-6 lg:px-8">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-4 gap-y-3 px-4 py-3 sm:px-6 lg:gap-x-6 lg:px-8">
           <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="HPP Patient Check-In home">
             <svg viewBox="0 0 20 20" className="h-4 w-4 text-teal-400" aria-hidden="true">
               <circle cx="10" cy="10" r="10" fill="currentColor" />
@@ -29,7 +30,7 @@ export function AppShell({ children }: AppShellProps) {
             </span>
           </Link>
 
-          <nav className="order-3 flex w-full items-center gap-1 overflow-x-auto lg:order-none lg:w-auto" aria-label="Main navigation">
+          <nav className="order-3 flex w-full flex-wrap items-center gap-1 border-t border-white/10 pt-2 lg:order-none lg:w-auto lg:border-0 lg:pt-0" aria-label="Main navigation">
             {navigation.map((item, index) => (
               <Link
                 key={item.href}
@@ -43,14 +44,15 @@ export function AppShell({ children }: AppShellProps) {
                 {item.label}
               </Link>
             ))}
+            <ResetDemoButton />
           </nav>
 
           <span className="hidden rounded-full border border-teal-400/40 bg-teal-700/40 px-3 py-1 text-xs font-semibold tracking-wide text-teal-300 xl:inline-flex">
             Practice Control Layer
           </span>
 
-          <div className="ml-auto flex items-center gap-2">
-            <span className="hidden rounded-full bg-white/10 px-3 py-1.5 text-xs text-mist-100 sm:inline-flex">
+          <div className="ml-auto flex min-w-0 items-center gap-2">
+            <span className="max-w-28 truncate rounded-full bg-white/10 px-2.5 py-1.5 text-[10px] text-mist-100 sm:max-w-none sm:px-3 sm:text-xs">
               pesilverio@hppcorp.com
             </span>
             <LogoutButton />

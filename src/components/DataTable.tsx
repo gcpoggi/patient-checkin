@@ -21,8 +21,8 @@ export function DataTable<T>({ columns, rows, empty = "No records found." }: Dat
   } as const;
 
   return (
-    <div className="overflow-auto rounded-xl border border-mist-200 bg-white shadow-sm">
-      <table className="w-full border-collapse text-sm">
+    <div className="max-w-full overflow-x-auto rounded-xl border border-mist-200 bg-white shadow-sm">
+      <table className="min-w-full border-collapse text-sm">
         <thead className="sticky top-0 z-10 bg-mist-100 text-navy">
           <tr>
             {columns.map((column) => (
