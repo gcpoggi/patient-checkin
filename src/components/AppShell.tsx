@@ -9,6 +9,7 @@ const navigation = [
   { label: "Attendance", href: "/attendance" },
   { label: "Claims", href: "/claims" },
   { label: "Reports", href: "/reports" },
+  { label: "Contestations", href: "/contestations" },
 ] as const;
 
 export interface AppShellProps {

@@ -1,11 +1,12 @@
 import appointmentsSeed from "@/data/seed/appointments.json";
 import claimsSeed from "@/data/seed/claims.json";
+import contestationsSeed from "@/data/seed/contestations.json";
 import officesSeed from "@/data/seed/offices.json";
 import patientsSeed from "@/data/seed/patients.json";
 import physiciansSeed from "@/data/seed/physicians.json";
 import visitsSeed from "@/data/seed/visits.json";
 import { isSameDate, normalizeName, normalizePhone } from "@/lib/normalize";
-import type { Appointment, Claim, Office, Patient, Physician, Visit } from "@/lib/types";
+import type { Appointment, Claim, Contestation, Office, Patient, Physician, Visit } from "@/lib/types";
 
 export interface HppStore {
   offices: Office[];
@@ -14,6 +15,7 @@ export interface HppStore {
   appointments: Appointment[];
   visits: Visit[];
   claims: Claim[];
+  contestations: Contestation[];
   seededAt: string;
 }
 
@@ -42,6 +44,7 @@ export function seedStore(): HppStore {
     appointments: clone(appointmentsSeed) as Appointment[],
     visits: clone(visitsSeed) as Visit[],
     claims: clone(claimsSeed) as Claim[],
+    contestations: clone(contestationsSeed) as Contestation[],
     seededAt: new Date().toISOString(),
   };
 }
@@ -105,6 +108,40 @@ export function mergeClaims(rows: Claim[]): { added: number; replaced: number } 
     }
   }
   return { added, replaced };
+}
+
+type ContestationInput = Omit<
+  Contestation,
+  "id" | "createdAt" | "submittedAt" | "resolvedAt" | "amountRecovered" | "status"
+> & Partial<Pick<Contestation, "status">>;
+
+export function addContestation(input: ContestationInput): Contestation {
+  const store = getStore();
+  const contestation: Contestation = {
+    ...input,
+    id: nextId("ct", store.contestations, 4),
+    createdAt: new Date().toISOString(),
+    status: input.status ?? "draft",
+    amountRecovered: 0,
+    submittedAt: null,
+    resolvedAt: null,
+  };
+  store.contestations.push(contestation);
+  return contestation;
+}
+
+export function updateContestation(id: string, patch: Partial<Contestation>): Contestation | null {
+  const store = getStore();
+  const index = store.contestations.findIndex((item) => item.id === id);
+  if (index === -1) return null;
+
+  const current = store.contestations[index];
+  const now = new Date().toISOString();
+  const updated: Contestation = { ...current, ...patch, id: current.id };
+  if (patch.status === "submitted" && !updated.submittedAt) updated.submittedAt = now;
+  if ((patch.status === "won" || patch.status === "lost") && !updated.resolvedAt) updated.resolvedAt = now;
+  store.contestations[index] = updated;
+  return updated;
 }
 
 export function lookupPatient(input: LookupInput): PatientLookupResult {

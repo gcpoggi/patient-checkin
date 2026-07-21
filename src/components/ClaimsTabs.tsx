@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 import { DataTable, type DataTableColumn } from "@/components/DataTable";
 import { StatusBadge } from "@/components/StatusBadge";
 import type { ClaimStatus, ReconciledClaimRow } from "@/lib/types";
@@ -27,6 +28,8 @@ interface DisplayRow {
   collectionPct: number;
   status: ClaimStatus;
   note: string;
+  claimId: string;
+  contestAmount: number;
 }
 
 const labels: Record<TabStatus, { short: string; long: string }> = {
@@ -53,6 +56,7 @@ const columns: DataTableColumn<DisplayRow>[] = [
   { key: "reduction", header: "Reduction", align: "right", render: (value) => money.format(Number(value)) },
   { key: "collectionPct", header: "Collection %", align: "right", render: (value) => percent.format(Number(value)) },
   { key: "status", header: "Status", render: (_, row) => <div><StatusBadge status={row.status} />{row.note ? <p className="mt-1 max-w-56 whitespace-normal text-xs text-slate-500">{row.note}</p> : null}</div> },
+  { key: "claimId", header: "Action", render: (_, row) => row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.claimId)}&insurer=${encodeURIComponent(row.payer)}&reason=${row.status}&amount=${row.contestAmount}`}>Contest</Link> : null },
 ];
 
 export function ClaimsTabs({ rows, activeStatus, counts }: ClaimsTabsProps) {
@@ -73,6 +77,8 @@ export function ClaimsTabs({ rows, activeStatus, counts }: ClaimsTabsProps) {
     collectionPct: row.collectionPct,
     status: row.status,
     note: row.status === "phantom" ? "No visit on record" : row.status === "denied" ? row.claim.denialReason ?? "Denied by payer" : "",
+    claimId: row.claim.id,
+    contestAmount: row.status === "denied" ? row.billedAmount : Math.max(0, row.reduction),
   }));
 
   function selectStatus(status: TabStatus) {

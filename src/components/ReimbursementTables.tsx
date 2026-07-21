@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
 import { StatusBadge } from "@/components/StatusBadge";
 import type { ClaimStatus } from "@/lib/types";
@@ -66,6 +67,7 @@ const detailColumns: ExcelColumn<ReimbursementDetailRow>[] = [
   { key: "paid", header: "Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
   { key: "reduction", header: "Reduction", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
   { key: "collectionPct", header: "Collection %", align: "right", filter: "none", render: (value) => percent.format(Number(value)) },
+  { key: "id", header: "Action", filter: "none", sortable: false, render: (_, row) => row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.id)}&insurer=${encodeURIComponent(row.payer)}&reason=${row.status}&amount=${row.status === "denied" ? row.billed : row.reduction}`}>Contest</Link> : null },
 ];
 
 export function ReimbursementTables({
