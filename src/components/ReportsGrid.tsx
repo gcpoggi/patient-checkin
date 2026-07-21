@@ -14,5 +14,5 @@ type Report = (typeof reports)[number];
 
 export function ReportsGrid() {
   const [activeReport, setActiveReport] = useState<Report | null>(null);
-  return <><div className="grid gap-4 md:grid-cols-3">{reports.map((report) => <MenuCard key={report.title} {...report} onClick={() => setActiveReport(report)} />)}</div><Modal open={activeReport !== null} onClose={() => setActiveReport(null)} title={activeReport?.title}>{activeReport ? <ReportPlaceholder {...activeReport} /> : null}</Modal></>;
+  return <><div className="grid gap-4 md:grid-cols-3">{reports.map((report) => report.title === "Reimbursement Analysis" ? <MenuCard key={report.title} {...report} href="/reports/reimbursement-analysis" /> : <MenuCard key={report.title} {...report} onClick={() => setActiveReport(report)} />)}</div><Modal open={activeReport !== null} onClose={() => setActiveReport(null)} title={activeReport?.title}>{activeReport ? <ReportPlaceholder {...activeReport} /> : null}</Modal></>;
 }
