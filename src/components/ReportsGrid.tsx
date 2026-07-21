@@ -1,18 +1,29 @@
-"use client";
-
-import { useState } from "react";
 import { MenuCard } from "@/components/MenuCard";
-import { Modal } from "@/components/Modal";
-import { ReportPlaceholder } from "@/components/ReportPlaceholder";
 
-const reports = [
-  { title: "Reimbursement Analysis", description: "Payments, adjustments, and collection performance by payer." },
-  { title: "Claims Analysis", description: "Claim volume, status mix, and denial trends across offices." },
-  { title: "Unpaid Claims", description: "Outstanding and pending claims to follow up for collections." },
+const financialReports = [
+  { title: "Reimbursement Analysis", description: "Review billed, allowed, collected, and reduced amounts by payer.", href: "/reports/reimbursement-analysis" },
+  { title: "Claims Analysis", description: "Analyze claim volume, status mix, and reductions across every dimension.", href: "/reports/claims-analysis" },
+  { title: "Unpaid Claims", description: "Review claims with no payment received and prioritize collection follow-up.", href: "/claims?status=unpaid" },
+  { title: "Underpayment (Reductions)", description: "Find claims paid below the fee-schedule allowed amount.", href: "/claims?status=underpayment" },
+  { title: "Denied Claims", description: "Investigate denied claims and their recorded denial reasons.", href: "/claims?status=denied" },
+  { title: "Phantom Claims", description: "Identify billed claims with no matching patient visit.", href: "/claims?status=phantom" },
 ] as const;
-type Report = (typeof reports)[number];
+
+const complianceReports = [
+  { title: "Errors — Place of Service", description: "Audit claims for improper place-of-service coding.", href: "/claims/errors" },
+] as const;
 
 export function ReportsGrid() {
-  const [activeReport, setActiveReport] = useState<Report | null>(null);
-  return <><div className="grid gap-4 md:grid-cols-3">{reports.map((report) => report.title === "Reimbursement Analysis" ? <MenuCard key={report.title} {...report} href="/reports/reimbursement-analysis" /> : <MenuCard key={report.title} {...report} onClick={() => setActiveReport(report)} />)}</div><Modal open={activeReport !== null} onClose={() => setActiveReport(null)} title={activeReport?.title}>{activeReport ? <ReportPlaceholder {...activeReport} /> : null}</Modal></>;
+  return (
+    <div className="space-y-8">
+      <section aria-labelledby="financial-reports-title">
+        <p id="financial-reports-title" className="mb-4 text-xs font-semibold uppercase tracking-widest text-teal-600">Financial reports</p>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{financialReports.map((report) => <MenuCard key={report.title} {...report} />)}</div>
+      </section>
+      <section aria-labelledby="compliance-reports-title">
+        <p id="compliance-reports-title" className="mb-4 text-xs font-semibold uppercase tracking-widest text-teal-600">Compliance &amp; audit</p>
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">{complianceReports.map((report) => <MenuCard key={report.title} {...report} />)}</div>
+      </section>
+    </div>
+  );
 }
