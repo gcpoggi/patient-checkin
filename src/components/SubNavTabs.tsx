@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 export function SubNavTabs({ items }: { items: Array<{ label: string; href: string }> }) {
   const pathname = usePathname();
   return (
-    <nav className="mt-6 overflow-x-auto border-b border-mist-200" aria-label="Attendance sections">
-      <div className="flex min-w-max gap-1">
+    <nav className="mt-6 border-b border-mist-200" aria-label="Report sections">
+      <div className="flex flex-wrap gap-1">
         {items.map((item) => {
           const active = pathname === item.href;
           return <Link key={item.href} href={item.href} aria-current={active ? "page" : undefined}

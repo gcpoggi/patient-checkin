@@ -165,7 +165,7 @@ export function ExcelTable<T>({
   }
 
   return (
-    <div className="max-w-full rounded-xl border border-mist-200 bg-white shadow-sm">
+    <div className="max-w-full overflow-hidden rounded-xl border border-mist-200 bg-white shadow-sm">
       <div className="flex flex-wrap items-center gap-2 border-b border-mist-200 px-3 py-2 text-sm">
         {title ? <h2 className="mr-auto font-semibold text-navy">{title}</h2> : <span className="mr-auto" />}
         <span className="text-slate-500">

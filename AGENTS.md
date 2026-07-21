@@ -69,6 +69,15 @@ Conventions: h1 = serif navy, tracking-tight; section labels = xs uppercase trac
   - Claims: for each claim find patient + a same day/office visit (one visit per claim). With visit → PAID (fileStatus paid & paidAmount>0) else PENDING; no visit → PHANTOM. Visits with no claim → MISSING.
   - Attendance: `buildAttendanceMonth(office, month)` aggregates appointments (scheduled) + visits (attended, evals) into grid + totals + yearToDate.
 
+## Financial reporting extension (data model + reports)
+- `Claim` also includes `payerCategory`, `provider`, `serviceType`, `placeOfService`, and nullable `denialReason`.
+- The fee schedule is stored in `src/data/fee-schedule.json` and exposed by `src/lib/feeSchedule.ts`; use `allowedAmountForClaim` to derive a claim's allowed amount.
+- `ClaimStatus = "paid_full" | "unpaid" | "underpayment" | "phantom" | "denied"`. `reconcileClaims` derives status from patient/visit matching, file status, paid amount, and allowed amount.
+- `buildServiceTransactions`, `buildProviderAttendance`, `buildMonthlySummary`, and `detectPlaceOfServiceErrors` provide the reporting datasets in `src/lib/reconcile.ts`.
+- `src/components/ExcelTable.tsx` is the shared sortable, filterable, horizontally scrollable, XLSX-exportable report table.
+- Report routes: `/attendance/transactions`, `/attendance/physicians`, `/attendance/summary`, `/claims/errors`, `/reports/reimbursement-analysis`, `/reports/claims-analysis`, and `/contestations`; contestation subroutes are `/contestations/new` and `/contestations/[id]`, backed by `/api/contestations` and `/api/contestations/[id]`.
+- `Contestation` records insurer, claims, reason, demanded/recovered amounts, lifecycle status/timestamps, letter, notes, and creator. The in-memory store exposes `addContestation` and `updateContestation`.
+
 ## Working rules
 - After changes, `npm run build` MUST pass. Fix type/lint errors you introduce.
 - Keep components small and typed. Prefer server components for static shell, `"use client"` only where interactivity/charts are needed.
