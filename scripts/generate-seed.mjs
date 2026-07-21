@@ -6,6 +6,7 @@ import XLSX from "xlsx";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const seedDir = path.join(root, "src", "data", "seed");
 const samplesDir = path.join(root, "public", "samples");
+const feeSchedule = JSON.parse(fs.readFileSync(path.join(root, "src", "data", "fee-schedule.json"), "utf8"));
 fs.mkdirSync(seedDir, { recursive: true });
 fs.mkdirSync(samplesDir, { recursive: true });
 
@@ -34,6 +35,15 @@ const writeJson = (name, value) =>
 const offices = [
   { id: "kendall", name: "Kendall", city: "Miami, FL" },
   { id: "ponce", name: "Ponce", city: "Coral Gables, FL" },
+];
+
+const physicians = [
+  { id: "dr_01", name: "Dr. Ricardo Fuentes, MD", specialty: "Orthopedic Surgery" },
+  { id: "dr_02", name: "Dr. Elena Marquez, MD", specialty: "Orthopedic Surgery" },
+  { id: "dr_03", name: "Dr. Andres Villalobos, MD", specialty: "Sports Medicine" },
+  { id: "dr_04", name: "Dr. Patricia Nunez, MD", specialty: "Orthopedic Surgery" },
+  { id: "dr_05", name: "Dr. Miguel Contreras, DO", specialty: "Physical Medicine & Rehabilitation" },
+  { id: "dr_06", name: "Dr. Sofia Delgado, MD", specialty: "Orthopedic Surgery" },
 ];
 
 const firstNames = [
@@ -147,6 +157,7 @@ const mandatoryMissing = [mariaVisit("2026-01-20"), mariaVisit("2026-01-27")];
 const otherMissing = shuffle(kendallJanuaryVisits.filter((visit) => visit.patientId !== "pt_0001")).slice(0, 7);
 const missingVisits = [...mandatoryMissing, ...otherMissing].filter(Boolean);
 const missingIds = new Set(missingVisits.map((visit) => visit.id));
+const physicianForPatient = new Map(patients.map((p) => [p.id, pick(physicians).name]));
 
 // Every billable visit (all offices/months) becomes a claim EXCEPT the deliberate
 // missing set and non-clinical account-only encounters. Kendall January keeps exactly 9 "missing".
@@ -157,14 +168,41 @@ const pendingMandatoryId = pendingMandatory ? pendingMandatory.id : null;
 const billedVisits = visits.filter(
   (visit) => visit.eventType !== "account_only" && !missingIds.has(visit.id),
 );
-const payers = ["Medicare", "BCBS FL", "Aetna", "Cigna"];
+const payers = [
+  "Medicare",
+  "Medicare Advantage (Humana)",
+  "Medicare Advantage (UnitedHealthcare)",
+  "BCBS FL",
+  "BCBS FL Marketplace",
+  "Ambetter (ACA Marketplace)",
+  "Aetna",
+  "Cigna",
+  "AmTrust Workers Comp",
+  "Zenith Insurance (Workers Comp)",
+];
+const DENIAL_REASONS = [
+  "Prior authorization missing",
+  "Timely filing limit exceeded",
+  "Non-covered service for plan",
+  "Duplicate claim",
+  "Medical necessity not established",
+];
 
 function claimForVisit(visit, id, fileStatus) {
   const patient = patientById.get(visit.patientId);
-  const evaluation = visit.eventType === "evaluation";
-  const cptCode = evaluation ? pick(["97161", "97162", "97163"]) : pick(["97110", "97140", "97530"]);
-  const billedAmount = evaluation ? 200 : 150;
-  const paidAmount = fileStatus === "paid" ? (evaluation ? 160 + Math.floor(random() * 61) : 60 + Math.floor(random() * 81)) : 0;
+  const serviceType = visit.eventType === "doctor" ? "physician" : "pt";
+  const cptCode = serviceType === "physician"
+    ? pick(["99203", "99204", "99213", "99214"])
+    : (visit.eventType === "evaluation" ? pick(["97161", "97162", "97163"]) : pick(["97110", "97140", "97530"]));
+  const fee = feeSchedule.cptTable[cptCode];
+  const billedAmount = fee.billedAmount;
+  const description = fee.description;
+  const payer = pick(payers);
+  const payerCategory = feeSchedule.payerCategories[payer];
+  const allowed = payerCategory === "workers_comp" ? fee.wcAllowed : fee.medicareAllowed;
+  const paidAmount = fileStatus === "paid"
+    ? (random() < 0.35 ? Math.round(allowed * (0.55 + random() * 0.25)) : allowed)
+    : 0;
   return {
     id,
     patientName: patient.fullName,
@@ -173,10 +211,15 @@ function claimForVisit(visit, id, fileStatus) {
     office: visit.office,
     dateOfService: visit.date,
     cptCode,
-    description: evaluation ? "Physical therapy evaluation" : "Physical therapy treatment",
+    description,
     billedAmount,
     paidAmount,
-    payer: pick(payers),
+    payer,
+    payerCategory,
+    provider: physicianForPatient.get(visit.patientId) ?? "",
+    serviceType,
+    placeOfService: "office",
+    denialReason: fileStatus === "denied" ? pick(DENIAL_REASONS) : null,
     fileStatus,
     paidDate: fileStatus === "paid" ? "2026-02-10" : null,
     source: "seed",
@@ -189,7 +232,10 @@ const claims = billedVisits.map((visit) => {
   let fileStatus;
   if (visit.id === paidMandatoryId) fileStatus = "paid";
   else if (visit.id === pendingMandatoryId) fileStatus = "submitted";
-  else fileStatus = random() < 0.14 ? "submitted" : "paid";
+  else {
+    const r = random();
+    fileStatus = r < 0.70 ? "paid" : r < 0.92 ? "submitted" : "denied";
+  }
   return claimForVisit(visit, `clm-${String(claimSeq).padStart(4, "0")}`, fileStatus);
 });
 
@@ -198,20 +244,45 @@ claims.push(
   {
     id: "clm-9101", patientName: phantomPatient.fullName, patientDob: phantomPatient.dob,
     patientPhone: phantomPatient.phone, office: "kendall", dateOfService: "2026-01-05", cptCode: "97110",
-    description: "Physical therapy treatment", billedAmount: 150, paidAmount: 95, payer: "Medicare",
+    description: "Therapeutic exercise", billedAmount: 150, paidAmount: 32, payer: "Medicare",
+    payerCategory: "medicare", provider: physicianForPatient.get(phantomPatient.id) ?? "", serviceType: "pt",
+    placeOfService: "office", denialReason: null,
     fileStatus: "paid", paidDate: "2026-02-08", source: "seed",
   },
   {
     id: "clm-9102", patientName: "Maria Rodriguez", patientDob: "1958-03-14", patientPhone: "3055550147",
     office: "kendall", dateOfService: "2026-01-18", cptCode: "97530", description: "Therapeutic activities",
-    billedAmount: 150, paidAmount: 80, payer: "BCBS FL", fileStatus: "paid", paidDate: "2026-02-09", source: "seed",
+    billedAmount: 150, paidAmount: 34, payer: "BCBS FL", payerCategory: "commercial",
+    provider: physicianForPatient.get("pt_0001") ?? "", serviceType: "pt", placeOfService: "office", denialReason: null,
+    fileStatus: "paid", paidDate: "2026-02-09", source: "seed",
   },
   {
     id: "clm-9103", patientName: "Ana Ferrer", patientDob: "1980-06-12", patientPhone: "3055550199",
     office: "kendall", dateOfService: "2026-01-22", cptCode: "97140", description: "Manual therapy",
-    billedAmount: 150, paidAmount: 0, payer: "Aetna", fileStatus: "submitted", paidDate: null, source: "seed",
+    billedAmount: 150, paidAmount: 0, payer: "Aetna", payerCategory: "commercial",
+    provider: physicians[2].name, serviceType: "pt", placeOfService: "office", denialReason: null,
+    fileStatus: "submitted", paidDate: null, source: "seed",
   },
 );
+
+const errorClaimSpecs = [
+  { id: "clm-9301", patient: patients[2], office: "kendall", dateOfService: "2026-01-08", cptCode: "97110", payer: "Medicare", placeOfService: "inpatient", fileStatus: "paid" },
+  { id: "clm-9302", patient: patients[0], office: "kendall", dateOfService: "2026-01-15", cptCode: "99214", payer: "BCBS FL", placeOfService: "observation", fileStatus: "paid" },
+  { id: "clm-9303", patient: patients[1], office: "ponce", dateOfService: "2026-01-16", cptCode: "97140", payer: "Aetna", placeOfService: "inpatient", fileStatus: "submitted" },
+];
+for (const spec of errorClaimSpecs) {
+  const fee = feeSchedule.cptTable[spec.cptCode];
+  const payerCategory = feeSchedule.payerCategories[spec.payer];
+  const allowed = payerCategory === "workers_comp" ? fee.wcAllowed : fee.medicareAllowed;
+  claims.push({
+    id: spec.id, patientName: spec.patient.fullName, patientDob: spec.patient.dob, patientPhone: spec.patient.phone,
+    office: spec.office, dateOfService: spec.dateOfService, cptCode: spec.cptCode, description: fee.description,
+    billedAmount: fee.billedAmount, paidAmount: spec.fileStatus === "paid" ? allowed : 0, payer: spec.payer,
+    payerCategory, provider: physicianForPatient.get(spec.patient.id) ?? physicians[0].name,
+    serviceType: fee.serviceType, placeOfService: spec.placeOfService, denialReason: null,
+    fileStatus: spec.fileStatus, paidDate: spec.fileStatus === "paid" ? "2026-02-10" : null, source: "seed",
+  });
+}
 
 const uploadVisits = [mariaVisit("2026-01-20"), ...otherMissing.slice(0, 5)].filter(Boolean);
 const uploadRows = uploadVisits.map((visit, index) => {
@@ -221,19 +292,22 @@ const uploadRows = uploadVisits.map((visit, index) => {
     claim_id: `upload-${String(index + 1).padStart(3, "0")}`, patient_name: patient.fullName, dob: patient.dob,
     phone: patient.phone, office: visit.office, date_of_service: visit.date, cpt_code: "97110",
     description: "Physical therapy treatment", billed_amount: 150, paid_amount: paid ? 95 : 0,
-    payer: pick(payers), claim_status: paid ? "paid" : "submitted", paid_date: paid ? "2026-02-20" : "",
+    payer: pick(payers), provider: physicianForPatient.get(visit.patientId) ?? "", place_of_service: "office",
+    claim_status: paid ? "paid" : "submitted", paid_date: paid ? "2026-02-20" : "",
   };
 });
 uploadRows.push(
   {
     claim_id: "upload-007", patient_name: "Victor Salas", dob: "1977-04-09", phone: "3055550188",
     office: "kendall", date_of_service: "2026-01-24", cpt_code: "97140", description: "Manual therapy",
-    billed_amount: 150, paid_amount: 90, payer: "Cigna", claim_status: "paid", paid_date: "2026-02-21",
+    billed_amount: 150, paid_amount: 90, payer: "Cigna", provider: physicians[0].name,
+    place_of_service: "office", claim_status: "paid", paid_date: "2026-02-21",
   },
   {
     claim_id: "upload-invalid", patient_name: "Invalid Example", dob: "1960-01-01", phone: "3055550100",
     office: "kendall", date_of_service: "13/45/2026", cpt_code: "97110", description: "Invalid date demonstration",
-    billed_amount: 150, paid_amount: 0, payer: "Aetna", claim_status: "submitted", paid_date: "",
+    billed_amount: 150, paid_amount: 0, payer: "Aetna", provider: physicians[1].name,
+    place_of_service: "", claim_status: "submitted", paid_date: "",
   },
 );
 for (let index = 9; index <= 12; index += 1) {
@@ -242,6 +316,7 @@ for (let index = 9; index <= 12; index += 1) {
     claim_id: base.id, patient_name: base.patientName, dob: base.patientDob, phone: base.patientPhone,
     office: base.office, date_of_service: base.dateOfService, cpt_code: base.cptCode, description: base.description,
     billed_amount: base.billedAmount, paid_amount: base.paidAmount, payer: base.payer,
+    provider: base.provider, place_of_service: base.placeOfService,
     claim_status: base.fileStatus, paid_date: base.paidDate ?? "",
   });
 }
@@ -251,6 +326,7 @@ writeJson("patients.json", patients);
 writeJson("appointments.json", appointments);
 writeJson("visits.json", visits);
 writeJson("claims.json", claims);
+writeJson("physicians.json", physicians);
 
 const headers = Object.keys(uploadRows[0]);
 const escapeCsv = (value) => {

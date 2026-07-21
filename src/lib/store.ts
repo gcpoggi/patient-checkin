@@ -2,13 +2,15 @@ import appointmentsSeed from "@/data/seed/appointments.json";
 import claimsSeed from "@/data/seed/claims.json";
 import officesSeed from "@/data/seed/offices.json";
 import patientsSeed from "@/data/seed/patients.json";
+import physiciansSeed from "@/data/seed/physicians.json";
 import visitsSeed from "@/data/seed/visits.json";
 import { isSameDate, normalizeName, normalizePhone } from "@/lib/normalize";
-import type { Appointment, Claim, Office, Patient, Visit } from "@/lib/types";
+import type { Appointment, Claim, Office, Patient, Physician, Visit } from "@/lib/types";
 
 export interface HppStore {
   offices: Office[];
   patients: Patient[];
+  physicians: Physician[];
   appointments: Appointment[];
   visits: Visit[];
   claims: Claim[];
@@ -36,6 +38,7 @@ export function seedStore(): HppStore {
   return {
     offices: clone(officesSeed) as Office[],
     patients: clone(patientsSeed) as Patient[],
+    physicians: clone(physiciansSeed) as Physician[],
     appointments: clone(appointmentsSeed) as Appointment[],
     visits: clone(visitsSeed) as Visit[],
     claims: clone(claimsSeed) as Claim[],

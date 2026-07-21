@@ -1,13 +1,13 @@
-claim_id,patient_name,dob,phone,office,date_of_service,cpt_code,description,billed_amount,paid_amount,payer,claim_status,paid_date
-upload-001,Maria Rodriguez,1958-03-14,3055550147,kendall,2026-01-20,97110,Physical therapy treatment,150,95,Cigna,paid,2026-02-20
-upload-002,Rosa Sanchez,1963-07-04,3055550122,kendall,2026-01-20,97110,Physical therapy treatment,150,95,Aetna,paid,2026-02-20
-upload-003,Sofia Diaz,1949-03-22,3055550128,kendall,2026-01-16,97110,Physical therapy treatment,150,95,Medicare,paid,2026-02-20
-upload-004,Elena Morales,1990-06-13,3055550130,kendall,2026-01-12,97110,Physical therapy treatment,150,95,Cigna,paid,2026-02-20
-upload-005,Carmen Delgado,1949-09-06,3055550144,kendall,2026-01-02,97110,Physical therapy treatment,150,0,Cigna,submitted,
-upload-006,Rosa Suarez,1994-07-22,3055550140,kendall,2026-01-14,97110,Physical therapy treatment,150,0,Aetna,submitted,
-upload-007,Victor Salas,1977-04-09,3055550188,kendall,2026-01-24,97140,Manual therapy,150,90,Cigna,paid,2026-02-21
-upload-invalid,Invalid Example,1960-01-01,3055550100,kendall,13/45/2026,97110,Invalid date demonstration,150,0,Aetna,submitted,
-clm-0010,Teresa Perez,1955-03-09,3055550120,kendall,2026-01-26,97530,Physical therapy treatment,150,127,Cigna,paid,2026-02-10
-clm-0011,Carmen Delgado,1949-09-06,3055550144,kendall,2026-01-15,97163,Physical therapy evaluation,200,216,Aetna,paid,2026-02-10
-clm-0012,Rosa Suarez,1994-07-22,3055550140,kendall,2026-01-12,97140,Physical therapy treatment,150,134,BCBS FL,paid,2026-02-10
-clm-0013,Camila Castillo,1966-05-24,3055550134,kendall,2026-01-06,97110,Physical therapy treatment,150,0,Medicare,submitted,
+claim_id,patient_name,dob,phone,office,date_of_service,cpt_code,description,billed_amount,paid_amount,payer,provider,place_of_service,claim_status,paid_date
+upload-001,Maria Rodriguez,1958-03-14,3055550147,kendall,2026-01-20,97110,Physical therapy treatment,150,95,Cigna,"Dr. Ricardo Fuentes, MD",office,paid,2026-02-20
+upload-002,Rosa Sanchez,1963-07-04,3055550122,kendall,2026-01-20,97110,Physical therapy treatment,150,95,Aetna,"Dr. Sofia Delgado, MD",office,paid,2026-02-20
+upload-003,Sofia Diaz,1949-03-22,3055550128,kendall,2026-01-16,97110,Physical therapy treatment,150,95,BCBS FL Marketplace,"Dr. Andres Villalobos, MD",office,paid,2026-02-20
+upload-004,Elena Morales,1990-06-13,3055550130,kendall,2026-01-12,97110,Physical therapy treatment,150,95,Cigna,"Dr. Elena Marquez, MD",office,paid,2026-02-20
+upload-005,Carmen Delgado,1949-09-06,3055550144,kendall,2026-01-02,97110,Physical therapy treatment,150,0,Medicare,"Dr. Miguel Contreras, DO",office,submitted,
+upload-006,Rosa Suarez,1994-07-22,3055550140,kendall,2026-01-14,97110,Physical therapy treatment,150,0,Cigna,"Dr. Miguel Contreras, DO",office,submitted,
+upload-007,Victor Salas,1977-04-09,3055550188,kendall,2026-01-24,97140,Manual therapy,150,90,Cigna,"Dr. Ricardo Fuentes, MD",office,paid,2026-02-21
+upload-invalid,Invalid Example,1960-01-01,3055550100,kendall,13/45/2026,97110,Invalid date demonstration,150,0,Aetna,"Dr. Elena Marquez, MD",,submitted,
+clm-0010,Teresa Perez,1955-03-09,3055550120,kendall,2026-01-26,97140,Manual therapy,150,0,AmTrust Workers Comp,"Dr. Ricardo Fuentes, MD",office,denied,
+clm-0011,Carmen Delgado,1949-09-06,3055550144,kendall,2026-01-15,97161,PT evaluation - low complexity,200,85,BCBS FL Marketplace,"Dr. Miguel Contreras, DO",office,paid,2026-02-10
+clm-0012,Rosa Suarez,1994-07-22,3055550140,kendall,2026-01-12,97530,Therapeutic activities,150,25,BCBS FL Marketplace,"Dr. Miguel Contreras, DO",office,paid,2026-02-10
+clm-0013,Camila Castillo,1966-05-24,3055550134,kendall,2026-01-06,97110,Therapeutic exercise,150,32,Aetna,"Dr. Elena Marquez, MD",office,paid,2026-02-10
