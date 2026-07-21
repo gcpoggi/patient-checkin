@@ -29,6 +29,31 @@ const shuffle = (items) => {
   }
   return result;
 };
+const round2 = (n) => Math.round(n * 100) / 100;
+function buildProcedureLineJs(cptCode, rank, isTraditionalMedicare) {
+  const entry = feeSchedule.cptTable[cptCode];
+  const medicarePrice = entry.medicarePrice;
+  const allowedFactor = isTraditionalMedicare
+    ? (rank === 0 ? 0.99 + random() * 0.04 : 0.94 + random() * 0.05)
+    : (rank === 0 ? 0.94 + random() * 0.05 : 0.45 + random() * 0.10);
+  const allowedAmount = round2(medicarePrice * allowedFactor);
+  const billedAmount = round2(allowedAmount * (10 + random() * 6));
+  return { cptCode, description: entry.description, billedAmount, allowedAmount, medicarePrice };
+}
+function aggregateClaimAmountsJs(procedures) {
+  const sum = (k) => round2(procedures.reduce((s, p) => s + p[k], 0));
+  const billedAmount = sum("billedAmount"), allowedAmount = sum("allowedAmount"),
+    paidAmount = sum("planPaid"), medicareTotal = sum("medicarePrice");
+  return { billedAmount, allowedAmount, paidAmount, medicareTotal, underpayment: round2(Math.max(0, medicareTotal - paidAmount)) };
+}
+function addDaysIso(iso, days) {
+  const d = new Date(`${iso}T00:00:00Z`);
+  d.setUTCDate(d.getUTCDate() + days);
+  return d.toISOString().slice(0, 10);
+}
+const daysBetweenIso = (a, b) => Math.round((new Date(`${b}T00:00:00Z`) - new Date(`${a}T00:00:00Z`)) / 86400000);
+let claimNumberSeq = 66000001;
+const nextClaimNumber = () => String(claimNumberSeq++).padStart(9, "0");
 const writeJson = (name, value) =>
   fs.writeFileSync(path.join(seedDir, name), `${JSON.stringify(value, null, 2)}\n`);
 
@@ -38,13 +63,13 @@ const offices = [
 ];
 
 const physicians = [
-  { id: "dr_01", name: "Dr. Ricardo Fuentes, MD", specialty: "Orthopedic Surgery" },
-  { id: "dr_02", name: "Dr. Elena Marquez, MD", specialty: "Orthopedic Surgery" },
-  { id: "dr_03", name: "Dr. Andres Villalobos, MD", specialty: "Sports Medicine" },
-  { id: "dr_04", name: "Dr. Patricia Nunez, MD", specialty: "Orthopedic Surgery" },
-  { id: "dr_05", name: "Dr. Miguel Contreras, DO", specialty: "Physical Medicine & Rehabilitation" },
-  { id: "dr_06", name: "Dr. Sofia Delgado, MD", specialty: "Orthopedic Surgery" },
+  { id: "dr_01", name: "Arturo Corces, MD", specialty: "Knee and Hip Replacement" },
+  { id: "dr_02", name: "Mauricio Herrera, MD", specialty: "Sports Medicine and Arthroscopic Surgery" },
+  { id: "dr_03", name: "David Font-Rodriguez, MD", specialty: "Upper Extremity Surgery" },
+  { id: "dr_04", name: "Liam McCarthy, MD", specialty: "Physical Medicine and Rehabilitation" },
+  { id: "dr_05", name: "Amar D. Rajadhyaksha, MD", specialty: "Orthopedic Spinal Surgery" },
 ];
+const pcpNames = ["Dr. Ricardo Fuentes, MD", "Dr. Elena Marquez, MD", "Dr. Andres Villalobos, MD", "Dr. Patricia Nunez, MD", "Dr. Miguel Contreras, DO", "Dr. Sofia Delgado, MD"];
 
 const firstNames = [
   "Sofia", "Luis", "Elena", "Jorge", "Isabel", "Miguel", "Camila", "Rafael", "Lucia",
@@ -157,7 +182,13 @@ const mandatoryMissing = [mariaVisit("2026-01-20"), mariaVisit("2026-01-27")];
 const otherMissing = shuffle(kendallJanuaryVisits.filter((visit) => visit.patientId !== "pt_0001")).slice(0, 7);
 const missingVisits = [...mandatoryMissing, ...otherMissing].filter(Boolean);
 const missingIds = new Set(missingVisits.map((visit) => visit.id));
+const pcpForPatient = new Map(patients.map((p) => [p.id, pick(pcpNames)]));
 const physicianForPatient = new Map(patients.map((p) => [p.id, pick(physicians).name]));
+physicianForPatient.set("pt_0001", physicians[0].name);
+for (const patient of patients) {
+  patient.pcp = pcpForPatient.get(patient.id);
+  patient.physician = physicianForPatient.get(patient.id);
+}
 
 // Every billable visit (all offices/months) becomes a claim EXCEPT the deliberate
 // missing set and non-clinical account-only encounters. Kendall January keeps exactly 9 "missing".
@@ -188,40 +219,47 @@ const DENIAL_REASONS = [
   "Medical necessity not established",
 ];
 
+function proceduresForVisit(visit, serviceType, payer) {
+  const isTraditionalMedicare = payer === "Medicare";
+  let codes;
+  if (serviceType === "physician") codes = [pick(["99203", "99204", "99213", "99214"])];
+  else if (visit.eventType === "evaluation") codes = [pick(["97161", "97162", "97163"])];
+  else {
+    const r = random();
+    const count = r < 0.20 ? 1 : r < 0.65 ? 2 : 3;
+    codes = shuffle(["97110", "97112", "97140", "97530"]).slice(0, count);
+  }
+  return codes.map((cptCode, rank) => buildProcedureLineJs(cptCode, rank, isTraditionalMedicare));
+}
+
 function claimForVisit(visit, id, fileStatus) {
   const patient = patientById.get(visit.patientId);
   const serviceType = visit.eventType === "doctor" ? "physician" : "pt";
-  const cptCode = serviceType === "physician"
-    ? pick(["99203", "99204", "99213", "99214"])
-    : (visit.eventType === "evaluation" ? pick(["97161", "97162", "97163"]) : pick(["97110", "97140", "97530"]));
-  const fee = feeSchedule.cptTable[cptCode];
-  const billedAmount = fee.billedAmount;
-  const description = fee.description;
   const payer = pick(payers);
-  const payerCategory = feeSchedule.payerCategories[payer];
-  const allowed = payerCategory === "workers_comp" ? fee.wcAllowed : fee.medicareAllowed;
-  const paidAmount = fileStatus === "paid"
-    ? (random() < 0.35 ? Math.round(allowed * (0.55 + random() * 0.25)) : allowed)
-    : 0;
+  const procs = proceduresForVisit(visit, serviceType, payer).map((p) => ({
+    ...p,
+    planPaid: fileStatus === "paid" ? round2(p.allowedAmount * (0.96 + random() * 0.03)) : 0,
+  }));
+  const agg = aggregateClaimAmountsJs(procs);
+  const dateProcessed = addDaysIso(visit.date, 8 + Math.floor(random() * 15));
   return {
-    id,
+    id, claimNumber: nextClaimNumber(),
     patientName: patient.fullName,
     patientDob: patient.dob,
     patientPhone: patient.phone,
     office: visit.office,
     dateOfService: visit.date,
-    cptCode,
-    description,
-    billedAmount,
-    paidAmount,
-    payer,
-    payerCategory,
-    provider: physicianForPatient.get(visit.patientId) ?? "",
+    dateProcessed, totalDays: daysBetweenIso(visit.date, dateProcessed),
+    procedures: procs, billedAmount: agg.billedAmount, allowedAmount: agg.allowedAmount,
+    paidAmount: agg.paidAmount, medicareTotal: agg.medicareTotal, underpayment: agg.underpayment,
+    cptCode: procs[0].cptCode, description: procs[0].description,
+    payer, payerCategory: feeSchedule.payerCategories[payer],
+    provider: patient.physician, visitedProvider: patient.physician,
     serviceType,
     placeOfService: "office",
     denialReason: fileStatus === "denied" ? pick(DENIAL_REASONS) : null,
     fileStatus,
-    paidDate: fileStatus === "paid" ? "2026-02-10" : null,
+    paidDate: fileStatus === "paid" ? dateProcessed : null,
     source: "seed",
   };
 }
@@ -240,29 +278,25 @@ const claims = billedVisits.map((visit) => {
 });
 
 const phantomPatient = patientById.get("pt_0003");
+function buildManualClaim({ id, patient, patientName, patientDob, patientPhone, office, dateOfService, cptCode, payer, provider, serviceType, placeOfService, fileStatus }) {
+  const procedure = buildProcedureLineJs(cptCode, 0, payer === "Medicare");
+  const procedures = [{ ...procedure, planPaid: fileStatus === "paid" ? round2(procedure.allowedAmount * (0.96 + random() * 0.03)) : 0 }];
+  const agg = aggregateClaimAmountsJs(procedures);
+  const dateProcessed = addDaysIso(dateOfService, 14);
+  return {
+    id, claimNumber: nextClaimNumber(), patientName: patientName ?? patient.fullName,
+    patientDob: patientDob ?? patient.dob, patientPhone: patientPhone ?? patient.phone,
+    office, dateOfService, dateProcessed, totalDays: daysBetweenIso(dateOfService, dateProcessed),
+    cptCode, description: procedure.description, procedures, ...agg, payer,
+    payerCategory: feeSchedule.payerCategories[payer], provider, visitedProvider: provider,
+    serviceType, placeOfService, denialReason: null, fileStatus,
+    paidDate: fileStatus === "paid" ? dateProcessed : null, source: "seed",
+  };
+}
 claims.push(
-  {
-    id: "clm-9101", patientName: phantomPatient.fullName, patientDob: phantomPatient.dob,
-    patientPhone: phantomPatient.phone, office: "kendall", dateOfService: "2026-01-05", cptCode: "97110",
-    description: "Therapeutic exercise", billedAmount: 150, paidAmount: 32, payer: "Medicare",
-    payerCategory: "medicare", provider: physicianForPatient.get(phantomPatient.id) ?? "", serviceType: "pt",
-    placeOfService: "office", denialReason: null,
-    fileStatus: "paid", paidDate: "2026-02-08", source: "seed",
-  },
-  {
-    id: "clm-9102", patientName: "Maria Rodriguez", patientDob: "1958-03-14", patientPhone: "3055550147",
-    office: "kendall", dateOfService: "2026-01-18", cptCode: "97530", description: "Therapeutic activities",
-    billedAmount: 150, paidAmount: 34, payer: "BCBS FL", payerCategory: "commercial",
-    provider: physicianForPatient.get("pt_0001") ?? "", serviceType: "pt", placeOfService: "office", denialReason: null,
-    fileStatus: "paid", paidDate: "2026-02-09", source: "seed",
-  },
-  {
-    id: "clm-9103", patientName: "Ana Ferrer", patientDob: "1980-06-12", patientPhone: "3055550199",
-    office: "kendall", dateOfService: "2026-01-22", cptCode: "97140", description: "Manual therapy",
-    billedAmount: 150, paidAmount: 0, payer: "Aetna", payerCategory: "commercial",
-    provider: physicians[2].name, serviceType: "pt", placeOfService: "office", denialReason: null,
-    fileStatus: "submitted", paidDate: null, source: "seed",
-  },
+  buildManualClaim({ id: "clm-9101", patient: phantomPatient, office: "kendall", dateOfService: "2026-01-05", cptCode: "97110", payer: "Medicare", provider: phantomPatient.physician, serviceType: "pt", placeOfService: "office", fileStatus: "paid" }),
+  buildManualClaim({ id: "clm-9102", patient: patients[0], office: "kendall", dateOfService: "2026-01-18", cptCode: "97530", payer: "BCBS FL", provider: patients[0].physician, serviceType: "pt", placeOfService: "office", fileStatus: "paid" }),
+  buildManualClaim({ id: "clm-9103", patientName: "Ana Ferrer", patientDob: "1980-06-12", patientPhone: "3055550199", office: "kendall", dateOfService: "2026-01-22", cptCode: "97140", payer: "Aetna", provider: physicians[2].name, serviceType: "pt", placeOfService: "office", fileStatus: "submitted" }),
 );
 
 const errorClaimSpecs = [
@@ -272,17 +306,36 @@ const errorClaimSpecs = [
 ];
 for (const spec of errorClaimSpecs) {
   const fee = feeSchedule.cptTable[spec.cptCode];
-  const payerCategory = feeSchedule.payerCategories[spec.payer];
-  const allowed = payerCategory === "workers_comp" ? fee.wcAllowed : fee.medicareAllowed;
-  claims.push({
-    id: spec.id, patientName: spec.patient.fullName, patientDob: spec.patient.dob, patientPhone: spec.patient.phone,
-    office: spec.office, dateOfService: spec.dateOfService, cptCode: spec.cptCode, description: fee.description,
-    billedAmount: fee.billedAmount, paidAmount: spec.fileStatus === "paid" ? allowed : 0, payer: spec.payer,
-    payerCategory, provider: physicianForPatient.get(spec.patient.id) ?? physicians[0].name,
-    serviceType: fee.serviceType, placeOfService: spec.placeOfService, denialReason: null,
-    fileStatus: spec.fileStatus, paidDate: spec.fileStatus === "paid" ? "2026-02-10" : null, source: "seed",
-  });
+  claims.push(buildManualClaim({ ...spec, provider: spec.patient.physician, serviceType: fee.serviceType }));
 }
+
+const showcasePatient = {
+  id: "pt_0039", fullName: "Pablo Silverio", dob: "1953-02-11", phone: "3055550199",
+  office: "kendall", createdAt: "2025-12-03T14:00:00.000Z", isSeed: true,
+  pcp: pick(pcpNames), physician: "Arturo Corces, MD",
+};
+patients.push(showcasePatient);
+patientById.set("pt_0039", showcasePatient);
+visits.push({
+  id: `vs_${String(visitNumber++).padStart(5, "0")}`, patientId: "pt_0039", appointmentId: null,
+  office: "kendall", date: "2026-01-05", slot: "10:00", eventType: "therapy",
+  checkedInAt: "2026-01-05T10:00:00.000-05:00", source: "seed",
+});
+claims.push({
+  id: "clm-showcase-066052423", claimNumber: "066052423", patientName: "Pablo Silverio",
+  patientDob: "1953-02-11", patientPhone: "3055550199", office: "kendall",
+  dateOfService: "2026-01-05", dateProcessed: "2026-01-21", totalDays: 16,
+  cptCode: "97110", description: "Therapeutic exercise",
+  procedures: [
+    { cptCode: "97110", description: "Therapeutic exercise", billedAmount: 482.08, allowedAmount: 29.48, planPaid: 28.90, medicarePrice: 30.04 },
+    { cptCode: "97112", description: "Neuromuscular re-education", billedAmount: 271.12, allowedAmount: 16.49, planPaid: 16.17, medicarePrice: 33.79 },
+    { cptCode: "97530", description: "Therapeutic activities", billedAmount: 291.20, allowedAmount: 29.12, planPaid: 28.54, medicarePrice: 36.32 },
+  ],
+  billedAmount: 1044.40, allowedAmount: 75.09, paidAmount: 73.61, medicareTotal: 100.14, underpayment: 26.53,
+  payer: "Medicare Advantage (UnitedHealthcare)", payerCategory: "medicare_advantage",
+  provider: "Arturo Corces, MD", visitedProvider: "Arturo Corces, MD", serviceType: "pt",
+  placeOfService: "office", denialReason: null, fileStatus: "submitted", paidDate: null, source: "seed",
+});
 
 const uploadVisits = [mariaVisit("2026-01-20"), ...otherMissing.slice(0, 5)].filter(Boolean);
 const uploadRows = uploadVisits.map((visit, index) => {
@@ -292,7 +345,7 @@ const uploadRows = uploadVisits.map((visit, index) => {
     claim_id: `upload-${String(index + 1).padStart(3, "0")}`, patient_name: patient.fullName, dob: patient.dob,
     phone: patient.phone, office: visit.office, date_of_service: visit.date, cpt_code: "97110",
     description: "Physical therapy treatment", billed_amount: 150, paid_amount: paid ? 95 : 0,
-    payer: pick(payers), provider: physicianForPatient.get(visit.patientId) ?? "", place_of_service: "office",
+    payer: pick(payers), provider: patient.physician, place_of_service: "office",
     claim_status: paid ? "paid" : "submitted", paid_date: paid ? "2026-02-20" : "",
   };
 });

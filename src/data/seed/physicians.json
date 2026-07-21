@@ -1,32 +1,27 @@
 [
   {
     "id": "dr_01",
-    "name": "Dr. Ricardo Fuentes, MD",
-    "specialty": "Orthopedic Surgery"
+    "name": "Arturo Corces, MD",
+    "specialty": "Knee and Hip Replacement"
   },
   {
     "id": "dr_02",
-    "name": "Dr. Elena Marquez, MD",
-    "specialty": "Orthopedic Surgery"
+    "name": "Mauricio Herrera, MD",
+    "specialty": "Sports Medicine and Arthroscopic Surgery"
   },
   {
     "id": "dr_03",
-    "name": "Dr. Andres Villalobos, MD",
-    "specialty": "Sports Medicine"
+    "name": "David Font-Rodriguez, MD",
+    "specialty": "Upper Extremity Surgery"
   },
   {
     "id": "dr_04",
-    "name": "Dr. Patricia Nunez, MD",
-    "specialty": "Orthopedic Surgery"
+    "name": "Liam McCarthy, MD",
+    "specialty": "Physical Medicine and Rehabilitation"
   },
   {
     "id": "dr_05",
-    "name": "Dr. Miguel Contreras, DO",
-    "specialty": "Physical Medicine & Rehabilitation"
-  },
-  {
-    "id": "dr_06",
-    "name": "Dr. Sofia Delgado, MD",
-    "specialty": "Orthopedic Surgery"
+    "name": "Amar D. Rajadhyaksha, MD",
+    "specialty": "Orthopedic Spinal Surgery"
   }
 ]

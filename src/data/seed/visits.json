@@ -9205,5 +9205,16 @@
     "eventType": "followup",
     "checkedInAt": "2026-02-05T10:00:00.000-05:00",
     "source": "seed"
+  },
+  {
+    "id": "vs_00838",
+    "patientId": "pt_0039",
+    "appointmentId": null,
+    "office": "kendall",
+    "date": "2026-01-05",
+    "slot": "10:00",
+    "eventType": "therapy",
+    "checkedInAt": "2026-01-05T10:00:00.000-05:00",
+    "source": "seed"
   }
 ]
