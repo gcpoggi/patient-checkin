@@ -1,7 +1,7 @@
 import { createElement } from "react";
 
 export const CHART_COLORS = {
-  teal: "#1B7EA6", sky: "#4FB4E6", navy: "#0D1B2A", noShow: "#64748B",
+  teal: "#1B7EA6", teal400: "#3FA0C4", sky: "#4FB4E6", navy: "#0D1B2A", noShow: "#64748B",
   paid: "#0E9F6E", pending: "#D97706", missing: "#DC2626", phantom: "#7C3AED",
 } as const;
 

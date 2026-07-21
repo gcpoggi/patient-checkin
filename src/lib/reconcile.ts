@@ -2,7 +2,7 @@ import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
 import { allowedAmountForClaim } from "@/lib/feeSchedule";
 import { getStore } from "@/lib/store";
 import { normalizeName, normalizePhone } from "@/lib/normalize";
-import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
+import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, MonthlySummary, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
 
 const emptyCell = (): SlotDayCell => ({ attended: 0, evals: 0, scheduled: 0, noShows: 0 });
 const emptyTotals = (): AttendanceTotals => ({ ...emptyCell(), ptFu: 0 });
@@ -182,6 +182,28 @@ export function buildProviderAttendance(
   );
 
   return { physicians, transactions };
+}
+
+export function buildMonthlySummary(office: OfficeId, month: string): MonthlySummary {
+  const { physicians, transactions } = buildProviderAttendance(office, month);
+
+  return {
+    office,
+    month,
+    combined: {
+      patients: new Set(transactions.map((transaction) => transaction.patientId)).size,
+      doctorVisits: physicians.reduce((sum, physician) => sum + physician.doctorVisits, 0),
+      ptVisits: physicians.reduce((sum, physician) => sum + physician.ptVisits, 0),
+      evals: physicians.reduce((sum, physician) => sum + physician.evals, 0),
+    },
+    byProvider: physicians.map((physician) => ({
+      provider: physician.provider,
+      patients: physician.patients,
+      doctorVisits: physician.doctorVisits,
+      ptVisits: physician.ptVisits,
+      evals: physician.evals,
+    })),
+  };
 }
 
 export function buildAttendanceMonth(office: OfficeId, month: string): AttendanceMonth {
