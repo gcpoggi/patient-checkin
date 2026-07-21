@@ -3,6 +3,7 @@ import { AttendanceGrid } from "@/components/AttendanceGrid";
 import { OfficeMonthPicker } from "@/components/OfficeMonthPicker";
 import { PageHeader } from "@/components/PageHeader";
 import { StatCard } from "@/components/StatCard";
+import { SubNavTabs } from "@/components/SubNavTabs";
 import { AttendanceBarChart } from "@/components/charts/AttendanceBarChart";
 import { buildAttendanceMonth } from "@/lib/reconcile";
 import type { OfficeId } from "@/lib/types";
@@ -26,6 +27,12 @@ export default async function AttendancePage({ searchParams }: AttendancePagePro
   return (
     <AppShell>
       <PageHeader title="Attendance" subtitle="Scheduled vs attended vs evaluated — by office & month" />
+      <SubNavTabs items={[
+        { label: "PT Grid", href: "/attendance" },
+        { label: "PT Transactions", href: "/attendance/transactions" },
+        { label: "Physicians", href: "/attendance/physicians" },
+        { label: "Summary", href: "/attendance/summary" },
+      ]} />
       <div className="mt-6"><OfficeMonthPicker current={office} month={month} /></div>
 
       <section className="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-xl bg-navy px-5 py-4 text-mist-100">

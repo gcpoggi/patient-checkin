@@ -2,7 +2,7 @@ import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
 import { allowedAmountForClaim } from "@/lib/feeSchedule";
 import { getStore } from "@/lib/store";
 import { normalizeName, normalizePhone } from "@/lib/normalize";
-import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, OfficeId, Patient, ReconciledClaimRow, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
+import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, OfficeId, Patient, ReconciledClaimRow, ServiceTransaction, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
 
 const emptyCell = (): SlotDayCell => ({ attended: 0, evals: 0, scheduled: 0, noShows: 0 });
 const emptyTotals = (): AttendanceTotals => ({ ...emptyCell(), ptFu: 0 });
@@ -106,6 +106,47 @@ export function detectPlaceOfServiceErrors(month: string, office?: OfficeId): Cl
       ruleId: "improper_pos",
       message: `CPT ${claim.cptCode} (${claim.description}) billed as ${claim.placeOfService.replace("_", " ")} — outpatient-only service.`,
     }));
+}
+
+export function buildServiceTransactions(office: OfficeId, month: string): ServiceTransaction[] {
+  const store = getStore();
+  const claims = store.claims.filter(
+    (claim) => claim.office === office && claim.dateOfService.startsWith(`${month}-`),
+  );
+  const matchedClaimIds = new Set<string>();
+  const rows: ServiceTransaction[] = [];
+
+  for (const visit of store.visits) {
+    if (visit.office !== office || !visit.date.startsWith(`${month}-`) || visit.eventType === "account_only") continue;
+    const patient = store.patients.find((candidate) => candidate.id === visit.patientId);
+    if (!patient) continue;
+
+    const serviceType = visit.eventType === "doctor" ? "physician" : "pt";
+    const claim = claims.find(
+      (candidate) =>
+        !matchedClaimIds.has(candidate.id) &&
+        candidate.dateOfService === visit.date &&
+        candidate.serviceType === serviceType &&
+        normalizeName(candidate.patientName) === normalizeName(patient.fullName) &&
+        (candidate.patientDob === patient.dob || normalizePhone(candidate.patientPhone) === normalizePhone(patient.phone)),
+    );
+    if (claim) matchedClaimIds.add(claim.id);
+    const allowedAmount = claim ? allowedAmountForClaim(claim) : null;
+
+    rows.push({
+      visitId: visit.id, patientId: patient.id, patientName: patient.fullName, dob: patient.dob,
+      phone: patient.phone, office: visit.office, date: visit.date, slot: visit.slot,
+      eventType: visit.eventType, serviceType, provider: claim?.provider || "Unassigned",
+      cptCode: claim?.cptCode ?? null, payer: claim?.payer ?? null,
+      payerCategory: claim?.payerCategory ?? null, billedAmount: claim?.billedAmount ?? null,
+      paidAmount: claim?.paidAmount ?? null, allowedAmount,
+      reduction: claim && allowedAmount !== null ? allowedAmount - claim.paidAmount : null,
+      billingStatus: !claim ? "not_billed" : claim.fileStatus === "denied" ? "denied"
+        : claim.paidAmount === 0 ? "unpaid" : claim.paidAmount < allowedAmount! ? "underpayment" : "paid_full",
+    });
+  }
+
+  return rows.sort((left, right) => left.date.localeCompare(right.date) || left.patientName.localeCompare(right.patientName));
 }
 
 export function buildAttendanceMonth(office: OfficeId, month: string): AttendanceMonth {
