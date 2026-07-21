@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import * as XLSX from "xlsx";
+import { classifyServiceType, payerCategoryFor } from "@/lib/feeSchedule";
 import { mergeClaims } from "@/lib/store";
-import type { Claim, ClaimFileStatus, OfficeId } from "@/lib/types";
+import type { Claim, ClaimFileStatus, OfficeId, PayerCategory, PlaceOfService } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -21,6 +22,10 @@ const aliases = {
   payer: ["payer", "insurance", "insurancepayer", "carrier"],
   claimStatus: ["claimstatus", "status", "filestatus"],
   paidDate: ["paiddate", "datepaid", "paymentdate"],
+  provider: ["provider"],
+  placeOfService: ["placeofservice", "pos"],
+  payerCategory: ["payercategory", "category"],
+  denialReason: ["denialreason"],
 } as const;
 
 function normalizeHeader(value: string): string {
@@ -85,6 +90,34 @@ function officeValue(value: string): OfficeId {
   throw new Error(`invalid office '${value}'`);
 }
 
+const payerCategories: PayerCategory[] = [
+  "medicare",
+  "medicare_advantage",
+  "aca_marketplace",
+  "workers_comp",
+  "commercial",
+];
+
+function payerCategoryValue(value: unknown, payer: string): PayerCategory {
+  const normalized = textValue(value).toLowerCase().replace(/[\s-]+/g, "_");
+  return payerCategories.includes(normalized as PayerCategory)
+    ? (normalized as PayerCategory)
+    : payerCategoryFor(payer);
+}
+
+function placeOfServiceValue(value: unknown): PlaceOfService {
+  const normalized = textValue(value).toLowerCase().replace(/[\s-]+/g, "_");
+  if (normalized === "office" || normalized === "11") return "office";
+  if (normalized === "outpatient" || normalized === "outpatient_hospital" || normalized === "22") {
+    return "outpatient_hospital";
+  }
+  if (normalized === "inpatient" || normalized === "21") return "inpatient";
+  if (normalized === "observation" || normalized === "22_obs" || normalized === "observation_22") {
+    return "observation";
+  }
+  return "office";
+}
+
 function claimFromRow(row: SheetRow): Claim {
   const dobRaw = getValue(row, aliases.dob);
   const serviceDateRaw = getValue(row, aliases.dateOfService);
@@ -99,6 +132,8 @@ function claimFromRow(row: SheetRow): Claim {
   }
 
   const paidDateRaw = getValue(row, aliases.paidDate);
+  const cptCode = requiredText(row, "cptCode", "cpt_code");
+  const payer = textValue(getValue(row, aliases.payer)) || "Unknown";
   return {
     id: requiredText(row, "claimId", "claim_id"),
     patientName: requiredText(row, "patientName", "patient_name"),
@@ -106,11 +141,19 @@ function claimFromRow(row: SheetRow): Claim {
     patientPhone: textValue(getValue(row, aliases.phone)),
     office: officeValue(requiredText(row, "office", "office")),
     dateOfService,
-    cptCode: requiredText(row, "cptCode", "cpt_code"),
+    cptCode,
     description: textValue(getValue(row, aliases.description)),
     billedAmount: amount(getValue(row, aliases.billedAmount), "billed_amount"),
     paidAmount: amount(getValue(row, aliases.paidAmount), "paid_amount", 0),
-    payer: textValue(getValue(row, aliases.payer)) || "Unknown",
+    payer,
+    payerCategory: payerCategoryValue(getValue(row, aliases.payerCategory), payer),
+    provider: textValue(getValue(row, aliases.provider)),
+    serviceType: classifyServiceType(cptCode),
+    placeOfService: placeOfServiceValue(getValue(row, aliases.placeOfService)),
+    denialReason:
+      status === "denied"
+        ? textValue(getValue(row, aliases.denialReason)) || "Denied on upload"
+        : null,
     fileStatus: status as ClaimFileStatus,
     paidDate: isoDate(paidDateRaw, "paid_date"),
     source: "upload",

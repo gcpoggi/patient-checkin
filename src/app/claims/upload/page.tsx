@@ -15,6 +15,9 @@ const columns = [
   ["billed_amount", "Yes", "Number"],
   ["paid_amount", "No", "Number; defaults to 0"],
   ["payer", "No", "Defaults to Unknown"],
+  ["provider", "No", "Physician name"],
+  ["place_of_service", "No", "office/outpatient/inpatient/observation; defaults to office"],
+  ["payer_category", "No", "Auto-derived from payer if omitted"],
   ["claim_status", "Yes", "paid, submitted, or denied"],
   ["paid_date", "No", "YYYY-MM-DD or MM/DD/YYYY"],
 ] as const;

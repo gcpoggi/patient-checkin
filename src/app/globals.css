@@ -20,6 +20,14 @@
   --color-missing-bg: #FBE9E9;
   --color-phantom: #7C3AED;
   --color-phantom-bg: #F0EAFB;
+  --color-underpayment: #C2410C;
+  --color-underpayment-bg: #FDEBDD;
+  --color-denied: #B91C1C;
+  --color-denied-bg: #FBE3E3;
+  --color-contest-draft: #64748B;
+  --color-contest-submitted: #1B7EA6;
+  --color-contest-won: #0E9F6E;
+  --color-contest-lost: #B91C1C;
   --font-display: var(--font-display);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);

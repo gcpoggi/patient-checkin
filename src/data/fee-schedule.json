@@ -1,0 +1,26 @@
+{
+  "cptTable": {
+    "97110": { "description": "Therapeutic exercise", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 32, "wcAllowed": 48 },
+    "97140": { "description": "Manual therapy", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 28, "wcAllowed": 42 },
+    "97530": { "description": "Therapeutic activities", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 34, "wcAllowed": 51 },
+    "97161": { "description": "PT evaluation - low complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 85, "wcAllowed": 128 },
+    "97162": { "description": "PT evaluation - moderate complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 105, "wcAllowed": 158 },
+    "97163": { "description": "PT evaluation - high complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 130, "wcAllowed": 195 },
+    "99203": { "description": "Office visit, new patient (low)", "serviceType": "physician", "billedAmount": 250, "medicareAllowed": 109, "wcAllowed": 164 },
+    "99204": { "description": "Office visit, new patient (moderate)", "serviceType": "physician", "billedAmount": 350, "medicareAllowed": 167, "wcAllowed": 251 },
+    "99213": { "description": "Office visit, established patient (low)", "serviceType": "physician", "billedAmount": 180, "medicareAllowed": 92, "wcAllowed": 138 },
+    "99214": { "description": "Office visit, established patient (moderate)", "serviceType": "physician", "billedAmount": 260, "medicareAllowed": 128, "wcAllowed": 192 }
+  },
+  "payerCategories": {
+    "Medicare": "medicare",
+    "Medicare Advantage (Humana)": "medicare_advantage",
+    "Medicare Advantage (UnitedHealthcare)": "medicare_advantage",
+    "BCBS FL": "commercial",
+    "BCBS FL Marketplace": "aca_marketplace",
+    "Ambetter (ACA Marketplace)": "aca_marketplace",
+    "Aetna": "commercial",
+    "Cigna": "commercial",
+    "AmTrust Workers Comp": "workers_comp",
+    "Zenith Insurance (Workers Comp)": "workers_comp"
+  }
+}
