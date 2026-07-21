@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import * as XLSX from "xlsx";
-import { classifyServiceType, payerCategoryFor } from "@/lib/feeSchedule";
+import {
+  aggregateClaimAmounts,
+  classifyServiceType,
+  medicarePriceFor,
+  payerCategoryFor,
+} from "@/lib/feeSchedule";
 import { mergeClaims } from "@/lib/store";
 import type { Claim, ClaimFileStatus, OfficeId, PayerCategory, PlaceOfService } from "@/lib/types";
 
@@ -134,20 +139,42 @@ function claimFromRow(row: SheetRow): Claim {
   const paidDateRaw = getValue(row, aliases.paidDate);
   const cptCode = requiredText(row, "cptCode", "cpt_code");
   const payer = textValue(getValue(row, aliases.payer)) || "Unknown";
+  const claimNumber = requiredText(row, "claimId", "claim_id");
+  const description = textValue(getValue(row, aliases.description));
+  const billedAmount = amount(getValue(row, aliases.billedAmount), "billed_amount");
+  const paidAmount = amount(getValue(row, aliases.paidAmount), "paid_amount", 0);
+  const medicarePrice = medicarePriceFor(cptCode);
+  const allowedAmount = amount(
+    getValue(row, ["allowedamount", "totalcost", "contractedamount"]),
+    "allowed_amount",
+    paidAmount,
+  );
+  const procedures = [{ cptCode, description, billedAmount, allowedAmount, planPaid: paidAmount, medicarePrice }];
+  const agg = aggregateClaimAmounts(procedures);
+  const provider = textValue(getValue(row, aliases.provider));
+  const paidDate = isoDate(paidDateRaw, "paid_date");
   return {
-    id: requiredText(row, "claimId", "claim_id"),
+    id: claimNumber,
+    claimNumber,
     patientName: requiredText(row, "patientName", "patient_name"),
     patientDob: dob,
     patientPhone: textValue(getValue(row, aliases.phone)),
     office: officeValue(requiredText(row, "office", "office")),
     dateOfService,
+    dateProcessed: paidDate ?? dateOfService,
+    totalDays: 0,
+    procedures,
     cptCode,
-    description: textValue(getValue(row, aliases.description)),
-    billedAmount: amount(getValue(row, aliases.billedAmount), "billed_amount"),
-    paidAmount: amount(getValue(row, aliases.paidAmount), "paid_amount", 0),
+    description,
+    billedAmount: agg.billedAmount,
+    allowedAmount: agg.allowedAmount,
+    paidAmount: agg.paidAmount,
+    medicareTotal: agg.medicareTotal,
+    underpayment: agg.underpayment,
     payer,
     payerCategory: payerCategoryValue(getValue(row, aliases.payerCategory), payer),
-    provider: textValue(getValue(row, aliases.provider)),
+    provider,
+    visitedProvider: provider,
     serviceType: classifyServiceType(cptCode),
     placeOfService: placeOfServiceValue(getValue(row, aliases.placeOfService)),
     denialReason:
@@ -155,7 +182,7 @@ function claimFromRow(row: SheetRow): Claim {
         ? textValue(getValue(row, aliases.denialReason)) || "Denied on upload"
         : null,
     fileStatus: status as ClaimFileStatus,
-    paidDate: isoDate(paidDateRaw, "paid_date"),
+    paidDate,
     source: "upload",
   };
 }

@@ -22,3 +22,9 @@ export function workdaysInMonth(month: string): string[] {
   }
   return dates;
 }
+
+export function daysBetween(startIso: string, endIso: string): number {
+  const s = new Date(`${startIso}T00:00:00Z`);
+  const e = new Date(`${endIso}T00:00:00Z`);
+  return Math.round((e.getTime() - s.getTime()) / 86400000);
+}

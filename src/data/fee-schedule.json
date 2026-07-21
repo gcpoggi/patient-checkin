@@ -1,15 +1,16 @@
 {
   "cptTable": {
-    "97110": { "description": "Therapeutic exercise", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 32, "wcAllowed": 48 },
-    "97140": { "description": "Manual therapy", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 28, "wcAllowed": 42 },
-    "97530": { "description": "Therapeutic activities", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 34, "wcAllowed": 51 },
-    "97161": { "description": "PT evaluation - low complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 85, "wcAllowed": 128 },
-    "97162": { "description": "PT evaluation - moderate complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 105, "wcAllowed": 158 },
-    "97163": { "description": "PT evaluation - high complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 130, "wcAllowed": 195 },
-    "99203": { "description": "Office visit, new patient (low)", "serviceType": "physician", "billedAmount": 250, "medicareAllowed": 109, "wcAllowed": 164 },
-    "99204": { "description": "Office visit, new patient (moderate)", "serviceType": "physician", "billedAmount": 350, "medicareAllowed": 167, "wcAllowed": 251 },
-    "99213": { "description": "Office visit, established patient (low)", "serviceType": "physician", "billedAmount": 180, "medicareAllowed": 92, "wcAllowed": 138 },
-    "99214": { "description": "Office visit, established patient (moderate)", "serviceType": "physician", "billedAmount": 260, "medicareAllowed": 128, "wcAllowed": 192 }
+    "97110": { "description": "Therapeutic exercise", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 32, "wcAllowed": 48, "medicarePrice": 30.04 },
+    "97112": { "description": "Neuromuscular re-education", "serviceType": "pt", "billedAmount": 271, "medicareAllowed": 33, "wcAllowed": 50, "medicarePrice": 33.79 },
+    "97140": { "description": "Manual therapy", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 28, "wcAllowed": 42, "medicarePrice": 28.87 },
+    "97530": { "description": "Therapeutic activities", "serviceType": "pt", "billedAmount": 150, "medicareAllowed": 34, "wcAllowed": 51, "medicarePrice": 36.32 },
+    "97161": { "description": "PT evaluation - low complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 85, "wcAllowed": 128, "medicarePrice": 88.31 },
+    "97162": { "description": "PT evaluation - moderate complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 105, "wcAllowed": 158, "medicarePrice": 107.65 },
+    "97163": { "description": "PT evaluation - high complexity", "serviceType": "pt", "billedAmount": 200, "medicareAllowed": 130, "wcAllowed": 195, "medicarePrice": 132.40 },
+    "99203": { "description": "Office visit, new patient (low)", "serviceType": "physician", "billedAmount": 250, "medicareAllowed": 109, "wcAllowed": 164, "medicarePrice": 111.54 },
+    "99204": { "description": "Office visit, new patient (moderate)", "serviceType": "physician", "billedAmount": 350, "medicareAllowed": 167, "wcAllowed": 251, "medicarePrice": 169.82 },
+    "99213": { "description": "Office visit, established patient (low)", "serviceType": "physician", "billedAmount": 180, "medicareAllowed": 92, "wcAllowed": 138, "medicarePrice": 94.28 },
+    "99214": { "description": "Office visit, established patient (moderate)", "serviceType": "physician", "billedAmount": 260, "medicareAllowed": 128, "wcAllowed": 192, "medicarePrice": 130.61 }
   },
   "payerCategories": {
     "Medicare": "medicare",

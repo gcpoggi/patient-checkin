@@ -19,7 +19,16 @@ export interface HppStore {
   seededAt: string;
 }
 
-type PatientInput = Omit<Patient, "id" | "createdAt" | "isSeed">;
+const PCP_POOL = [
+  "Dr. Ricardo Fuentes, MD",
+  "Dr. Elena Marquez, MD",
+  "Dr. Andres Villalobos, MD",
+  "Dr. Patricia Nunez, MD",
+  "Dr. Miguel Contreras, DO",
+  "Dr. Sofia Delgado, MD",
+];
+
+type PatientInput = Omit<Patient, "id" | "createdAt" | "isSeed" | "pcp" | "physician">;
 type VisitInput = Omit<Visit, "id" | "checkedInAt" | "source">;
 type LookupInput = Pick<Patient, "fullName"> & Partial<Pick<Patient, "dob" | "phone">>;
 
@@ -72,6 +81,9 @@ export function addPatient(input: PatientInput): Patient {
   const patient: Patient = {
     ...input,
     phone: normalizePhone(input.phone),
+    pcp: PCP_POOL[store.patients.length % PCP_POOL.length],
+    physician:
+      store.physicians[store.patients.length % Math.max(1, store.physicians.length)]?.name ?? PCP_POOL[0],
     id: nextId("pt", store.patients, 4),
     createdAt: new Date().toISOString(),
     isSeed: false,

@@ -30,6 +30,8 @@ export interface Patient {
   fullName: string;
   dob: string;
   phone: string;
+  pcp: string;
+  physician: string;
   office: OfficeId;
   createdAt: string;
   isSeed: boolean;
@@ -69,20 +71,37 @@ export type PayerCategory =
   | "workers_comp"
   | "commercial";
 
+export interface ProcedureLine {
+  cptCode: string;
+  description: string;
+  billedAmount: number;
+  allowedAmount: number;
+  planPaid: number;
+  medicarePrice: number;
+}
+
 export interface Claim {
   id: string;
+  claimNumber: string;
   patientName: string;
   patientDob: string;
   patientPhone: string;
   office: OfficeId;
   dateOfService: string;
+  dateProcessed: string;
+  totalDays: number;
+  procedures: ProcedureLine[];
   cptCode: string;
   description: string;
   billedAmount: number;
+  allowedAmount: number;
   paidAmount: number;
+  medicareTotal: number;
+  underpayment: number;
   payer: string;
   payerCategory: PayerCategory;
   provider: string;
+  visitedProvider: string;
   serviceType: ServiceType;
   placeOfService: PlaceOfService;
   denialReason: string | null;
@@ -98,6 +117,7 @@ export interface FeeScheduleEntry {
   billedAmount: number;
   medicareAllowed: number;
   wcAllowed: number;
+  medicarePrice: number;
 }
 
 export interface Physician {
@@ -145,6 +165,8 @@ export interface ServiceTransaction {
   eventType: EventType;
   serviceType: ServiceType;
   provider: string;
+  pcp?: string;
+  physician?: string;
   cptCode: string | null;
   payer: string | null;
   payerCategory: PayerCategory | null;
@@ -168,6 +190,11 @@ export interface ReconciledClaimRow {
   allowedAmount: number;
   paidAmount: number;
   reduction: number;
+  medicareTotal?: number;
+  underpayment?: number;
+  dateProcessed?: string;
+  totalDays?: number;
+  visitedProvider?: string;
   collectionPct: number;
 }
 
@@ -181,6 +208,8 @@ export interface ClaimsFinancialKpis {
   allowedTotal: number;
   collectedTotal: number;
   reductionTotal: number;
+  medicareTotal?: number;
+  underpaymentTotal?: number;
   unpaidAmount: number;
   deniedAmount: number;
   phantomAmount: number;
