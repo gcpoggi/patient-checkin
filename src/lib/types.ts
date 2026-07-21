@@ -91,30 +91,6 @@ export interface Claim {
   source: string;
 }
 
-export type ReconStatus = "paid" | "pending" | "missing" | "phantom";
-
-export interface ReconciledRow {
-  status: ReconStatus;
-  claim: Claim | null;
-  visit: Visit | null;
-  patientName: string;
-  office: OfficeId;
-  dateOfService: string;
-  billedAmount: number;
-  paidAmount: number;
-}
-
-export interface ClaimsKpis {
-  paid: number;
-  pending: number;
-  missing: number;
-  phantom: number;
-  billedTotal: number;
-  collectedTotal: number;
-  atRiskAmount: number;
-  collectionRate: number;
-}
-
 export interface FeeScheduleEntry {
   cptCode: string;
   description: string;

@@ -2,14 +2,15 @@
 
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { CHART_COLORS, ChartTooltip } from "@/components/charts/theme";
-import type { ClaimsKpis } from "@/lib/types";
+import type { ClaimsFinancialKpis } from "@/lib/types";
 
-export function ClaimsDonut({ kpis }: { kpis: ClaimsKpis }) {
+export function ClaimsDonut({ kpis }: { kpis: ClaimsFinancialKpis }) {
   const data = [
-    { name: "Paid", value: kpis.paid, color: CHART_COLORS.paid },
-    { name: "Pending", value: kpis.pending, color: CHART_COLORS.pending },
-    { name: "Missing", value: kpis.missing, color: CHART_COLORS.missing },
+    { name: "Paid in full", value: kpis.paidFull, color: CHART_COLORS.paid },
+    { name: "Unpaid", value: kpis.unpaid, color: CHART_COLORS.pending },
+    { name: "Underpayment", value: kpis.underpayment, color: "#C2410C" },
     { name: "Phantom", value: kpis.phantom, color: CHART_COLORS.phantom },
+    { name: "Denied", value: kpis.denied, color: "#B91C1C" },
   ];
   const total = data.reduce((sum, item) => sum + item.value, 0);
 
@@ -18,7 +19,7 @@ export function ClaimsDonut({ kpis }: { kpis: ClaimsKpis }) {
       <p className="text-xs font-semibold uppercase tracking-widest text-teal-600">Cross-check results</p>
       <h2 className="mt-1 font-display text-xl font-semibold text-navy">Claims status</h2>
       {total === 0 ? (
-        <p className="flex h-72 items-center justify-center text-center text-sm text-slate-500">No claims or visits found for this period.</p>
+        <p className="flex h-72 items-center justify-center text-center text-sm text-slate-500">No claims found for this period.</p>
       ) : <div className="relative mt-3 h-72" aria-label={`Claims status chart, ${total} total records`}>
         <ResponsiveContainer width="100%" height="100%">
           <PieChart>

@@ -38,7 +38,7 @@ export function UploadSummary({ result }: { result: UploadResult }) {
       ) : null}
 
       <div className="flex flex-col gap-4 border-t border-mist-200 bg-navy p-5 text-mist-100 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm">The four claims views — Paid, Pending, Missing, and Phantom — were recomputed.</p>
+        <p className="text-sm">The four claims views — Unpaid, Underpayment, Phantom, and Denied — were recomputed.</p>
         <Link href="/claims?month=2026-01" className="shrink-0 rounded-lg bg-teal-500 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-teal-600">
           Open Claims views
         </Link>

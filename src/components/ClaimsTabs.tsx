@@ -3,12 +3,14 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { DataTable, type DataTableColumn } from "@/components/DataTable";
 import { StatusBadge } from "@/components/StatusBadge";
-import type { ReconciledRow, ReconStatus } from "@/lib/types";
+import type { ClaimStatus, ReconciledClaimRow } from "@/lib/types";
+
+type TabStatus = Exclude<ClaimStatus, "paid_full">;
 
 interface ClaimsTabsProps {
-  rows: ReconciledRow[];
-  activeStatus: ReconStatus;
-  counts: Record<ReconStatus, number>;
+  rows: ReconciledClaimRow[];
+  activeStatus: TabStatus;
+  counts: Record<TabStatus, number>;
 }
 
 interface DisplayRow {
@@ -17,35 +19,40 @@ interface DisplayRow {
   date: string;
   cpt: string;
   payer: string;
-  billed: number | null;
-  paid: number | null;
-  visitType: string;
+  payerCategory: string;
+  billed: number;
+  allowed: number;
+  paid: number;
+  reduction: number;
+  collectionPct: number;
+  status: ClaimStatus;
   note: string;
-  status: ReconStatus;
 }
 
-const labels: Record<ReconStatus, { short: string; long: string }> = {
-  paid: { short: "Paid", long: "Billed & paid" },
-  pending: { short: "Pending", long: "Billed, payment pending" },
-  missing: { short: "Missing", long: "Service not billed" },
-  phantom: { short: "Phantom", long: "Phantom charge" },
+const labels: Record<TabStatus, { short: string; long: string }> = {
+  unpaid: { short: "Unpaid", long: "Matched services with no payment received" },
+  underpayment: { short: "Underpayment", long: "Payments below the contracted allowed amount" },
+  phantom: { short: "Phantom", long: "Claims with no visit on record" },
+  denied: { short: "Denied", long: "Claims denied by the payer" },
 };
-const statuses = Object.keys(labels) as ReconStatus[];
+const statuses = Object.keys(labels) as TabStatus[];
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+const percent = new Intl.NumberFormat("en-US", { style: "percent", maximumFractionDigits: 1 });
 const date = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 
-const baseColumns: DataTableColumn<DisplayRow>[] = [
+const columns: DataTableColumn<DisplayRow>[] = [
   { key: "patient", header: "Patient" },
   { key: "office", header: "Office", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "date", header: "Date of Service", render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
-];
-const statusColumn: DataTableColumn<DisplayRow> = { key: "status", header: "Status", render: (_, row) => <StatusBadge status={row.status} /> };
-const claimColumns: DataTableColumn<DisplayRow>[] = [
-  ...baseColumns,
-  { key: "cpt", header: "CPT" }, { key: "payer", header: "Payer" },
-  { key: "billed", header: "Billed", align: "right", render: (value) => value == null ? "" : money.format(Number(value)) },
-  { key: "paid", header: "Paid", align: "right", render: (value) => value == null ? "" : money.format(Number(value)) },
-  statusColumn,
+  { key: "cpt", header: "CPT" },
+  { key: "payer", header: "Payer" },
+  { key: "payerCategory", header: "Payer Category", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
+  { key: "billed", header: "Billed", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "allowed", header: "Allowed", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "paid", header: "Paid", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "reduction", header: "Reduction", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "collectionPct", header: "Collection %", align: "right", render: (value) => percent.format(Number(value)) },
+  { key: "status", header: "Status", render: (_, row) => <div><StatusBadge status={row.status} />{row.note ? <p className="mt-1 max-w-56 whitespace-normal text-xs text-slate-500">{row.note}</p> : null}</div> },
 ];
 
 export function ClaimsTabs({ rows, activeStatus, counts }: ClaimsTabsProps) {
@@ -53,19 +60,22 @@ export function ClaimsTabs({ rows, activeStatus, counts }: ClaimsTabsProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const displayRows: DisplayRow[] = rows.filter((row) => row.status === activeStatus).map((row) => ({
-    patient: row.patientName, office: row.office, date: row.dateOfService,
-    cpt: row.claim?.cptCode ?? "", payer: row.claim?.payer ?? "",
-    billed: row.claim ? row.billedAmount : null, paid: row.claim ? row.paidAmount : null,
-    visitType: row.visit?.eventType.replaceAll("_", " ") ?? "", status: row.status,
-    note: row.status === "missing" ? "Never billed" : row.status === "phantom" ? "No visit on record" : "",
+    patient: row.patientName,
+    office: row.office,
+    date: row.dateOfService,
+    cpt: row.claim.cptCode,
+    payer: row.claim.payer,
+    payerCategory: row.claim.payerCategory,
+    billed: row.billedAmount,
+    allowed: row.allowedAmount,
+    paid: row.paidAmount,
+    reduction: row.reduction,
+    collectionPct: row.collectionPct,
+    status: row.status,
+    note: row.status === "phantom" ? "No visit on record" : row.status === "denied" ? row.claim.denialReason ?? "Denied by payer" : "",
   }));
-  const columns = activeStatus === "missing"
-    ? [...baseColumns, { key: "visitType", header: "Visit type", render: (value: DisplayRow[keyof DisplayRow]) => <span className="capitalize">{String(value)}</span> } as DataTableColumn<DisplayRow>, { key: "note", header: "Note" } as DataTableColumn<DisplayRow>, statusColumn]
-    : activeStatus === "phantom"
-      ? [...baseColumns, { key: "cpt", header: "CPT" }, { key: "payer", header: "Payer" }, { key: "billed", header: "Billed", align: "right", render: (value) => money.format(Number(value)) }, { key: "note", header: "Note" }, statusColumn] as DataTableColumn<DisplayRow>[]
-      : claimColumns;
 
-  function selectStatus(status: ReconStatus) {
+  function selectStatus(status: TabStatus) {
     const params = new URLSearchParams(searchParams.toString());
     params.set("status", status);
     router.push(`${pathname}?${params.toString()}`);

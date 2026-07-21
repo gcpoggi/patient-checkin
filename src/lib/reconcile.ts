@@ -1,12 +1,37 @@
 import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
+import { allowedAmountForClaim } from "@/lib/feeSchedule";
 import { getStore } from "@/lib/store";
 import { normalizeName, normalizePhone } from "@/lib/normalize";
-import type { AttendanceMonth, AttendanceTotals, ClaimsKpis, OfficeId, ReconciledRow, SlotDayCell, TimeSlot } from "@/lib/types";
+import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, OfficeId, Patient, ReconciledClaimRow, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
 
 const emptyCell = (): SlotDayCell => ({ attended: 0, evals: 0, scheduled: 0, noShows: 0 });
 const emptyTotals = (): AttendanceTotals => ({ ...emptyCell(), ptFu: 0 });
 
-export function reconcileClaims(month: string, office?: OfficeId): { rows: ReconciledRow[]; kpis: ClaimsKpis } {
+export function matchVisitForClaim(
+  claim: Claim,
+  visits: Visit[],
+  patients: Patient[],
+  matchedIds: Set<string>,
+): Visit | null {
+  const patient = patients.find(
+    (candidate) =>
+      normalizeName(candidate.fullName) === normalizeName(claim.patientName) &&
+      (candidate.dob === claim.patientDob || normalizePhone(candidate.phone) === normalizePhone(claim.patientPhone)),
+  );
+  const visit = patient
+    ? visits.find(
+        (candidate) =>
+          candidate.patientId === patient.id &&
+          candidate.date === claim.dateOfService &&
+          candidate.office === claim.office &&
+          !matchedIds.has(candidate.id),
+      ) ?? null
+    : null;
+  if (visit) matchedIds.add(visit.id);
+  return visit;
+}
+
+export function reconcileClaims(month: string, office?: OfficeId): { rows: ReconciledClaimRow[]; kpis: ClaimsFinancialKpis } {
   const store = getStore();
   const claims = store.claims.filter(
     (claim) => claim.dateOfService.startsWith(`${month}-`) && (!office || claim.office === office),
@@ -15,27 +40,22 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
     (visit) => visit.date.startsWith(`${month}-`) && (!office || visit.office === office),
   );
   const matchedVisitIds = new Set<string>();
-  const rows: ReconciledRow[] = [];
+  const rows: ReconciledClaimRow[] = [];
 
   for (const claim of claims) {
-    const patient = store.patients.find(
-      (candidate) =>
-        normalizeName(candidate.fullName) === normalizeName(claim.patientName) &&
-        (candidate.dob === claim.patientDob || normalizePhone(candidate.phone) === normalizePhone(claim.patientPhone)),
-    );
-    const visit = patient
-      ? visits.find(
-          (candidate) =>
-            candidate.patientId === patient.id &&
-            candidate.date === claim.dateOfService &&
-            candidate.office === claim.office &&
-            !matchedVisitIds.has(candidate.id),
-        ) ?? null
-      : null;
-    if (visit) matchedVisitIds.add(visit.id);
-    const status = visit
-      ? claim.fileStatus === "paid" && claim.paidAmount > 0 ? "paid" : "pending"
-      : "phantom";
+    const allowedAmount = allowedAmountForClaim(claim);
+    const reduction = allowedAmount - claim.paidAmount;
+    const collectionPct = allowedAmount ? claim.paidAmount / allowedAmount : 0;
+    const visit = matchVisitForClaim(claim, visits, store.patients, matchedVisitIds);
+    const status = claim.fileStatus === "denied"
+      ? "denied"
+      : !visit
+        ? "phantom"
+        : claim.paidAmount === 0
+          ? "unpaid"
+          : claim.paidAmount < allowedAmount
+            ? "underpayment"
+            : "paid_full";
     rows.push({
       status,
       claim,
@@ -44,30 +64,48 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
       office: claim.office,
       dateOfService: claim.dateOfService,
       billedAmount: claim.billedAmount,
+      allowedAmount,
       paidAmount: claim.paidAmount,
+      reduction,
+      collectionPct,
     });
   }
 
-  for (const visit of visits) {
-    if (matchedVisitIds.has(visit.id) || visit.eventType === "account_only") continue;
-    const patientName = store.patients.find((patient) => patient.id === visit.patientId)?.fullName ?? "Unknown patient";
-    rows.push({ status: "missing", claim: null, visit, patientName, office: visit.office, dateOfService: visit.date, billedAmount: 0, paidAmount: 0 });
-  }
-
-  const counts = (status: ReconciledRow["status"]) => rows.filter((row) => row.status === status).length;
-  const matchedClaims = rows.filter((row) => row.status === "paid" || row.status === "pending");
-  const matchedBilled = matchedClaims.reduce((sum, row) => sum + row.billedAmount, 0);
-  const collectedTotal = matchedClaims.reduce((sum, row) => sum + row.paidAmount, 0);
-  const missing = counts("missing");
-  const averageMatchedBilled = matchedClaims.length ? matchedBilled / matchedClaims.length : 0;
-  const kpis: ClaimsKpis = {
-    paid: counts("paid"), pending: counts("pending"), missing, phantom: counts("phantom"),
-    billedTotal: claims.reduce((sum, claim) => sum + claim.billedAmount, 0),
+  const counts = (status: ReconciledClaimRow["status"]) => rows.filter((row) => row.status === status).length;
+  const collectibleRows = rows.filter((row) => row.status === "paid_full" || row.status === "underpayment" || row.status === "unpaid");
+  const collectionBase = collectibleRows.reduce((sum, row) => sum + row.allowedAmount, 0);
+  const collectedTotal = rows.reduce((sum, row) => sum + row.paidAmount, 0);
+  const kpis: ClaimsFinancialKpis = {
+    paidFull: counts("paid_full"),
+    unpaid: counts("unpaid"),
+    underpayment: counts("underpayment"),
+    phantom: counts("phantom"),
+    denied: counts("denied"),
+    billedTotal: rows.reduce((sum, row) => sum + row.billedAmount, 0),
+    allowedTotal: rows.reduce((sum, row) => sum + row.allowedAmount, 0),
     collectedTotal,
-    atRiskAmount: rows.filter((row) => row.status === "phantom").reduce((sum, row) => sum + row.billedAmount, 0) + missing * averageMatchedBilled,
-    collectionRate: matchedBilled ? collectedTotal / matchedBilled : 0,
+    reductionTotal: collectibleRows.reduce((sum, row) => sum + Math.max(0, row.reduction), 0),
+    unpaidAmount: rows.filter((row) => row.status === "unpaid").reduce((sum, row) => sum + row.allowedAmount, 0),
+    deniedAmount: rows.filter((row) => row.status === "denied").reduce((sum, row) => sum + row.billedAmount, 0),
+    phantomAmount: rows.filter((row) => row.status === "phantom").reduce((sum, row) => sum + row.billedAmount, 0),
+    collectionRate: collectionBase ? collectedTotal / collectionBase : 0,
   };
   return { rows, kpis };
+}
+
+export function detectPlaceOfServiceErrors(month: string, office?: OfficeId): ClaimError[] {
+  return getStore().claims
+    .filter(
+      (claim) =>
+        claim.dateOfService.startsWith(`${month}-`) &&
+        (!office || claim.office === office) &&
+        (claim.placeOfService === "inpatient" || claim.placeOfService === "observation"),
+    )
+    .map((claim) => ({
+      claim,
+      ruleId: "improper_pos",
+      message: `CPT ${claim.cptCode} (${claim.description}) billed as ${claim.placeOfService.replace("_", " ")} — outpatient-only service.`,
+    }));
 }
 
 export function buildAttendanceMonth(office: OfficeId, month: string): AttendanceMonth {
