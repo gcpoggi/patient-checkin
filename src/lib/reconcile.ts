@@ -2,7 +2,7 @@ import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
 import { allowedAmountForClaim } from "@/lib/feeSchedule";
 import { getStore } from "@/lib/store";
 import { normalizeName, normalizePhone } from "@/lib/normalize";
-import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, OfficeId, Patient, ReconciledClaimRow, ServiceTransaction, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
+import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
 
 const emptyCell = (): SlotDayCell => ({ attended: 0, evals: 0, scheduled: 0, noShows: 0 });
 const emptyTotals = (): AttendanceTotals => ({ ...emptyCell(), ptFu: 0 });
@@ -147,6 +147,41 @@ export function buildServiceTransactions(office: OfficeId, month: string): Servi
   }
 
   return rows.sort((left, right) => left.date.localeCompare(right.date) || left.patientName.localeCompare(right.patientName));
+}
+
+export function buildProviderAttendance(
+  office: OfficeId,
+  month: string,
+): { physicians: PhysicianSummary[]; transactions: ServiceTransaction[] } {
+  const store = getStore();
+  const transactions = buildServiceTransactions(office, month);
+  const byProvider = new Map<string, ServiceTransaction[]>();
+
+  for (const transaction of transactions) {
+    const group = byProvider.get(transaction.provider) ?? [];
+    group.push(transaction);
+    byProvider.set(transaction.provider, group);
+  }
+
+  const physicians = [...byProvider.entries()].map(([provider, rows]): PhysicianSummary => ({
+    provider,
+    specialty: store.physicians.find(
+      (physician) => normalizeName(physician.name) === normalizeName(provider),
+    )?.specialty ?? null,
+    patients: new Set(rows.map((row) => row.patientId)).size,
+    doctorVisits: rows.filter((row) => row.serviceType === "physician").length,
+    ptVisits: rows.filter((row) => row.serviceType === "pt" && row.eventType !== "evaluation").length,
+    evals: rows.filter((row) => row.eventType === "evaluation").length,
+    billedTotal: rows.reduce((sum, row) => sum + (row.billedAmount ?? 0), 0),
+    allowedTotal: rows.reduce((sum, row) => sum + (row.allowedAmount ?? 0), 0),
+    paidTotal: rows.reduce((sum, row) => sum + (row.paidAmount ?? 0), 0),
+  }));
+
+  physicians.sort(
+    (left, right) => right.patients - left.patients || left.provider.localeCompare(right.provider),
+  );
+
+  return { physicians, transactions };
 }
 
 export function buildAttendanceMonth(office: OfficeId, month: string): AttendanceMonth {
