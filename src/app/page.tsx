@@ -12,7 +12,7 @@ const menuItems = [
   { href: "/check-in", title: "Register Check-In", description: "Document patient arrivals and keep the daily visit record complete." },
   { href: "/attendance", title: "Attendance", description: "Review scheduled visits, evaluations, attendance, and no-shows." },
   { href: "/claims", title: "Claims", description: "Cross-check services against billing data and resolve exceptions." },
-  { href: "/reports", title: "Power BI Reports", description: "Open financial and operational reporting for practice oversight." },
+  { href: "/reports", title: "Reports", description: "Open financial and operational reporting for practice oversight." },
 ] as const;
 
 export default function Home() {
