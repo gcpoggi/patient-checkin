@@ -62,7 +62,7 @@ const detailColumns: ExcelColumn<ReimbursementDetailRow>[] = [
   { key: "patient", header: "Patient", width: 190 },
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "dateOfService", header: "Date Visited", width: 135, render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
-  { key: "provider", header: "Visited Provider", width: 180 },
+  { key: "provider", header: "Physician", width: 180 },
   { key: "payer", header: "Payer", width: 180, filter: "select" },
   { key: "payerCategory", header: "Payer Category", width: 160, filter: "select", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
   { key: "status", header: "Status", width: 145, filter: "select", render: (value) => <StatusBadge status={value as ClaimStatus} /> },

@@ -30,7 +30,7 @@ export default async function ClaimDetailPage({ params }: ClaimDetailPageProps) 
     ["Date Visited", claim.dateOfService],
     ["Date Processed", claim.dateProcessed],
     ["Total Days", String(claim.totalDays)],
-    ["Visited Provider", claim.visitedProvider],
+    ["Physician", claim.visitedProvider],
     ["Office", claim.office],
     ["Place of Service", claim.placeOfService],
     ["Patient DOB", claim.patientDob],

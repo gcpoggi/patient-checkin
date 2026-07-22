@@ -36,7 +36,7 @@ const columns: ExcelColumn<ReconciledClaimRow>[] = [
   { key: "patientName", header: "Patient", width: 24 },
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "dateOfService", header: "Date Visited", width: 14 },
-  { key: "visitedProvider", header: "Visited Provider", filter: "select", width: 24 },
+  { key: "visitedProvider", header: "Physician", filter: "select", width: 24 },
   { key: "status", header: "Claim Status", render: (_, row) => statusPill(row), sortValue: (row) => CLAIM_FILE_STATUS_LABELS[row.claim.fileStatus], exportValue: (row) => CLAIM_FILE_STATUS_LABELS[row.claim.fileStatus] },
   { key: "dateProcessed", header: "Date Processed", width: 14 },
   { key: "totalDays", header: "Total Days", align: "right" },

@@ -30,7 +30,7 @@ const ledgerColumns: ExcelColumn<ClaimsAnalysisLedgerRow>[] = [
   { key: "date", header: "Date", width: 135, render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
   { key: "cpt", header: "CPT", filter: "select" },
   { key: "serviceType", header: "Service Type", width: 130, filter: "select", render: (value) => <span className="uppercase">{String(value)}</span> },
-  { key: "provider", header: "Visited Provider", width: 180, filter: "select" },
+  { key: "provider", header: "Physician", width: 180, filter: "select" },
   { key: "payer", header: "Payer", width: 180, filter: "select" },
   { key: "payerCategory", header: "Payer Category", width: 160, filter: "select", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
   { key: "status", header: "Status", width: 145, filter: "select", render: (value) => <StatusBadge status={value as ClaimStatus} /> },
