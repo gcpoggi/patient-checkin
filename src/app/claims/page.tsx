@@ -49,7 +49,7 @@ export default async function ClaimsPage({ searchParams }: ClaimsPageProps) {
         <StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} sub="Plan Paid ÷ collectible Medicare" />
       </section>
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]"><CollectionsBar rows={rows} /><ClaimsDonut kpis={kpis} /></div>
-      <div className="mt-8"><ClaimsTabs rows={rows} activeStatus={activeStatus} counts={counts} /></div>
+      <div className="mt-8"><ClaimsTabs rows={rows} activeStatus={activeStatus} counts={counts} month={month} /></div>
     </AppShell>
   );
 }
