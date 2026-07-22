@@ -1,11 +1,12 @@
 "use client";
 
+import Link from "next/link";
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
 import { StatusBadge } from "@/components/StatusBadge";
 import type { ClaimStatus } from "@/lib/types";
 
 export interface ClaimsStatusSummaryRow { status: ClaimStatus; claims: number; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; share: number; }
-export interface ClaimsAnalysisLedgerRow { id: string; patient: string; office: string; date: string; cpt: string; serviceType: string; provider: string; payer: string; payerCategory: string; status: ClaimStatus; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; collectionPct: number; }
+export interface ClaimsAnalysisLedgerRow { id: string; claimNumber: string; patient: string; office: string; date: string; cpt: string; serviceType: string; provider: string; payer: string; payerCategory: string; status: ClaimStatus; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; collectionPct: number; }
 
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 const percent = new Intl.NumberFormat("en-US", { style: "percent", maximumFractionDigits: 1 });
@@ -23,12 +24,13 @@ const summaryColumns: ExcelColumn<ClaimsStatusSummaryRow>[] = [
 ];
 
 const ledgerColumns: ExcelColumn<ClaimsAnalysisLedgerRow>[] = [
+  { key: "claimNumber", header: "Claim #", width: 140, render: (value) => <Link href={`/claims/${encodeURIComponent(String(value))}`} className="font-mono font-semibold text-teal-700 hover:underline">{String(value)}</Link> },
   { key: "patient", header: "Patient", width: 190 },
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "date", header: "Date", width: 135, render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
   { key: "cpt", header: "CPT", filter: "select" },
   { key: "serviceType", header: "Service Type", width: 130, filter: "select", render: (value) => <span className="uppercase">{String(value)}</span> },
-  { key: "provider", header: "Provider", width: 180, filter: "select" },
+  { key: "provider", header: "Visited Provider", width: 180, filter: "select" },
   { key: "payer", header: "Payer", width: 180, filter: "select" },
   { key: "payerCategory", header: "Payer Category", width: 160, filter: "select", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
   { key: "status", header: "Status", width: 145, filter: "select", render: (value) => <StatusBadge status={value as ClaimStatus} /> },

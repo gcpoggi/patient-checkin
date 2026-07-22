@@ -30,7 +30,7 @@ export default async function ClaimsAnalysisPage({ searchParams }: ClaimsAnalysi
   });
 
   const ledgerRows: ClaimsAnalysisLedgerRow[] = rows.map((row) => ({
-    id: row.claim.id, patient: row.patientName, office: row.office, date: row.dateOfService,
+    id: row.claim.id, claimNumber: row.claim.claimNumber, patient: row.patientName, office: row.office, date: row.dateOfService,
     cpt: row.claim.cptCode, serviceType: row.claim.serviceType, provider: row.claim.provider,
     payer: row.claim.payer, payerCategory: row.claim.payerCategory, status: row.status,
     billed: row.billedAmount, allowed: row.allowedAmount, paid: row.paidAmount,
@@ -50,7 +50,7 @@ export default async function ClaimsAnalysisPage({ searchParams }: ClaimsAnalysi
       <StatCard label="Underpayment claims" value={kpis.underpayment} /><StatCard label="Phantom" value={kpis.phantom} />
       <StatCard label="Denied" value={kpis.denied} /><StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} />
       <StatCard label="100% Medicare" value={new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(kpis.medicareTotal)} />
-      <StatCard label="Underpayment" value={new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(kpis.underpaymentTotal)} />
+      <StatCard label="Total underpayment" value={new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(kpis.underpaymentTotal)} variant="warning" />
     </section>
     <ClaimsAnalysisTables summaryRows={summaryRows} ledgerRows={ledgerRows} month={month} />
   </AppShell>;

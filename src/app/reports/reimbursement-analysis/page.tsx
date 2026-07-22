@@ -46,9 +46,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
         allowed,
         paid,
         medicareTotal,
-        underpayment: payerClaims
-          .filter((row) => row.visit !== null && row.status !== "denied" && row.status !== "phantom")
-          .reduce((sum, row) => sum + row.underpayment, 0),
+        underpayment: payerClaims.reduce((sum, row) => sum + row.underpayment, 0),
         collectionPct: medicareTotal ? paid / medicareTotal : 0,
       };
     })
@@ -56,6 +54,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
 
   const detailRows: ReimbursementDetailRow[] = rows.map((row) => ({
     id: row.claim.id,
+    claimNumber: row.claim.claimNumber,
     patient: row.patientName,
     office: row.office,
     dateOfService: row.dateOfService,
@@ -76,7 +75,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
     <AppShell>
       <PageHeader
         title="Reimbursement Analysis"
-        subtitle="Billed, allowed, Plan Paid, and underpayment against 100% Medicare by payer"
+        subtitle="Plan paid vs 100% Medicare — reimbursement underpayment by payer"
       />
       <form className="mt-6 flex flex-wrap items-end gap-4 rounded-xl border border-mist-200 bg-white p-4 shadow-sm">
         <label className="text-sm font-semibold text-navy">
@@ -97,12 +96,12 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
         <button type="submit" className="rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-600">Apply</button>
       </form>
       <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-6" aria-label="Reimbursement key performance indicators">
-        <StatCard label="Billed total" value={money.format(kpis.billedTotal)} sub="All claims received" variant="navy" />
+        <StatCard label="Total Billed" value={money.format(kpis.billedTotal)} sub="All claims received" variant="navy" />
         <StatCard label="Total Cost (Allowed)" value={money.format(kpis.allowedTotal)} sub="Plan allowance" />
         <StatCard label="Plan Paid" value={money.format(kpis.collectedTotal)} sub="Payments received" />
         <StatCard label="100% Medicare" value={money.format(kpis.medicareTotal)} sub="Medicare benchmark" />
-        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare − Plan Paid" />
-        <StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} sub="Plan Paid ÷ collectible Medicare" />
+        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare − Plan Paid" variant="warning" />
+        <StatCard label="Collection Rate" value={`${(kpis.medicareTotal ? kpis.collectedTotal / kpis.medicareTotal * 100 : 0).toFixed(1)}%`} sub="Plan Paid ÷ 100% Medicare" />
       </section>
       <ReimbursementTables payerRows={payerRows} detailRows={detailRows} month={month} />
     </AppShell>

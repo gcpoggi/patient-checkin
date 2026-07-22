@@ -19,6 +19,7 @@ export interface ReimbursementPayerRow {
 
 export interface ReimbursementDetailRow {
   id: string;
+  claimNumber: string;
   patient: string;
   office: string;
   dateOfService: string;
@@ -57,11 +58,11 @@ const payerColumns: ExcelColumn<ReimbursementPayerRow>[] = [
 ];
 
 const detailColumns: ExcelColumn<ReimbursementDetailRow>[] = [
+  { key: "claimNumber", header: "Claim #", width: 140, render: (value) => <Link href={`/claims/${encodeURIComponent(String(value))}`} className="font-mono font-semibold text-teal-700 hover:underline">{String(value)}</Link> },
   { key: "patient", header: "Patient", width: 190 },
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
-  { key: "dateOfService", header: "Date of Service", width: 135, render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
-  { key: "cpt", header: "CPT" },
-  { key: "provider", header: "Provider", width: 180 },
+  { key: "dateOfService", header: "Date Visited", width: 135, render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
+  { key: "provider", header: "Visited Provider", width: 180 },
   { key: "payer", header: "Payer", width: 180, filter: "select" },
   { key: "payerCategory", header: "Payer Category", width: 160, filter: "select", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
   { key: "status", header: "Status", width: 145, filter: "select", render: (value) => <StatusBadge status={value as ClaimStatus} /> },
@@ -70,7 +71,6 @@ const detailColumns: ExcelColumn<ReimbursementDetailRow>[] = [
   { key: "paid", header: "Plan Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
   { key: "medicareTotal", header: "100% Medicare", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
   { key: "underpayment", header: "Underpayment", align: "right", filter: "none", render: (value) => <span className="rounded-md bg-underpayment-bg px-2 py-1 font-semibold text-underpayment">{money.format(Number(value))}</span> },
-  { key: "collectionPct", header: "Collection %", align: "right", filter: "none", render: (value) => percent.format(Number(value)) },
   { key: "id", header: "Action", filter: "none", sortable: false, render: (_, row) => row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.id)}&insurer=${encodeURIComponent(row.payer)}&reason=${row.status}&amount=${row.status === "denied" ? row.billed : row.underpayment}`}>Contest</Link> : null },
 ];
 
