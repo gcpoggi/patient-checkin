@@ -36,6 +36,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
   const payerRows: ReimbursementPayerRow[] = [...payerGroups.entries()]
     .map(([payer, payerClaims]) => {
       const allowed = payerClaims.reduce((sum, row) => sum + row.allowedAmount, 0);
+      const medicareTotal = payerClaims.reduce((sum, row) => sum + row.medicareTotal, 0);
       const paid = payerClaims.reduce((sum, row) => sum + row.paidAmount, 0);
       return {
         payer,
@@ -44,13 +45,14 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
         billed: payerClaims.reduce((sum, row) => sum + row.billedAmount, 0),
         allowed,
         paid,
-        reduction: payerClaims
+        medicareTotal,
+        underpayment: payerClaims
           .filter((row) => row.visit !== null && row.status !== "denied" && row.status !== "phantom")
-          .reduce((sum, row) => sum + Math.max(0, row.allowedAmount - row.paidAmount), 0),
-        collectionPct: allowed ? paid / allowed : 0,
+          .reduce((sum, row) => sum + row.underpayment, 0),
+        collectionPct: medicareTotal ? paid / medicareTotal : 0,
       };
     })
-    .sort((left, right) => right.reduction - left.reduction);
+    .sort((left, right) => right.underpayment - left.underpayment);
 
   const detailRows: ReimbursementDetailRow[] = rows.map((row) => ({
     id: row.claim.id,
@@ -65,7 +67,8 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
     billed: row.billedAmount,
     allowed: row.allowedAmount,
     paid: row.paidAmount,
-    reduction: Math.max(0, row.reduction),
+    medicareTotal: row.medicareTotal,
+    underpayment: row.underpayment,
     collectionPct: row.collectionPct,
   }));
 
@@ -73,7 +76,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
     <AppShell>
       <PageHeader
         title="Reimbursement Analysis"
-        subtitle="Billed vs allowed vs collected, and reimbursement reductions by payer"
+        subtitle="Billed, allowed, Plan Paid, and underpayment against 100% Medicare by payer"
       />
       <form className="mt-6 flex flex-wrap items-end gap-4 rounded-xl border border-mist-200 bg-white p-4 shadow-sm">
         <label className="text-sm font-semibold text-navy">
@@ -93,12 +96,13 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
         </label>
         <button type="submit" className="rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-600">Apply</button>
       </form>
-      <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5" aria-label="Reimbursement key performance indicators">
+      <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-6" aria-label="Reimbursement key performance indicators">
         <StatCard label="Billed total" value={money.format(kpis.billedTotal)} sub="All claims received" variant="navy" />
-        <StatCard label="Allowed total" value={money.format(kpis.allowedTotal)} sub="Fee-schedule allowance" />
-        <StatCard label="Collected total" value={money.format(kpis.collectedTotal)} sub="Payments received" />
-        <StatCard label="Reduction total" value={money.format(kpis.reductionTotal)} sub="Shaved from allowed" />
-        <StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} sub="Collected ÷ collectible allowed" />
+        <StatCard label="Total Cost (Allowed)" value={money.format(kpis.allowedTotal)} sub="Plan allowance" />
+        <StatCard label="Plan Paid" value={money.format(kpis.collectedTotal)} sub="Payments received" />
+        <StatCard label="100% Medicare" value={money.format(kpis.medicareTotal)} sub="Medicare benchmark" />
+        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare − Plan Paid" />
+        <StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} sub="Plan Paid ÷ collectible Medicare" />
       </section>
       <ReimbursementTables payerRows={payerRows} detailRows={detailRows} month={month} />
     </AppShell>

@@ -31,7 +31,7 @@ export default function Home() {
         <StatCard label="Visits MTD" value={attendance.monthTotals.attended} sub="Kendall · January 2026" />
         <StatCard label="Attendance rate" value={`${Math.round(attendance.monthTotals.attendanceRate * 100)}%`} sub="Month to date" variant="navy" />
         <StatCard label="Claims at risk" value={money.format(claimsAtRisk)} sub="Unpaid + denied + phantom" />
-        <StatCard label="Collection rate" value={`${Math.round(kpis.collectionRate * 100)}%`} sub={`Reduction ${money.format(kpis.reductionTotal)}`} />
+        <StatCard label="Collection rate" value={`${Math.round(kpis.collectionRate * 100)}%`} sub={`Underpayment ${money.format(kpis.underpaymentTotal)}`} />
       </section>
       <section className="mt-6 flex flex-col gap-4 rounded-xl border border-mist-200 bg-white px-5 py-4 shadow-sm sm:flex-row sm:items-center sm:justify-between" aria-labelledby="month-end-status">
         <div><p id="month-end-status" className="text-xs font-semibold uppercase tracking-widest text-teal-600">Month-end status</p><p className="mt-1 text-sm text-slate-500">Kendall · January 2026 reconciliation</p></div>

@@ -24,7 +24,8 @@ interface DisplayRow {
   billed: number;
   allowed: number;
   paid: number;
-  reduction: number;
+  medicareTotal: number;
+  underpayment: number;
   collectionPct: number;
   status: ClaimStatus;
   note: string;
@@ -34,7 +35,7 @@ interface DisplayRow {
 
 const labels: Record<TabStatus, { short: string; long: string }> = {
   unpaid: { short: "Unpaid", long: "Matched services with no payment received" },
-  underpayment: { short: "Underpayment", long: "Payments below the contracted allowed amount" },
+  underpayment: { short: "Underpayment", long: "Plan payments below 100% Medicare" },
   phantom: { short: "Phantom", long: "Claims with no visit on record" },
   denied: { short: "Denied", long: "Claims denied by the payer" },
 };
@@ -50,10 +51,11 @@ const columns: DataTableColumn<DisplayRow>[] = [
   { key: "cpt", header: "CPT" },
   { key: "payer", header: "Payer" },
   { key: "payerCategory", header: "Payer Category", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
-  { key: "billed", header: "Billed", align: "right", render: (value) => money.format(Number(value)) },
-  { key: "allowed", header: "Allowed", align: "right", render: (value) => money.format(Number(value)) },
-  { key: "paid", header: "Paid", align: "right", render: (value) => money.format(Number(value)) },
-  { key: "reduction", header: "Reduction", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "billed", header: "Total Billed", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "allowed", header: "Total Cost (Allowed)", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "paid", header: "Plan Paid", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "medicareTotal", header: "100% Medicare", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "underpayment", header: "Underpayment", align: "right", render: (value) => <span className="rounded-md bg-underpayment-bg px-2 py-1 font-semibold text-underpayment">{money.format(Number(value))}</span> },
   { key: "collectionPct", header: "Collection %", align: "right", render: (value) => percent.format(Number(value)) },
   { key: "status", header: "Status", render: (_, row) => <div><StatusBadge status={row.status} />{row.note ? <p className="mt-1 max-w-56 whitespace-normal text-xs text-slate-500">{row.note}</p> : null}</div> },
   { key: "claimId", header: "Action", render: (_, row) => row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.claimId)}&insurer=${encodeURIComponent(row.payer)}&reason=${row.status}&amount=${row.contestAmount}`}>Contest</Link> : null },
@@ -73,12 +75,13 @@ export function ClaimsTabs({ rows, activeStatus, counts }: ClaimsTabsProps) {
     billed: row.billedAmount,
     allowed: row.allowedAmount,
     paid: row.paidAmount,
-    reduction: row.reduction,
+    medicareTotal: row.medicareTotal,
+    underpayment: row.underpayment,
     collectionPct: row.collectionPct,
     status: row.status,
     note: row.status === "phantom" ? "No visit on record" : row.status === "denied" ? row.claim.denialReason ?? "Denied by payer" : "",
     claimId: row.claim.id,
-    contestAmount: row.status === "denied" ? row.billedAmount : Math.max(0, row.reduction),
+    contestAmount: row.status === "denied" ? row.billedAmount : row.underpayment,
   }));
 
   function selectStatus(status: TabStatus) {

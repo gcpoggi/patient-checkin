@@ -189,12 +189,11 @@ export interface ReconciledClaimRow {
   billedAmount: number;
   allowedAmount: number;
   paidAmount: number;
-  reduction: number;
-  medicareTotal?: number;
-  underpayment?: number;
-  dateProcessed?: string;
-  totalDays?: number;
-  visitedProvider?: string;
+  medicareTotal: number;
+  underpayment: number;
+  dateProcessed: string;
+  totalDays: number;
+  visitedProvider: string;
   collectionPct: number;
 }
 
@@ -207,9 +206,8 @@ export interface ClaimsFinancialKpis {
   billedTotal: number;
   allowedTotal: number;
   collectedTotal: number;
-  reductionTotal: number;
-  medicareTotal?: number;
-  underpaymentTotal?: number;
+  medicareTotal: number;
+  underpaymentTotal: number;
   unpaidAmount: number;
   deniedAmount: number;
   phantomAmount: number;

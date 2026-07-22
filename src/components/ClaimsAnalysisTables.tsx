@@ -4,8 +4,8 @@ import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
 import { StatusBadge } from "@/components/StatusBadge";
 import type { ClaimStatus } from "@/lib/types";
 
-export interface ClaimsStatusSummaryRow { status: ClaimStatus; claims: number; billed: number; allowed: number; paid: number; reduction: number; share: number; }
-export interface ClaimsAnalysisLedgerRow { id: string; patient: string; office: string; date: string; cpt: string; serviceType: string; provider: string; payer: string; payerCategory: string; status: ClaimStatus; billed: number; allowed: number; paid: number; reduction: number; collectionPct: number; }
+export interface ClaimsStatusSummaryRow { status: ClaimStatus; claims: number; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; share: number; }
+export interface ClaimsAnalysisLedgerRow { id: string; patient: string; office: string; date: string; cpt: string; serviceType: string; provider: string; payer: string; payerCategory: string; status: ClaimStatus; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; collectionPct: number; }
 
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 const percent = new Intl.NumberFormat("en-US", { style: "percent", maximumFractionDigits: 1 });
@@ -14,10 +14,11 @@ const date = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", 
 const summaryColumns: ExcelColumn<ClaimsStatusSummaryRow>[] = [
   { key: "status", header: "Status", width: 150, filter: "select", render: (value) => <StatusBadge status={value as ClaimStatus} /> },
   { key: "claims", header: "# Claims", align: "right", filter: "none" },
-  { key: "billed", header: "Billed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "allowed", header: "Allowed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "paid", header: "Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "reduction", header: "Reduction", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "billed", header: "Total Billed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "allowed", header: "Total Cost (Allowed)", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "paid", header: "Plan Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "medicareTotal", header: "100% Medicare", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "underpayment", header: "Underpayment", align: "right", filter: "none", render: (value) => <span className="rounded-md bg-underpayment-bg px-2 py-1 font-semibold text-underpayment">{money.format(Number(value))}</span> },
   { key: "share", header: "% of Claims", align: "right", filter: "none", render: (value) => percent.format(Number(value)) },
 ];
 
@@ -31,10 +32,11 @@ const ledgerColumns: ExcelColumn<ClaimsAnalysisLedgerRow>[] = [
   { key: "payer", header: "Payer", width: 180, filter: "select" },
   { key: "payerCategory", header: "Payer Category", width: 160, filter: "select", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
   { key: "status", header: "Status", width: 145, filter: "select", render: (value) => <StatusBadge status={value as ClaimStatus} /> },
-  { key: "billed", header: "Billed", align: "right", render: (value) => money.format(Number(value)) },
-  { key: "allowed", header: "Allowed", align: "right", render: (value) => money.format(Number(value)) },
-  { key: "paid", header: "Paid", align: "right", render: (value) => money.format(Number(value)) },
-  { key: "reduction", header: "Reduction", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "billed", header: "Total Billed", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "allowed", header: "Total Cost (Allowed)", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "paid", header: "Plan Paid", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "medicareTotal", header: "100% Medicare", align: "right", render: (value) => money.format(Number(value)) },
+  { key: "underpayment", header: "Underpayment", align: "right", render: (value) => <span className="rounded-md bg-underpayment-bg px-2 py-1 font-semibold text-underpayment">{money.format(Number(value))}</span> },
   { key: "collectionPct", header: "Collection %", align: "right", render: (value) => percent.format(Number(value)) },
 ];
 

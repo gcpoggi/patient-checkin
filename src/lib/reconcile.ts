@@ -1,5 +1,4 @@
 import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
-import { allowedAmountForClaim } from "@/lib/feeSchedule";
 import { getStore } from "@/lib/store";
 import { normalizeName, normalizePhone } from "@/lib/normalize";
 import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, MonthlySummary, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
@@ -43,9 +42,6 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
   const rows: ReconciledClaimRow[] = [];
 
   for (const claim of claims) {
-    const allowedAmount = allowedAmountForClaim(claim);
-    const reduction = allowedAmount - claim.paidAmount;
-    const collectionPct = allowedAmount ? claim.paidAmount / allowedAmount : 0;
     const visit = matchVisitForClaim(claim, visits, store.patients, matchedVisitIds);
     const status = claim.fileStatus === "denied"
       ? "denied"
@@ -53,7 +49,7 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
         ? "phantom"
         : claim.paidAmount === 0
           ? "unpaid"
-          : claim.paidAmount < allowedAmount
+          : claim.paidAmount < claim.medicareTotal
             ? "underpayment"
             : "paid_full";
     rows.push({
@@ -63,17 +59,21 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
       patientName: claim.patientName,
       office: claim.office,
       dateOfService: claim.dateOfService,
+      dateProcessed: claim.dateProcessed,
+      totalDays: claim.totalDays,
+      visitedProvider: claim.visitedProvider,
       billedAmount: claim.billedAmount,
-      allowedAmount,
+      allowedAmount: claim.allowedAmount,
       paidAmount: claim.paidAmount,
-      reduction,
-      collectionPct,
+      medicareTotal: claim.medicareTotal,
+      underpayment: claim.underpayment,
+      collectionPct: claim.medicareTotal ? claim.paidAmount / claim.medicareTotal : 0,
     });
   }
 
   const counts = (status: ReconciledClaimRow["status"]) => rows.filter((row) => row.status === status).length;
   const collectibleRows = rows.filter((row) => row.status === "paid_full" || row.status === "underpayment" || row.status === "unpaid");
-  const collectionBase = collectibleRows.reduce((sum, row) => sum + row.allowedAmount, 0);
+  const collectionBase = collectibleRows.reduce((sum, row) => sum + row.medicareTotal, 0);
   const collectedTotal = rows.reduce((sum, row) => sum + row.paidAmount, 0);
   const kpis: ClaimsFinancialKpis = {
     paidFull: counts("paid_full"),
@@ -84,8 +84,9 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
     billedTotal: rows.reduce((sum, row) => sum + row.billedAmount, 0),
     allowedTotal: rows.reduce((sum, row) => sum + row.allowedAmount, 0),
     collectedTotal,
-    reductionTotal: collectibleRows.reduce((sum, row) => sum + Math.max(0, row.reduction), 0),
-    unpaidAmount: rows.filter((row) => row.status === "unpaid").reduce((sum, row) => sum + row.allowedAmount, 0),
+    medicareTotal: rows.reduce((sum, row) => sum + row.medicareTotal, 0),
+    underpaymentTotal: collectibleRows.reduce((sum, row) => sum + row.underpayment, 0),
+    unpaidAmount: rows.filter((row) => row.status === "unpaid").reduce((sum, row) => sum + row.medicareTotal, 0),
     deniedAmount: rows.filter((row) => row.status === "denied").reduce((sum, row) => sum + row.billedAmount, 0),
     phantomAmount: rows.filter((row) => row.status === "phantom").reduce((sum, row) => sum + row.billedAmount, 0),
     collectionRate: collectionBase ? collectedTotal / collectionBase : 0,
@@ -131,7 +132,7 @@ export function buildServiceTransactions(office: OfficeId, month: string): Servi
         (candidate.patientDob === patient.dob || normalizePhone(candidate.patientPhone) === normalizePhone(patient.phone)),
     );
     if (claim) matchedClaimIds.add(claim.id);
-    const allowedAmount = claim ? allowedAmountForClaim(claim) : null;
+    const allowedAmount = claim?.allowedAmount ?? null;
 
     rows.push({
       visitId: visit.id, patientId: patient.id, patientName: patient.fullName, dob: patient.dob,

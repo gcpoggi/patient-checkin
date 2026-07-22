@@ -4,7 +4,7 @@ const financialReports = [
   { title: "Reimbursement Analysis", description: "Review billed, allowed, collected, and reduced amounts by payer.", href: "/reports/reimbursement-analysis" },
   { title: "Claims Analysis", description: "Analyze claim volume, status mix, and reductions across every dimension.", href: "/reports/claims-analysis" },
   { title: "Unpaid Claims", description: "Review claims with no payment received and prioritize collection follow-up.", href: "/claims?status=unpaid" },
-  { title: "Underpayment (Reductions)", description: "Find claims paid below the fee-schedule allowed amount.", href: "/claims?status=underpayment" },
+  { title: "Underpayment", description: "Find claims where Plan Paid is below 100% Medicare.", href: "/claims?status=underpayment" },
   { title: "Denied Claims", description: "Investigate denied claims and their recorded denial reasons.", href: "/claims?status=denied" },
   { title: "Phantom Claims", description: "Identify billed claims with no matching patient visit.", href: "/claims?status=phantom" },
 ] as const;

@@ -1,5 +1,5 @@
 import feeScheduleJson from "@/data/fee-schedule.json";
-import type { Claim, FeeScheduleEntry, PayerCategory, ProcedureLine, ServiceType } from "@/lib/types";
+import type { FeeScheduleEntry, PayerCategory, ProcedureLine, ServiceType } from "@/lib/types";
 
 export const FEE_SCHEDULE: Record<string, FeeScheduleEntry> = Object.fromEntries(
   Object.entries(feeScheduleJson.cptTable).map(([cptCode, entry]) => [cptCode, { cptCode, ...entry }]),
@@ -16,16 +16,6 @@ export function classifyServiceType(cptCode: string): ServiceType {
 
 export function payerCategoryFor(payer: string): PayerCategory {
   return PAYER_CATEGORY_MAP[payer] ?? "commercial";
-}
-
-export function allowedAmountFor(cptCode: string, payerCategory: PayerCategory): number {
-  const entry = FEE_SCHEDULE[cptCode];
-  if (!entry) return 0;
-  return payerCategory === "workers_comp" ? entry.wcAllowed : entry.medicareAllowed;
-}
-
-export function allowedAmountForClaim(claim: Claim): number {
-  return allowedAmountFor(claim.cptCode, claim.payerCategory);
 }
 
 export function round2(n: number): number {

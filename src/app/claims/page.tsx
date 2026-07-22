@@ -40,12 +40,13 @@ export default async function ClaimsPage({ searchParams }: ClaimsPageProps) {
         <input type="hidden" name="status" value={activeStatus} />
         <button type="submit" className="rounded-lg bg-teal-500 px-4 py-2 text-sm font-semibold text-white hover:bg-teal-600">Apply</button>
       </form>
-      <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+      <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
         <StatCard label="Billed total" value={money.format(kpis.billedTotal)} sub="All claims received" variant="navy" />
-        <StatCard label="Allowed total" value={money.format(kpis.allowedTotal)} sub="Fee schedule allowance" />
-        <StatCard label="Collected total" value={money.format(kpis.collectedTotal)} sub="Payments received" />
-        <StatCard label="Reduction total" value={money.format(kpis.reductionTotal)} sub="Shaved from allowed" />
-        <StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} sub="Collected ÷ collectible allowed" />
+        <StatCard label="Total Cost (Allowed)" value={money.format(kpis.allowedTotal)} sub="Plan allowance" />
+        <StatCard label="Plan Paid" value={money.format(kpis.collectedTotal)} sub="Payments received" />
+        <StatCard label="100% Medicare" value={money.format(kpis.medicareTotal)} sub="Medicare benchmark" />
+        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare − Plan Paid" />
+        <StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} sub="Plan Paid ÷ collectible Medicare" />
       </section>
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]"><CollectionsBar rows={rows} /><ClaimsDonut kpis={kpis} /></div>
       <div className="mt-8"><ClaimsTabs rows={rows} activeStatus={activeStatus} counts={counts} /></div>

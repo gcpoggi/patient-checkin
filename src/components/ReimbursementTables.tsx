@@ -12,7 +12,8 @@ export interface ReimbursementPayerRow {
   billed: number;
   allowed: number;
   paid: number;
-  reduction: number;
+  medicareTotal: number;
+  underpayment: number;
   collectionPct: number;
 }
 
@@ -29,7 +30,8 @@ export interface ReimbursementDetailRow {
   billed: number;
   allowed: number;
   paid: number;
-  reduction: number;
+  medicareTotal: number;
+  underpayment: number;
   collectionPct: number;
 }
 
@@ -46,10 +48,11 @@ const payerColumns: ExcelColumn<ReimbursementPayerRow>[] = [
   { key: "payer", header: "Payer", width: 190 },
   { key: "payerCategory", header: "Payer Category", width: 160, filter: "select", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
   { key: "claims", header: "# Claims", align: "right", filter: "none" },
-  { key: "billed", header: "Billed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "allowed", header: "Allowed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "paid", header: "Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "reduction", header: "Reduction", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "billed", header: "Total Billed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "allowed", header: "Total Cost (Allowed)", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "paid", header: "Plan Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "medicareTotal", header: "100% Medicare", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "underpayment", header: "Underpayment", align: "right", filter: "none", render: (value) => <span className="rounded-md bg-underpayment-bg px-2 py-1 font-semibold text-underpayment">{money.format(Number(value))}</span> },
   { key: "collectionPct", header: "Collection %", align: "right", filter: "none", render: (value) => percent.format(Number(value)) },
 ];
 
@@ -62,12 +65,13 @@ const detailColumns: ExcelColumn<ReimbursementDetailRow>[] = [
   { key: "payer", header: "Payer", width: 180, filter: "select" },
   { key: "payerCategory", header: "Payer Category", width: 160, filter: "select", render: (value) => <span className="capitalize">{String(value).replaceAll("_", " ")}</span> },
   { key: "status", header: "Status", width: 145, filter: "select", render: (value) => <StatusBadge status={value as ClaimStatus} /> },
-  { key: "billed", header: "Billed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "allowed", header: "Allowed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "paid", header: "Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
-  { key: "reduction", header: "Reduction", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "billed", header: "Total Billed", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "allowed", header: "Total Cost (Allowed)", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "paid", header: "Plan Paid", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "medicareTotal", header: "100% Medicare", align: "right", filter: "none", render: (value) => money.format(Number(value)) },
+  { key: "underpayment", header: "Underpayment", align: "right", filter: "none", render: (value) => <span className="rounded-md bg-underpayment-bg px-2 py-1 font-semibold text-underpayment">{money.format(Number(value))}</span> },
   { key: "collectionPct", header: "Collection %", align: "right", filter: "none", render: (value) => percent.format(Number(value)) },
-  { key: "id", header: "Action", filter: "none", sortable: false, render: (_, row) => row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.id)}&insurer=${encodeURIComponent(row.payer)}&reason=${row.status}&amount=${row.status === "denied" ? row.billed : row.reduction}`}>Contest</Link> : null },
+  { key: "id", header: "Action", filter: "none", sortable: false, render: (_, row) => row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.id)}&insurer=${encodeURIComponent(row.payer)}&reason=${row.status}&amount=${row.status === "denied" ? row.billed : row.underpayment}`}>Contest</Link> : null },
 ];
 
 export function ReimbursementTables({
