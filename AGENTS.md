@@ -9,11 +9,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 You are building a **demo web app** for HPP Management Corp. Read this file fully before each task.
 
 ## What HPP Patient Check-In is
-A "Practice Control Layer" for patient operations + billing oversight. It does NOT create clinical/billing systems — it **documents** every patient visit (Full Name, DOB, Phone) and at month-end **verifies** by cross-checking the visit log against billing/claims data (which comes from a third-party Practice Management App). Every visit/claim resolves to one of four statuses:
-- **Paid** — Billed & paid (service fully processed)
-- **Pending** — Billed, payment pending (awaiting collection)
-- **Missing** — Service not billed (service performed, no charge)
-- **Phantom** — Phantom charge (billed but no service logged)
+A "Practice Control Layer" for patient operations + billing oversight. It does NOT create clinical/billing systems — it **documents** every patient visit (Full Name, DOB, Phone) and at month-end **verifies** by cross-checking the visit log against billing/claims data (which comes from a third-party Practice Management App). Claims resolve to `paid_full`, `unpaid`, `underpayment`, `phantom`, or `denied`; underpayment means Plan Paid is below 100% Medicare.
 
 ## Stack & versions (IMPORTANT — newer than your training data)
 - **Next.js 16.2.10** (App Router). Middleware is RENAMED to **`proxy.ts`**. Because this project uses a `src/` dir, the file MUST live at **`src/proxy.ts`** (same level as `src/app`) — NOT the repo root, or it won't run. Use `export function proxy(request: NextRequest)`. Read `node_modules/next/dist/docs/01-app/01-getting-started/16-proxy.md` and `.../02-guides/authentication.md`.
@@ -54,11 +50,11 @@ Conventions: h1 = serif navy, tracking-tight; section labels = xs uppercase trac
 - `OfficeId = "kendall" | "ponce"`; `Office { id, name, city }`
 - `EventType = "therapy" | "doctor" | "evaluation" | "followup" | "account_only"` (therapy=PT service; doctor=service with doctor; evaluation feeds EVAL sub-rows; account_only=billing/account matter, no clinical service — logged as encounter but EXCLUDED from PT attendance clinical totals)
 - `TimeSlot = "07:00".."11:00","13:00".."17:00"` (no 12:00 — lunch)
-- `Patient { id, fullName, dob (ISO), phone (normalized digits), office, createdAt, isSeed }`
+- `Patient { id, fullName, dob (ISO), phone (normalized digits), pcp, physician, office, createdAt, isSeed }`
 - `Appointment { id, patientId, office, date, slot, type }` (the SCHEDULE)
 - `Visit { id, patientId, appointmentId|null, office, date, slot, eventType, checkedInAt, source }` (an actual attended check-in)
-- `Claim { id, patientName, patientDob, patientPhone, office, dateOfService, cptCode, description, billedAmount, paidAmount, payer, fileStatus: "paid"|"submitted"|"denied", paidDate|null, source }`
-- Derived (never stored): `ReconStatus = "paid"|"pending"|"missing"|"phantom"`; `ReconciledRow`; `ClaimsKpis`; `AttendanceMonth` (grid[slot][date]{attended,evals,scheduled,noShows}, dayTotals, monthTotals, yearToDate)
+- `Claim` contains multi-procedure and claim-level financial fields described in the Round 3 section below.
+- Derived: `ClaimStatus = "paid_full"|"unpaid"|"underpayment"|"phantom"|"denied"`; `ReconciledClaimRow`; `ClaimsFinancialKpis`; `AttendanceMonth` (grid[slot][date]{attended,evals,scheduled,noShows}, dayTotals, monthTotals, yearToDate)
 - Excel semantics: `ptFu = attended − evals`; `noShows (faltaron) = max(0, scheduled − attended)`
 
 ## Store & reconcile
@@ -66,17 +62,25 @@ Conventions: h1 = serif navy, tracking-tight; section labels = xs uppercase trac
 - `src/lib/normalize.ts`: `normalizeName` (lowercase, trim, collapse ws, strip diacritics via NFD), `normalizePhone` (digits, last 10), `isSameDate`.
 - Patient match: `normalizeName` equal AND (`dob` equal OR `phone` equal); name-only → `{found:false, nearMiss:true}`.
 - `src/lib/reconcile.ts` (pure, recompute per GET):
-  - Claims: for each claim find patient + a same day/office visit (one visit per claim). With visit → PAID (fileStatus paid & paidAmount>0) else PENDING; no visit → PHANTOM. Visits with no claim → MISSING.
+  - Claims: for each claim find patient + a same day/office visit (one visit per claim), then derive `paid_full`, `unpaid`, `underpayment`, `phantom`, or `denied`; underpayment compares Plan Paid with 100% Medicare.
   - Attendance: `buildAttendanceMonth(office, month)` aggregates appointments (scheduled) + visits (attended, evals) into grid + totals + yearToDate.
 
 ## Financial reporting extension (data model + reports)
 - `Claim` also includes `payerCategory`, `provider`, `serviceType`, `placeOfService`, and nullable `denialReason`.
-- The fee schedule is stored in `src/data/fee-schedule.json` and exposed by `src/lib/feeSchedule.ts`; use `allowedAmountForClaim` to derive a claim's allowed amount.
-- `ClaimStatus = "paid_full" | "unpaid" | "underpayment" | "phantom" | "denied"`. `reconcileClaims` derives status from patient/visit matching, file status, paid amount, and allowed amount.
+- The fee schedule is stored in `src/data/fee-schedule.json` and exposed by `src/lib/feeSchedule.ts`.
+- `ClaimStatus = "paid_full" | "unpaid" | "underpayment" | "phantom" | "denied"`. `reconcileClaims` derives status from patient/visit matching, file status, paid amount, and 100% Medicare.
 - `buildServiceTransactions`, `buildProviderAttendance`, `buildMonthlySummary`, and `detectPlaceOfServiceErrors` provide the reporting datasets in `src/lib/reconcile.ts`.
 - `src/components/ExcelTable.tsx` is the shared sortable, filterable, horizontally scrollable, XLSX-exportable report table.
 - Report routes: `/attendance/transactions`, `/attendance/physicians`, `/attendance/summary`, `/claims/errors`, `/reports/reimbursement-analysis`, `/reports/claims-analysis`, and `/contestations`; contestation subroutes are `/contestations/new` and `/contestations/[id]`, backed by `/api/contestations` and `/api/contestations/[id]`.
 - `Contestation` records insurer, claims, reason, demanded/recovered amounts, lifecycle status/timestamps, letter, notes, and creator. The in-memory store exposes `addContestation` and `updateContestation`.
+
+## Round 3: multi-procedure claims + Medicare underpayment
+- `Claim.procedures: ProcedureLine[]`; claim aggregates are `allowedAmount` = Σ allowed/Total Cost, `paidAmount` = Σ Plan Paid, `medicareTotal` = Σ 100% Medicare, and `underpayment` = `max(0, medicareTotal - paidAmount)`. Claims also carry `claimNumber`, `dateProcessed`, `totalDays`, and `visitedProvider`.
+- Each fee-schedule CPT has `medicarePrice`. `src/lib/feeSchedule.ts` exposes `buildProcedureLine`, `aggregateClaimAmounts`, and `medicarePriceFor`.
+- `ClaimStatus` is `paid_full | unpaid | underpayment | phantom | denied`; a matched, non-denied paid claim is underpaid when Plan Paid is below 100% Medicare.
+- `Patient.pcp` is the generic PCP, while `Patient.physician` is one of the five real surgeons in `src/data/seed/physicians.json`. `ServiceTransaction` carries both; Physicians and Summary reports group by `physician`.
+- `/claims/[claimNumber]` is the claim detail route.
+- `src/lib/format.ts` provides `formatPhone` (for example, `(305)-555-0134`) and `CLAIM_FILE_STATUS_LABELS`.
 
 ## Working rules
 - After changes, `npm run build` MUST pass. Fix type/lint errors you introduce.

@@ -5,8 +5,9 @@ HPP Patient Check-In is a practice control layer demo for patient operations and
 ## Features
 
 - Patient check-in, attendance tracking, and claim-file reconciliation
-- PT transactions, Physicians report, and Monthly summary
-- Reimbursement Analysis and Claims Analysis with realistic allowed-amount scenarios
+- PT transactions, a PCP/Physician split, Physicians report, and Monthly summary grouped by physician
+- Reimbursement Analysis and Claims Analysis using Underpayment = 100% Medicare − Plan Paid
+- Multi-procedure claim detail with a UnitedHealthcare-style billed, allowed, Plan Paid, and Medicare breakdown
 - Place-of-service Errors report and Contestations workflow for denied and underpaid claims
 - Sortable, filterable report tables with XLSX export
 
@@ -38,11 +39,12 @@ Demo login:
 2. Open **Check-In** and look up **Maria Rodriguez**, an existing patient. Record a therapy visit.
 3. Open **Attendance** to see the visit reflected in the monthly attendance view.
 4. Return to **Check-In** and look up **Carlos Mendez**, who is not in the patient file. Register him as a new patient, then continue the check-in flow.
-5. Open **Claims** and walk through the financial views: **Paid in Full**, **Unpaid**, **Underpayment**, **Phantom**, and **Denied**. Point out the realistic fee-schedule allowed amounts and collection reductions.
-6. Open **Feed Claims Data**. Download a sample CSV or XLSX from the app, then re-upload it to update the financial reconciliation.
-7. Under **Attendance**, show **PT Transactions**, the **Physicians** report, and the **Monthly Summary**.
-8. Open **Reports** to review **Reimbursement Analysis** and **Claims Analysis**, then open the **Errors** report for place-of-service issues.
-9. Open **Contestations** to show how denied and underpaid claims move from draft through resolution.
+5. Open **Claims** and walk through **Paid in Full**, **Unpaid**, **Underpayment**, **Phantom**, and **Denied**. Explain that Underpayment is measured against 100% Medicare: `max(0, 100% Medicare − Plan Paid)`.
+6. Open claim **#066052423** for **Dr. Arturo Corces** to show the real UnitedHealthcare-style multi-procedure breakdown: Total Billed, Total Cost (Allowed), Plan Paid, 100% Medicare, and Underpayment.
+7. Open **Feed Claims Data**. Download a sample CSV or XLSX from the app, then re-upload it to update the financial reconciliation.
+8. Under **Attendance**, show **PT Transactions**, the **Physicians** report, and the **Monthly Summary**. Point out that PCP and Physician are separate fields and that physician reporting groups patients under their assigned surgeon.
+9. Open **Reports** to review **Reimbursement Analysis** and **Claims Analysis**, then open the **Errors** report for place-of-service issues.
+10. Open **Contestations** to show how denied and underpaid claims move from draft through resolution.
 
 Use **Reset demo data** in the application header to restore the seeded state between presentations.
 
