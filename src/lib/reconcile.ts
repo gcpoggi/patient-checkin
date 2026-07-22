@@ -137,7 +137,7 @@ export function buildServiceTransactions(office: OfficeId, month: string): Servi
     rows.push({
       visitId: visit.id, patientId: patient.id, patientName: patient.fullName, dob: patient.dob,
       phone: patient.phone, office: visit.office, date: visit.date, slot: visit.slot,
-      eventType: visit.eventType, serviceType, provider: claim?.provider || "Unassigned",
+      eventType: visit.eventType, serviceType, pcp: patient.pcp, physician: patient.physician,
       cptCode: claim?.cptCode ?? null, payer: claim?.payer ?? null,
       payerCategory: claim?.payerCategory ?? null, billedAmount: claim?.billedAmount ?? null,
       paidAmount: claim?.paidAmount ?? null, allowedAmount,
@@ -156,18 +156,18 @@ export function buildProviderAttendance(
 ): { physicians: PhysicianSummary[]; transactions: ServiceTransaction[] } {
   const store = getStore();
   const transactions = buildServiceTransactions(office, month);
-  const byProvider = new Map<string, ServiceTransaction[]>();
+  const byPhysician = new Map<string, ServiceTransaction[]>();
 
   for (const transaction of transactions) {
-    const group = byProvider.get(transaction.provider) ?? [];
+    const group = byPhysician.get(transaction.physician) ?? [];
     group.push(transaction);
-    byProvider.set(transaction.provider, group);
+    byPhysician.set(transaction.physician, group);
   }
 
-  const physicians = [...byProvider.entries()].map(([provider, rows]): PhysicianSummary => ({
-    provider,
+  const physicians = [...byPhysician.entries()].map(([physician, rows]): PhysicianSummary => ({
+    physician,
     specialty: store.physicians.find(
-      (physician) => normalizeName(physician.name) === normalizeName(provider),
+      (candidate) => normalizeName(candidate.name) === normalizeName(physician),
     )?.specialty ?? null,
     patients: new Set(rows.map((row) => row.patientId)).size,
     doctorVisits: rows.filter((row) => row.serviceType === "physician").length,
@@ -179,7 +179,7 @@ export function buildProviderAttendance(
   }));
 
   physicians.sort(
-    (left, right) => right.patients - left.patients || left.provider.localeCompare(right.provider),
+    (left, right) => left.physician.localeCompare(right.physician),
   );
 
   return { physicians, transactions };
@@ -197,8 +197,8 @@ export function buildMonthlySummary(office: OfficeId, month: string): MonthlySum
       ptVisits: physicians.reduce((sum, physician) => sum + physician.ptVisits, 0),
       evals: physicians.reduce((sum, physician) => sum + physician.evals, 0),
     },
-    byProvider: physicians.map((physician) => ({
-      provider: physician.provider,
+    byPhysician: physicians.map((physician) => ({
+      physician: physician.physician,
       patients: physician.patients,
       doctorVisits: physician.doctorVisits,
       ptVisits: physician.ptVisits,

@@ -127,7 +127,7 @@ export interface Physician {
 }
 
 export interface PhysicianSummary {
-  provider: string;
+  physician: string;
   specialty: string | null;
   patients: number;
   doctorVisits: number;
@@ -142,8 +142,8 @@ export interface MonthlySummary {
   office: OfficeId;
   month: string;
   combined: { patients: number; doctorVisits: number; ptVisits: number; evals: number };
-  byProvider: Array<{
-    provider: string;
+  byPhysician: Array<{
+    physician: string;
     patients: number;
     doctorVisits: number;
     ptVisits: number;
@@ -164,9 +164,8 @@ export interface ServiceTransaction {
   slot: TimeSlot;
   eventType: EventType;
   serviceType: ServiceType;
-  provider: string;
-  pcp?: string;
-  physician?: string;
+  pcp: string;
+  physician: string;
   cptCode: string | null;
   payer: string | null;
   payerCategory: PayerCategory | null;

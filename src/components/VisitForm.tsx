@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { ToastProvider, useToast } from "@/components/Toast";
+import { formatPhone } from "@/lib/format";
 import type { EventType, OfficeId, Patient, TimeSlot } from "@/lib/types";
 
 const eventTypes: Array<{ value: EventType; label: string }> = [
@@ -20,11 +21,6 @@ const timeSlots: TimeSlot[] = [
 
 const fieldClass =
   "mt-1.5 w-full rounded-lg border border-mist-200 bg-white px-3 py-2.5 text-sm text-ink outline-none focus:border-sky-hpp focus:ring-2 focus:ring-sky-hpp/20";
-
-function formatPhone(phone: string) {
-  const digits = phone.replace(/\D/g, "").slice(-10);
-  return digits.length === 10 ? `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}` : phone;
-}
 
 function VisitFormContent({ patient }: { patient: Patient }) {
   const { show } = useToast();

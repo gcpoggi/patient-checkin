@@ -10,9 +10,9 @@ function shortenProviderName(name: string): string {
 }
 
 export function ProviderPatientsBarChart({ summary }: { summary: MonthlySummary }) {
-  const data = summary.byProvider.map((row) => ({
-    provider: row.provider,
-    axisLabel: shortenProviderName(row.provider),
+  const data = summary.byPhysician.map((row) => ({
+    physician: row.physician,
+    axisLabel: shortenProviderName(row.physician),
     "Doctor visits": row.doctorVisits,
     "PT visits": row.ptVisits,
     Evaluations: row.evals,
@@ -42,7 +42,7 @@ export function ProviderPatientsBarChart({ summary }: { summary: MonthlySummary 
                 interval={0}
               />
               <YAxis allowDecimals={false} tick={{ fill: CHART_TEXT, fontSize: 11 }} axisLine={false} tickLine={false} />
-              <Tooltip content={<ChartTooltip />} labelFormatter={(_, payload) => payload?.[0]?.payload?.provider ?? ""} />
+              <Tooltip content={<ChartTooltip />} labelFormatter={(_, payload) => payload?.[0]?.payload?.physician ?? ""} />
               <Bar dataKey="Doctor visits" stackId="visits" fill={CHART_COLORS.navy} radius={[0, 0, 3, 3]} />
               <Bar dataKey="PT visits" stackId="visits" fill={CHART_COLORS.teal400} />
               <Bar dataKey="Evaluations" stackId="visits" fill={CHART_COLORS.sky} radius={[3, 3, 0, 0]} />

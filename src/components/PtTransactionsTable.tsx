@@ -1,6 +1,7 @@
 "use client";
 
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
+import { formatPhone } from "@/lib/format";
 import type { BillingStatus, ServiceTransaction } from "@/lib/types";
 
 const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
@@ -20,12 +21,13 @@ function money(value: ServiceTransaction[keyof ServiceTransaction]) {
 const columns: ExcelColumn<ServiceTransaction>[] = [
   { key: "patientName", header: "Patient", width: 180 },
   { key: "dob", header: "DOB", width: 100 },
-  { key: "phone", header: "Phone", width: 110 },
+  { key: "phone", header: "Phone", width: 110, render: (value) => formatPhone(String(value)) },
   { key: "office", header: "Office", filter: "select" },
   { key: "date", header: "Date", width: 100 },
   { key: "slot", header: "Slot", width: 75 },
   { key: "eventType", header: "Event Type", filter: "select" },
-  { key: "provider", header: "Provider", filter: "select", width: 150 },
+  { key: "pcp", header: "PCP", filter: "select", width: 140 },
+  { key: "physician", header: "Physician", filter: "select", width: 170 },
   { key: "cptCode", header: "CPT" },
   { key: "payer", header: "Payer", filter: "select", width: 150 },
   { key: "payerCategory", header: "Payer Category", filter: "select" },

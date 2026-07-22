@@ -1,5 +1,4 @@
 import { AppShell } from "@/components/AppShell";
-import { MonthlySummaryTable } from "@/components/MonthlySummaryTable";
 import { OfficeMonthPicker } from "@/components/OfficeMonthPicker";
 import { PageHeader } from "@/components/PageHeader";
 import { StatCard } from "@/components/StatCard";
@@ -41,7 +40,6 @@ export default async function SummaryPage({ searchParams }: SummaryPageProps) {
       </section>
 
       <div className="mt-6"><ProviderPatientsBarChart summary={summary} /></div>
-      <div className="mt-6"><MonthlySummaryTable summary={summary} /></div>
       <p className="mt-3 text-sm text-slate-600">
         Combined total: <span className="font-mono font-semibold tabular-nums text-navy">{summary.combined.patients}</span>{" "}
         distinct patients and <span className="font-mono font-semibold tabular-nums text-navy">{combinedVisits}</span> visits.

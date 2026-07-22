@@ -12,7 +12,7 @@ interface PhysiciansPageProps {
   searchParams: Promise<{
     office?: string | string[];
     month?: string | string[];
-    provider?: string | string[];
+    physician?: string | string[];
   }>;
 }
 
@@ -28,10 +28,10 @@ export default async function PhysiciansPage({ searchParams }: PhysiciansPagePro
   const office: OfficeId = query.office === "ponce" ? "ponce" : "kendall";
   const requestedMonth = typeof query.month === "string" ? query.month : "2026-01";
   const month = /^\d{4}-(0[1-9]|1[0-2])$/.test(requestedMonth) ? requestedMonth : "2026-01";
-  const provider = typeof query.provider === "string" && query.provider ? query.provider : null;
+  const physician = typeof query.physician === "string" && query.physician ? query.physician : null;
   const { physicians, transactions } = buildProviderAttendance(office, month);
-  const providerTransactions = provider
-    ? transactions.filter((transaction) => transaction.provider === provider)
+  const physicianTransactions = physician
+    ? transactions.filter((transaction) => transaction.physician === physician)
     : [];
   const clearParams = new URLSearchParams({ office, month });
 
@@ -44,13 +44,13 @@ export default async function PhysiciansPage({ searchParams }: PhysiciansPagePro
         <PhysicianSummaryTable rows={physicians} office={office} month={month} />
       </div>
 
-      {provider ? (
+      {physician ? (
         <section className="mt-8">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-navy">Transactions — {provider}</h2>
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-navy">Transactions — {physician}</h2>
             <Link href={`/attendance/physicians?${clearParams.toString()}`} className="text-sm font-semibold text-teal-700 hover:text-teal-500 hover:underline">Clear</Link>
           </div>
-          <PhysicianTransactionsTable rows={providerTransactions} office={office} month={month} provider={provider} />
+          <PhysicianTransactionsTable rows={physicianTransactions} office={office} month={month} physician={physician} />
         </section>
       ) : null}
     </AppShell>
