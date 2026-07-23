@@ -9,8 +9,8 @@ import type { EventType, OfficeId, Patient, TimeSlot } from "@/lib/types";
 const eventTypes: Array<{ value: EventType; label: string }> = [
   { value: "therapy", label: "Therapy (PT)" },
   { value: "evaluation", label: "Therapy evaluation (PT)" },
-  { value: "doctor", label: "Doctor — Initial visit" },
-  { value: "followup", label: "Doctor — Follow-up" },
+  { value: "doctor", label: "Doctor - Initial visit" },
+  { value: "followup", label: "Doctor - Follow-up" },
   { value: "account_only", label: "Account-only (billing / no clinical service)" },
 ];
 
@@ -46,7 +46,7 @@ function VisitFormContent({ patient }: { patient: Patient }) {
       });
       if (!response.ok) throw new Error("Unable to record the visit.");
       setRecorded({ office, slot, month: date.slice(0, 7) });
-      show(`Visit recorded — ${office} · ${slot}`, "success");
+      show(`Visit recorded - ${office} · ${slot}`, "success");
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : "Unable to record the visit.");
     } finally {

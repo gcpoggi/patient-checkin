@@ -30,7 +30,7 @@ export default function LoginPage() {
             We Don&apos;t Create · We Document · We Verify
           </p>
           <p className="mt-6 max-w-xl text-base leading-7 text-mist-100/80 lg:text-lg lg:leading-8">
-            Real-time visibility into patient activity and financial outcomes — improve accuracy, reduce billing errors, strengthen collections.
+            Real-time visibility into patient activity and financial outcomes - improve accuracy, reduce billing errors, strengthen collections.
           </p>
         </div>
 

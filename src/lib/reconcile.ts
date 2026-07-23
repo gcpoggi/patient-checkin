@@ -116,7 +116,7 @@ export function detectPlaceOfServiceErrors(month: string, office?: OfficeId): Cl
     .map((claim) => ({
       claim,
       ruleId: "improper_pos",
-      message: `CPT ${claim.cptCode} (${claim.description}) billed as ${claim.placeOfService.replace("_", " ")} — outpatient-only service.`,
+      message: `CPT ${claim.cptCode} (${claim.description}) billed as ${claim.placeOfService.replace("_", " ")} - outpatient-only service.`,
     }));
 }
 

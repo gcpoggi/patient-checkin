@@ -16,7 +16,7 @@ const statusClasses: Record<BillingStatus, string> = {
   not_billed: "bg-missing-bg text-missing",
 };
 function money(value: ServiceTransaction[keyof ServiceTransaction]) {
-  return typeof value === "number" ? currency.format(value) : "—";
+  return typeof value === "number" ? currency.format(value) : "N/A";
 }
 
 const columns: ExcelColumn<ServiceTransaction>[] = [
@@ -50,7 +50,7 @@ const columns: ExcelColumn<ServiceTransaction>[] = [
     header: "CPT",
     render: (_, row) => (
       <span className="inline-flex items-center gap-1.5">
-        <span>{row.cptCode ?? "—"}</span>
+        <span>{row.cptCode ?? "N/A"}</span>
         {row.procedureCount > 1 ? (
           <span className="rounded-full bg-mist-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">
             +{row.procedureCount - 1}

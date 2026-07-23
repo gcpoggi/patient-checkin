@@ -26,7 +26,7 @@ export default async function TransactionsPage({ searchParams }: TransactionsPag
   const billed = rows.filter((row) => row.billingStatus !== "not_billed").length;
 
   return <AppShell>
-    <PageHeader title="PT Transactions" subtitle="Every PT service line — filter, sort, export" />
+    <PageHeader title="PT Transactions" subtitle="Every PT service line - filter, sort, export" />
     <SubNavTabs items={tabs} />
     <div className="mt-6"><OfficeMonthPicker current={office} month={month} /></div>
     <p className="mt-4 text-sm text-slate-600">

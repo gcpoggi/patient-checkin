@@ -39,7 +39,7 @@ export default async function PhysiciansPage({ searchParams }: PhysiciansPagePro
   return (
     <AppShell>
       <PageHeader
-        title="Doctor Visits — Physician Summary"
+        title="Doctor Visits - Physician Summary"
         subtitle="Per-orthopedist activity: initial visits, follow-ups, PT therapies, evals"
       />
       <SubNavTabs items={tabs} />
@@ -51,7 +51,7 @@ export default async function PhysiciansPage({ searchParams }: PhysiciansPagePro
       {physician ? (
         <section className="mt-8">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="font-display text-2xl font-semibold tracking-tight text-navy">Transactions — {physician}</h2>
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-navy">Transactions - {physician}</h2>
             <Link href={`/attendance/physicians?${clearParams.toString()}`} className="text-sm font-semibold text-teal-700 hover:text-teal-500 hover:underline">Clear</Link>
           </div>
           <PhysicianTransactionsTable rows={physicianTransactions} office={office} month={month} physician={physician} />

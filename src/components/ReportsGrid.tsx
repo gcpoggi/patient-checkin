@@ -10,7 +10,7 @@ const financialReports = [
 ] as const;
 
 const complianceReports = [
-  { title: "Errors — Place of Service", description: "Audit claims for improper place-of-service coding.", href: "/claims/errors" },
+  { title: "Errors - Place of Service", description: "Audit claims for improper place-of-service coding.", href: "/claims/errors" },
 ] as const;
 
 export function ReportsGrid() {

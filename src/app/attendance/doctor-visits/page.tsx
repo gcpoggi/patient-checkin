@@ -32,7 +32,7 @@ export default async function DoctorVisitsPage({ searchParams }: DoctorVisitsPag
     <AppShell>
       <PageHeader
         title="Doctor Visits"
-        subtitle="Every orthopedist office visit — Initial + Follow-up — filter, sort, export"
+        subtitle="Every orthopedist office visit: Initial + Follow-up - filter, sort, export"
       />
       <SubNavTabs items={tabs} />
       <div className="mt-6"><OfficeMonthPicker current={office} month={month} /></div>

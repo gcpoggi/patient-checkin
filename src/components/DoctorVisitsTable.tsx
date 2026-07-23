@@ -17,7 +17,7 @@ const statusClasses: Record<BillingStatus, string> = {
 };
 
 function money(value: ServiceTransaction[keyof ServiceTransaction]) {
-  return typeof value === "number" ? currency.format(value) : "—";
+  return typeof value === "number" ? currency.format(value) : "N/A";
 }
 
 function visitTypeLabel(value: ServiceTransaction["eventType"]): string {

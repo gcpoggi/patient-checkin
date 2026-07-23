@@ -3,13 +3,13 @@ const demoPatients = [
     name: "Maria Rodriguez",
     dob: "1958-03-14",
     phone: "(305) 555-0147",
-    result: "Exists — attendance",
+    result: "Exists - attendance",
   },
   {
     name: "Carlos Mendez",
     dob: "1971-09-02",
     phone: "(786) 555-0193",
-    result: "Not in file — register new",
+    result: "Not in file - register new",
   },
 ] as const;
 

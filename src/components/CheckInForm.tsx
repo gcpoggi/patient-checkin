@@ -84,7 +84,7 @@ export function CheckInForm() {
             <input className={inputClass} name="phone" type="tel" autoComplete="tel" placeholder="(305) 555-0147" required />
           </label>
         </div>
-        {nearMiss ? <p className="mt-4 text-sm text-pending">A similar name exists — verify DOB/phone.</p> : null}
+        {nearMiss ? <p className="mt-4 text-sm text-pending">A similar name exists - verify DOB/phone.</p> : null}
         {error ? <p className="mt-4 text-sm text-missing" role="alert">{error}</p> : null}
         <button
           type="submit"

@@ -26,7 +26,7 @@ export default async function AttendancePage({ searchParams }: AttendancePagePro
 
   return (
     <AppShell>
-      <PageHeader title="Attendance" subtitle="Scheduled vs attended vs evaluated — by office & month" />
+      <PageHeader title="Attendance" subtitle="Scheduled vs attended vs evaluated - by office & month" />
       <SubNavTabs items={[
         { label: "PT Grid", href: "/attendance" },
         { label: "PT Transactions", href: "/attendance/transactions" },
@@ -43,7 +43,7 @@ export default async function AttendancePage({ searchParams }: AttendancePagePro
 
       <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         <StatCard label="Attended" value={attendance.monthTotals.attended} sub="Clinical visits" variant="navy" />
-        <StatCard label="PT FU" value={attendance.monthTotals.ptFu} sub="Attended − evals" />
+        <StatCard label="PT FU" value={attendance.monthTotals.ptFu} sub="Attended - evals" />
         <StatCard label="Evals" value={attendance.monthTotals.evals} sub="Initial evaluations" />
         <StatCard label="Scheduled" value={attendance.monthTotals.scheduled} sub={`${(attendance.monthTotals.attendanceRate * 100).toFixed(1)}% attendance`} />
         <StatCard label="No-show rate" value={`${(noShowRate * 100).toFixed(1)}%`} sub={`${attendance.monthTotals.noShows} no-shows`} />

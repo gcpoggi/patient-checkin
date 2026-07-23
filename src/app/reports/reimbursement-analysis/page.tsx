@@ -76,7 +76,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
     <AppShell>
       <PageHeader
         title="Reimbursement Analysis"
-        subtitle="Plan paid vs 100% Medicare — reimbursement underpayment by payer"
+        subtitle="Plan paid vs 100% Medicare: reimbursement underpayment by payer"
       />
       <form className="mt-6 flex flex-wrap items-end gap-4 rounded-xl border border-mist-200 bg-white p-4 shadow-sm">
         <label className="text-sm font-semibold text-navy">
@@ -101,7 +101,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
         <StatCard label="Total Cost (Allowed)" value={money.format(kpis.allowedTotal)} sub="Plan allowance" />
         <StatCard label="Plan Paid" value={money.format(kpis.collectedTotal)} sub="Payments received" />
         <StatCard label="100% Medicare" value={money.format(kpis.medicareTotal)} sub="Medicare benchmark" />
-        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare − Plan Paid" variant="warning" />
+        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare - Plan Paid" variant="warning" />
         <StatCard label="Collection Rate" value={`${(kpis.medicareTotal ? kpis.collectedTotal / kpis.medicareTotal * 100 : 0).toFixed(1)}%`} sub="Plan Paid ÷ 100% Medicare" />
       </section>
       <ReimbursementTables payerRows={payerRows} detailRows={detailRows} month={month} />

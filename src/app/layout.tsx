@@ -23,7 +23,7 @@ const jetBrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "HPP Patient Check-In",
   description:
-    "Real-time visibility into patient activity and financial outcomes — improve accuracy, reduce billing errors, strengthen collections.",
+    "Real-time visibility into patient activity and financial outcomes - improve accuracy, reduce billing errors, strengthen collections.",
   openGraph: {
     title: "HPP Patient Check-In",
     description:

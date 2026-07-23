@@ -12,7 +12,7 @@ export default async function NewPatientPage({ searchParams }: { searchParams: P
   const { name = "", dob = "", phone = "" } = await searchParams;
   return (
     <AppShell>
-      <PageHeader title="Register New Patient" subtitle="Not found in file — add the patient, then record the visit" />
+      <PageHeader title="Register New Patient" subtitle="Not found in file - add the patient, then record the visit" />
       <NewPatientForm initial={{ name, dob, phone }} />
     </AppShell>
   );

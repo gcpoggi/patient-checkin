@@ -23,7 +23,7 @@ const statusClasses: Record<BillingStatus, string> = {
 };
 
 function money(value: PhysicianSummary[keyof PhysicianSummary] | ServiceTransaction[keyof ServiceTransaction]) {
-  return typeof value === "number" ? currency.format(value) : "—";
+  return typeof value === "number" ? currency.format(value) : "N/A";
 }
 
 function physicianColumns(office: OfficeId, month: string): ExcelColumn<PhysicianSummary>[] {

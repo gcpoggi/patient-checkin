@@ -29,10 +29,10 @@ export default async function ClaimsPage({ searchParams }: ClaimsPageProps) {
 
   return (
     <AppShell>
-      <PageHeader title="Claims" subtitle="Financial reconciliation — Paid in full · Unpaid · Underpayment · Phantom · Denied" actions={<Link href="/claims/upload" className="rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-600">Feed Claims Data</Link>} />
+      <PageHeader title="Claims" subtitle="Financial reconciliation: Paid in full · Unpaid · Underpayment · Phantom · Denied" actions={<Link href="/claims/upload" className="rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-600">Feed Claims Data</Link>} />
       <div className="mt-4 flex items-center gap-3 text-xs uppercase tracking-widest">
         <span className="font-semibold text-teal-600">Related reports</span>
-        <Link href={errorsHref} className="font-semibold normal-case tracking-normal text-navy underline decoration-mist-200 underline-offset-4 transition hover:text-teal-600 hover:decoration-teal-400">Errors — Place of Service</Link>
+        <Link href={errorsHref} className="font-semibold normal-case tracking-normal text-navy underline decoration-mist-200 underline-offset-4 transition hover:text-teal-600 hover:decoration-teal-400">Errors - Place of Service</Link>
       </div>
       <form className="mt-6 flex flex-wrap items-end gap-4 rounded-xl border border-mist-200 bg-white p-4 shadow-sm">
         <label className="text-sm font-semibold text-navy">Month<select name="month" defaultValue={month} className="mt-1 block rounded-lg border border-mist-200 bg-white px-3 py-2 font-normal outline-none focus:border-sky-hpp focus:ring-2 focus:ring-sky-hpp/20"><option value="2026-01">January 2026</option><option value="2026-02">February 2026</option></select></label>
@@ -45,7 +45,7 @@ export default async function ClaimsPage({ searchParams }: ClaimsPageProps) {
         <StatCard label="Total Cost (Allowed)" value={money.format(kpis.allowedTotal)} sub="Plan allowance" />
         <StatCard label="Plan Paid" value={money.format(kpis.collectedTotal)} sub="Payments received" />
         <StatCard label="100% Medicare" value={money.format(kpis.medicareTotal)} sub="Medicare benchmark" />
-        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare − Plan Paid" />
+        <StatCard label="Underpayment" value={money.format(kpis.underpaymentTotal)} sub="100% Medicare - Plan Paid" />
         <StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} sub="Plan Paid ÷ collectible Medicare" />
       </section>
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(280px,1fr)]"><CollectionsBar rows={rows} /><ClaimsDonut kpis={kpis} /></div>

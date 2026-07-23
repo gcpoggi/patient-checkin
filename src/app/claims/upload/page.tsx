@@ -25,7 +25,7 @@ const columns = [
 export default function ClaimsUploadPage() {
   return (
     <AppShell>
-      <PageHeader title="Feed Claims Data" subtitle="Upload the practice's claims export — we cross-check it against the visit log" />
+      <PageHeader title="Feed Claims Data" subtitle="Upload the practice's claims export - we cross-check it against the visit log" />
       <p className="mt-3 text-sm text-slate-600">Third-party Practice Management App data can arrive via API · file · DB · manual. This file upload supports the file/manual path.</p>
 
       <div className="mt-6 grid items-start gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(360px,0.65fr)]">

@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 export default function CheckInPage() {
   return (
     <AppShell>
-      <PageHeader title="Register Check-In" subtitle="Capture the visit — Name, DOB, Phone" />
+      <PageHeader title="Register Check-In" subtitle="Capture the visit: Name, DOB, Phone" />
       <CheckInForm />
     </AppShell>
   );
