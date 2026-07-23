@@ -30,7 +30,7 @@ export default async function ClaimsAnalysisPage({ searchParams }: ClaimsAnalysi
   });
 
   const ledgerRows: ClaimsAnalysisLedgerRow[] = rows.map((row) => ({
-    id: row.claim.id, claimNumber: row.claim.claimNumber, patient: row.patientName, office: row.office, date: row.dateOfService,
+    id: row.claim.id, claimNumber: row.claim.claimNumber, patientId: row.patientId, patient: row.patientName, office: row.office, date: row.dateOfService,
     cpt: row.claim.cptCode, serviceType: row.claim.serviceType, provider: row.claim.provider,
     payer: row.claim.payer, payerCategory: row.claim.payerCategory, status: row.status,
     billed: row.billedAmount, allowed: row.allowedAmount, paid: row.paidAmount,

@@ -7,6 +7,12 @@ export function formatPhone(value: string): string {
     : value;
 }
 
+export function formatPatientId(id: string | null | undefined): string {
+  if (!id) return "N/A";
+  const m = /^pt_?0*([0-9]+)$/i.exec(id);
+  return m ? `P-${m[1].padStart(4, "0")}` : id;
+}
+
 export const CLAIM_FILE_STATUS_LABELS: Record<ClaimFileStatus, string> = {
   paid: "Approved",
   submitted: "Under review",

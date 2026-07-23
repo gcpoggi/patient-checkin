@@ -18,6 +18,7 @@ export default async function ClaimsErrorsPage({ searchParams }: ClaimsErrorsPag
   const office: OfficeId | undefined = query.office === "kendall" || query.office === "ponce" ? query.office : undefined;
   const rows: ClaimsErrorTableRow[] = detectPlaceOfServiceErrors(month, office).map(({ claim }) => ({
     claimId: claim.id,
+    patientId: claim.patientId,
     patient: claim.patientName,
     provider: claim.provider,
     office: claim.office,

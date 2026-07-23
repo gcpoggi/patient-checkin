@@ -85,6 +85,7 @@ export interface ProcedureLine {
 export interface Claim {
   id: string;
   claimNumber: string;
+  patientId: string | null;
   patientName: string;
   patientDob: string;
   patientPhone: string;
@@ -190,6 +191,7 @@ export interface ReconciledClaimRow {
   status: ClaimStatus;
   claim: Claim;
   visit: Visit | null;
+  patientId: string | null;
   patientName: string;
   office: OfficeId;
   dateOfService: string;

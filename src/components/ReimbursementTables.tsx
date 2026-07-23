@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
 import { StatusBadge } from "@/components/StatusBadge";
+import { formatPatientId } from "@/lib/format";
 import type { ClaimStatus } from "@/lib/types";
 
 export interface ReimbursementPayerRow {
@@ -20,6 +21,7 @@ export interface ReimbursementPayerRow {
 export interface ReimbursementDetailRow {
   id: string;
   claimNumber: string;
+  patientId: string | null;
   patient: string;
   office: string;
   dateOfService: string;
@@ -58,8 +60,9 @@ const payerColumns: ExcelColumn<ReimbursementPayerRow>[] = [
 ];
 
 const detailColumns: ExcelColumn<ReimbursementDetailRow>[] = [
-  { key: "claimNumber", header: "Claim #", width: 140, render: (value) => <Link href={`/claims/${encodeURIComponent(String(value))}`} className="font-mono font-semibold text-teal-700 hover:underline">{String(value)}</Link> },
+  { key: "patientId", header: "Patient ID", width: 120, render: (value) => <span className="font-mono text-slate-500">{formatPatientId(value as string | null)}</span>, exportValue: (row) => formatPatientId(row.patientId) },
   { key: "patient", header: "Patient", width: 190 },
+  { key: "claimNumber", header: "Claim #", width: 140, render: (value) => <Link href={`/claims/${encodeURIComponent(String(value))}`} className="font-mono font-semibold text-teal-700 hover:underline">{String(value)}</Link> },
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "dateOfService", header: "Date Visited", width: 135, render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
   { key: "provider", header: "Physician", width: 180 },

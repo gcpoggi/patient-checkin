@@ -267,6 +267,7 @@ function claimForVisit(visit, id, fileStatus) {
   const dateProcessed = addDaysIso(visit.date, 8 + Math.floor(random() * 15));
   return {
     id, claimNumber: nextClaimNumber(),
+    patientId: visit.patientId,
     patientName: patient.fullName,
     patientDob: patient.dob,
     patientPhone: patient.phone,
@@ -301,13 +302,14 @@ const claims = billedVisits.map((visit) => {
 });
 
 const phantomPatient = patientById.get("pt_0003");
-function buildManualClaim({ id, patient, patientName, patientDob, patientPhone, office, dateOfService, cptCode, payer, provider, serviceType, placeOfService, fileStatus }) {
+function buildManualClaim({ id, patient, patientId, patientName, patientDob, patientPhone, office, dateOfService, cptCode, payer, provider, serviceType, placeOfService, fileStatus }) {
   const procedure = buildProcedureLineJs(cptCode, 0, payer === "Medicare");
   const procedures = [{ ...procedure, planPaid: fileStatus === "paid" ? round2(procedure.allowedAmount * (0.96 + random() * 0.03)) : 0 }];
   const agg = aggregateClaimAmountsJs(procedures);
   const dateProcessed = addDaysIso(dateOfService, 14);
   return {
-    id, claimNumber: nextClaimNumber(), patientName: patientName ?? patient.fullName,
+    id, claimNumber: nextClaimNumber(), patientId: patientId ?? patient?.id ?? null,
+    patientName: patientName ?? patient.fullName,
     patientDob: patientDob ?? patient.dob, patientPhone: patientPhone ?? patient.phone,
     office, dateOfService, dateProcessed, totalDays: daysBetweenIso(dateOfService, dateProcessed),
     cptCode, description: procedure.description, procedures, ...agg, payer,
@@ -317,9 +319,9 @@ function buildManualClaim({ id, patient, patientName, patientDob, patientPhone, 
   };
 }
 claims.push(
-  buildManualClaim({ id: "clm-9101", patient: phantomPatient, office: "kendall", dateOfService: "2026-01-05", cptCode: "97110", payer: "Medicare", provider: phantomPatient.physician, serviceType: "pt", placeOfService: "office", fileStatus: "paid" }),
-  buildManualClaim({ id: "clm-9102", patient: patients[0], office: "kendall", dateOfService: "2026-01-18", cptCode: "97530", payer: "BCBS FL", provider: patients[0].physician, serviceType: "pt", placeOfService: "office", fileStatus: "paid" }),
-  buildManualClaim({ id: "clm-9103", patientName: "Ana Ferrer", patientDob: "1980-06-12", patientPhone: "3055550199", office: "kendall", dateOfService: "2026-01-22", cptCode: "97140", payer: "Aetna", provider: physicians[2].name, serviceType: "pt", placeOfService: "office", fileStatus: "submitted" }),
+  buildManualClaim({ id: "clm-9101", patient: phantomPatient, patientId: phantomPatient.id, office: "kendall", dateOfService: "2026-01-05", cptCode: "97110", payer: "Medicare", provider: phantomPatient.physician, serviceType: "pt", placeOfService: "office", fileStatus: "paid" }),
+  buildManualClaim({ id: "clm-9102", patient: patients[0], patientId: "pt_0001", office: "kendall", dateOfService: "2026-01-18", cptCode: "97530", payer: "BCBS FL", provider: patients[0].physician, serviceType: "pt", placeOfService: "office", fileStatus: "paid" }),
+  buildManualClaim({ id: "clm-9103", patientId: null, patientName: "Ana Ferrer", patientDob: "1980-06-12", patientPhone: "3055550199", office: "kendall", dateOfService: "2026-01-22", cptCode: "97140", payer: "Aetna", provider: physicians[2].name, serviceType: "pt", placeOfService: "office", fileStatus: "submitted" }),
 );
 
 const errorClaimSpecs = [
@@ -329,7 +331,7 @@ const errorClaimSpecs = [
 ];
 for (const spec of errorClaimSpecs) {
   const fee = feeSchedule.cptTable[spec.cptCode];
-  claims.push(buildManualClaim({ ...spec, provider: spec.patient.physician, serviceType: fee.serviceType }));
+  claims.push(buildManualClaim({ ...spec, patientId: spec.patient.id, provider: spec.patient.physician, serviceType: fee.serviceType }));
 }
 
 const showcasePatient = {
@@ -345,7 +347,7 @@ visits.push({
   checkedInAt: "2026-01-05T10:00:00.000-05:00", source: "seed",
 });
 claims.push({
-  id: "clm-showcase-066052423", claimNumber: "066052423", patientName: "Pablo Silverio",
+  id: "clm-showcase-066052423", claimNumber: "066052423", patientId: "pt_0039", patientName: "Pablo Silverio",
   patientDob: "1953-02-11", patientPhone: "3055550199", office: "kendall",
   dateOfService: "2026-01-05", dateProcessed: "2026-01-21", totalDays: 16,
   cptCode: "97110", description: "Therapeutic exercise",

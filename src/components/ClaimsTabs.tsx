@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
-import { CLAIM_FILE_STATUS_LABELS } from "@/lib/format";
+import { CLAIM_FILE_STATUS_LABELS, formatPatientId } from "@/lib/format";
 import type { ClaimStatus, ReconciledClaimRow } from "@/lib/types";
 
 type TabStatus = Exclude<ClaimStatus, "paid_full">;
@@ -32,8 +32,9 @@ function statusPill(row: ReconciledClaimRow) {
 }
 
 const columns: ExcelColumn<ReconciledClaimRow>[] = [
-  { key: "claim", header: "Claim #", width: 16, render: (_, row) => <Link href={`/claims/${encodeURIComponent(row.claim.claimNumber)}`} className="font-mono font-semibold text-teal-700 hover:underline">{row.claim.claimNumber}</Link>, sortValue: (row) => row.claim.claimNumber, exportValue: (row) => row.claim.claimNumber },
+  { key: "patientId", header: "Patient ID", width: 14, render: (value) => <span className="font-mono text-slate-500">{formatPatientId(value as string | null)}</span>, exportValue: (row) => formatPatientId(row.patientId) },
   { key: "patientName", header: "Patient", width: 24 },
+  { key: "claim", header: "Claim #", width: 16, render: (_, row) => <Link href={`/claims/${encodeURIComponent(row.claim.claimNumber)}`} className="font-mono font-semibold text-teal-700 hover:underline">{row.claim.claimNumber}</Link>, sortValue: (row) => row.claim.claimNumber, exportValue: (row) => row.claim.claimNumber },
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "dateOfService", header: "Date Visited", width: 14 },
   { key: "visitedProvider", header: "Physician", filter: "select", width: 24 },

@@ -1,10 +1,12 @@
 "use client";
 
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
+import { formatPatientId } from "@/lib/format";
 import type { OfficeId, PlaceOfService } from "@/lib/types";
 
 export interface ClaimsErrorTableRow {
   claimId: string;
+  patientId: string | null;
   patient: string;
   provider: string;
   office: OfficeId;
@@ -25,8 +27,9 @@ const placeOfServiceLabels: Record<PlaceOfService, string> = {
 };
 
 const columns: ExcelColumn<ClaimsErrorTableRow>[] = [
-  { key: "claimId", header: "Claim ID", width: 110 },
+  { key: "patientId", header: "Patient ID", width: 120, render: (value) => <span className="font-mono text-slate-500">{formatPatientId(value as string | null)}</span>, exportValue: (row) => formatPatientId(row.patientId) },
   { key: "patient", header: "Patient", width: 180 },
+  { key: "claimId", header: "Claim ID", width: 110 },
   { key: "provider", header: "Provider", filter: "select", width: 170 },
   { key: "office", header: "Office", filter: "select" },
   { key: "dateOfService", header: "Date of Service", width: 115 },

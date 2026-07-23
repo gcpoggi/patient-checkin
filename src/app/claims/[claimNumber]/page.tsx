@@ -3,7 +3,7 @@ import { AppShell } from "@/components/AppShell";
 import { ClaimProceduresTable } from "@/components/ClaimProceduresTable";
 import { PageHeader } from "@/components/PageHeader";
 import { StatCard } from "@/components/StatCard";
-import { CLAIM_FILE_STATUS_LABELS, formatPhone } from "@/lib/format";
+import { CLAIM_FILE_STATUS_LABELS, formatPatientId, formatPhone } from "@/lib/format";
 import { getStore } from "@/lib/store";
 
 interface ClaimDetailPageProps {
@@ -27,6 +27,7 @@ export default async function ClaimDetailPage({ params }: ClaimDetailPageProps) 
   const contestHref = `/contestations/new?claimIds=${encodeURIComponent(claim.id)}&insurer=${encodeURIComponent(claim.payer)}&reason=${contestReason}&amount=${contestAmount}`;
   const pillColor = claim.fileStatus === "paid" ? "bg-emerald-100 text-emerald-700" : claim.fileStatus === "submitted" ? "bg-amber-100 text-amber-700" : "bg-rose-100 text-rose-700";
   const info = [
+    ["Patient ID", formatPatientId(claim.patientId)],
     ["Date Visited", claim.dateOfService],
     ["Date Processed", claim.dateProcessed],
     ["Total Days", String(claim.totalDays)],

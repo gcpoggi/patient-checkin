@@ -55,6 +55,7 @@ export default async function ReimbursementAnalysisPage({ searchParams }: Reimbu
   const detailRows: ReimbursementDetailRow[] = rows.map((row) => ({
     id: row.claim.id,
     claimNumber: row.claim.claimNumber,
+    patientId: row.patientId,
     patient: row.patientName,
     office: row.office,
     dateOfService: row.dateOfService,

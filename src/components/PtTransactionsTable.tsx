@@ -1,7 +1,7 @@
 "use client";
 
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
-import { formatPhone } from "@/lib/format";
+import { formatPatientId, formatPhone } from "@/lib/format";
 import type { BillingStatus, ServiceTransaction } from "@/lib/types";
 import Link from "next/link";
 
@@ -20,6 +20,13 @@ function money(value: ServiceTransaction[keyof ServiceTransaction]) {
 }
 
 const columns: ExcelColumn<ServiceTransaction>[] = [
+  {
+    key: "patientId",
+    header: "Patient ID",
+    width: 120,
+    render: (value) => <span className="font-mono text-slate-500">{formatPatientId(String(value))}</span>,
+    exportValue: (row) => formatPatientId(row.patientId),
+  },
   {
     key: "patientName",
     header: "Patient",

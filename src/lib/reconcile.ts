@@ -66,6 +66,7 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
       status,
       claim,
       visit,
+      patientId: claim.patientId,
       patientName: claim.patientName,
       office: claim.office,
       dateOfService: claim.dateOfService,

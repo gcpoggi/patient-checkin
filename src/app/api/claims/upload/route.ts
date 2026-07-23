@@ -156,6 +156,7 @@ function claimFromRow(row: SheetRow): Claim {
   return {
     id: claimNumber,
     claimNumber,
+    patientId: null,
     patientName: requiredText(row, "patientName", "patient_name"),
     patientDob: dob,
     patientPhone: textValue(getValue(row, aliases.phone)),

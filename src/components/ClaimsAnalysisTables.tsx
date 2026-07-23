@@ -3,10 +3,11 @@
 import Link from "next/link";
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
 import { StatusBadge } from "@/components/StatusBadge";
+import { formatPatientId } from "@/lib/format";
 import type { ClaimStatus } from "@/lib/types";
 
 export interface ClaimsStatusSummaryRow { status: ClaimStatus; claims: number; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; share: number; }
-export interface ClaimsAnalysisLedgerRow { id: string; claimNumber: string; patient: string; office: string; date: string; cpt: string; serviceType: string; provider: string; payer: string; payerCategory: string; status: ClaimStatus; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; collectionPct: number; }
+export interface ClaimsAnalysisLedgerRow { id: string; claimNumber: string; patientId: string | null; patient: string; office: string; date: string; cpt: string; serviceType: string; provider: string; payer: string; payerCategory: string; status: ClaimStatus; billed: number; allowed: number; paid: number; medicareTotal: number; underpayment: number; collectionPct: number; }
 
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 const percent = new Intl.NumberFormat("en-US", { style: "percent", maximumFractionDigits: 1 });
@@ -24,8 +25,9 @@ const summaryColumns: ExcelColumn<ClaimsStatusSummaryRow>[] = [
 ];
 
 const ledgerColumns: ExcelColumn<ClaimsAnalysisLedgerRow>[] = [
-  { key: "claimNumber", header: "Claim #", width: 140, render: (value) => <Link href={`/claims/${encodeURIComponent(String(value))}`} className="font-mono font-semibold text-teal-700 hover:underline">{String(value)}</Link> },
+  { key: "patientId", header: "Patient ID", width: 120, render: (value) => <span className="font-mono text-slate-500">{formatPatientId(value as string | null)}</span>, exportValue: (row) => formatPatientId(row.patientId) },
   { key: "patient", header: "Patient", width: 190 },
+  { key: "claimNumber", header: "Claim #", width: 140, render: (value) => <Link href={`/claims/${encodeURIComponent(String(value))}`} className="font-mono font-semibold text-teal-700 hover:underline">{String(value)}</Link> },
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "date", header: "Date", width: 135, render: (value) => date.format(new Date(`${String(value)}T00:00:00Z`)) },
   { key: "cpt", header: "CPT", filter: "select" },
