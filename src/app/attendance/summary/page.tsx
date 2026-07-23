@@ -14,6 +14,7 @@ interface SummaryPageProps {
 const tabs = [
   { label: "PT Grid", href: "/attendance" },
   { label: "PT Transactions", href: "/attendance/transactions" },
+  { label: "Doctor Visits", href: "/attendance/doctor-visits" },
   { label: "Physicians", href: "/attendance/physicians" },
   { label: "Summary", href: "/attendance/summary" },
 ];
