@@ -8,7 +8,7 @@
     "createdAt": "2025-12-01T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   },
   {
     "id": "pt_0002",
@@ -19,7 +19,7 @@
     "createdAt": "2025-12-01T14:01:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Patricia Nunez, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0003",
@@ -30,7 +30,7 @@
     "createdAt": "2025-12-02T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Patricia Nunez, MD",
-    "physician": "Liam McCarthy, MD"
+    "physician": "Michael Bianchi, MD"
   },
   {
     "id": "pt_0004",
@@ -41,7 +41,7 @@
     "createdAt": "2025-12-03T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Patricia Nunez, MD",
-    "physician": "David Font-Rodriguez, MD"
+    "physician": "James Whitfield, MD"
   },
   {
     "id": "pt_0005",
@@ -52,7 +52,7 @@
     "createdAt": "2025-12-04T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "David Font-Rodriguez, MD"
+    "physician": "James Whitfield, MD"
   },
   {
     "id": "pt_0006",
@@ -63,7 +63,7 @@
     "createdAt": "2025-12-05T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Patricia Nunez, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0007",
@@ -74,7 +74,7 @@
     "createdAt": "2025-12-06T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "David Font-Rodriguez, MD"
+    "physician": "James Whitfield, MD"
   },
   {
     "id": "pt_0008",
@@ -85,7 +85,7 @@
     "createdAt": "2025-12-07T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Patricia Nunez, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   },
   {
     "id": "pt_0009",
@@ -96,7 +96,7 @@
     "createdAt": "2025-12-08T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "Mauricio Herrera, MD"
+    "physician": "Daniel Okonkwo, MD"
   },
   {
     "id": "pt_0010",
@@ -107,7 +107,7 @@
     "createdAt": "2025-12-09T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Mauricio Herrera, MD"
+    "physician": "Daniel Okonkwo, MD"
   },
   {
     "id": "pt_0011",
@@ -118,7 +118,7 @@
     "createdAt": "2025-12-10T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Patricia Nunez, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   },
   {
     "id": "pt_0012",
@@ -129,7 +129,7 @@
     "createdAt": "2025-12-11T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Mauricio Herrera, MD"
+    "physician": "Daniel Okonkwo, MD"
   },
   {
     "id": "pt_0013",
@@ -140,7 +140,7 @@
     "createdAt": "2025-12-12T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "Liam McCarthy, MD"
+    "physician": "Michael Bianchi, MD"
   },
   {
     "id": "pt_0014",
@@ -151,7 +151,7 @@
     "createdAt": "2025-12-13T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Andres Villalobos, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   },
   {
     "id": "pt_0015",
@@ -162,7 +162,7 @@
     "createdAt": "2025-12-14T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Liam McCarthy, MD"
+    "physician": "Michael Bianchi, MD"
   },
   {
     "id": "pt_0016",
@@ -173,7 +173,7 @@
     "createdAt": "2025-12-15T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   },
   {
     "id": "pt_0017",
@@ -184,7 +184,7 @@
     "createdAt": "2025-12-16T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0018",
@@ -195,7 +195,7 @@
     "createdAt": "2025-12-17T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Mauricio Herrera, MD"
+    "physician": "Daniel Okonkwo, MD"
   },
   {
     "id": "pt_0019",
@@ -206,7 +206,7 @@
     "createdAt": "2025-12-18T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Elena Marquez, MD",
-    "physician": "Liam McCarthy, MD"
+    "physician": "Michael Bianchi, MD"
   },
   {
     "id": "pt_0020",
@@ -217,7 +217,7 @@
     "createdAt": "2025-12-19T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Andres Villalobos, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0021",
@@ -228,7 +228,7 @@
     "createdAt": "2025-12-20T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Andres Villalobos, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0022",
@@ -239,7 +239,7 @@
     "createdAt": "2025-12-21T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Andres Villalobos, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   },
   {
     "id": "pt_0023",
@@ -250,7 +250,7 @@
     "createdAt": "2025-12-22T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Elena Marquez, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0024",
@@ -261,7 +261,7 @@
     "createdAt": "2025-12-23T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   },
   {
     "id": "pt_0025",
@@ -272,7 +272,7 @@
     "createdAt": "2025-12-24T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "Mauricio Herrera, MD"
+    "physician": "Daniel Okonkwo, MD"
   },
   {
     "id": "pt_0026",
@@ -283,7 +283,7 @@
     "createdAt": "2025-12-25T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Andres Villalobos, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0027",
@@ -294,7 +294,7 @@
     "createdAt": "2025-12-26T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Elena Marquez, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0028",
@@ -305,7 +305,7 @@
     "createdAt": "2025-12-27T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "David Font-Rodriguez, MD"
+    "physician": "James Whitfield, MD"
   },
   {
     "id": "pt_0029",
@@ -316,7 +316,7 @@
     "createdAt": "2025-12-28T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Andres Villalobos, MD",
-    "physician": "Liam McCarthy, MD"
+    "physician": "Michael Bianchi, MD"
   },
   {
     "id": "pt_0030",
@@ -327,7 +327,7 @@
     "createdAt": "2025-12-29T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Miguel Contreras, DO",
-    "physician": "Mauricio Herrera, MD"
+    "physician": "Daniel Okonkwo, MD"
   },
   {
     "id": "pt_0031",
@@ -338,7 +338,7 @@
     "createdAt": "2025-12-02T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "David Font-Rodriguez, MD"
+    "physician": "James Whitfield, MD"
   },
   {
     "id": "pt_0032",
@@ -349,7 +349,7 @@
     "createdAt": "2025-12-03T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0033",
@@ -360,7 +360,7 @@
     "createdAt": "2025-12-04T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Miguel Contreras, DO",
-    "physician": "David Font-Rodriguez, MD"
+    "physician": "James Whitfield, MD"
   },
   {
     "id": "pt_0034",
@@ -371,7 +371,7 @@
     "createdAt": "2025-12-05T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0035",
@@ -382,7 +382,7 @@
     "createdAt": "2025-12-06T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Sofia Delgado, MD",
-    "physician": "Mauricio Herrera, MD"
+    "physician": "Daniel Okonkwo, MD"
   },
   {
     "id": "pt_0036",
@@ -393,7 +393,7 @@
     "createdAt": "2025-12-07T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Miguel Contreras, DO",
-    "physician": "Amar D. Rajadhyaksha, MD"
+    "physician": "Karen Sullivan, MD"
   },
   {
     "id": "pt_0037",
@@ -404,7 +404,7 @@
     "createdAt": "2025-12-08T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Miguel Contreras, DO",
-    "physician": "Liam McCarthy, MD"
+    "physician": "Michael Bianchi, MD"
   },
   {
     "id": "pt_0038",
@@ -415,7 +415,7 @@
     "createdAt": "2025-12-09T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Miguel Contreras, DO",
-    "physician": "Liam McCarthy, MD"
+    "physician": "Michael Bianchi, MD"
   },
   {
     "id": "pt_0039",
@@ -426,6 +426,6 @@
     "createdAt": "2025-12-03T14:00:00.000Z",
     "isSeed": true,
     "pcp": "Dr. Ricardo Fuentes, MD",
-    "physician": "Arturo Corces, MD"
+    "physician": "Steven Marsh, MD"
   }
 ]

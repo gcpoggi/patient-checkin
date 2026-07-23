@@ -63,11 +63,11 @@ const offices = [
 ];
 
 const physicians = [
-  { id: "dr_01", name: "Arturo Corces, MD", specialty: "Knee and Hip Replacement" },
-  { id: "dr_02", name: "Mauricio Herrera, MD", specialty: "Sports Medicine and Arthroscopic Surgery" },
-  { id: "dr_03", name: "David Font-Rodriguez, MD", specialty: "Upper Extremity Surgery" },
-  { id: "dr_04", name: "Liam McCarthy, MD", specialty: "Physical Medicine and Rehabilitation" },
-  { id: "dr_05", name: "Amar D. Rajadhyaksha, MD", specialty: "Orthopedic Spinal Surgery" },
+  { id: "dr_01", name: "Steven Marsh, MD", specialty: "Knee and Hip Replacement" },
+  { id: "dr_02", name: "Daniel Okonkwo, MD", specialty: "Sports Medicine and Arthroscopic Surgery" },
+  { id: "dr_03", name: "James Whitfield, MD", specialty: "Upper Extremity Surgery" },
+  { id: "dr_04", name: "Michael Bianchi, MD", specialty: "Physical Medicine and Rehabilitation" },
+  { id: "dr_05", name: "Karen Sullivan, MD", specialty: "Orthopedic Spinal Surgery" },
 ];
 const pcpNames = ["Dr. Ricardo Fuentes, MD", "Dr. Elena Marquez, MD", "Dr. Andres Villalobos, MD", "Dr. Patricia Nunez, MD", "Dr. Miguel Contreras, DO", "Dr. Sofia Delgado, MD"];
 
@@ -312,7 +312,7 @@ for (const spec of errorClaimSpecs) {
 const showcasePatient = {
   id: "pt_0039", fullName: "Pablo Silverio", dob: "1953-02-11", phone: "3055550199",
   office: "kendall", createdAt: "2025-12-03T14:00:00.000Z", isSeed: true,
-  pcp: pick(pcpNames), physician: "Arturo Corces, MD",
+  pcp: pick(pcpNames), physician: physicians[0].name,
 };
 patients.push(showcasePatient);
 patientById.set("pt_0039", showcasePatient);
@@ -333,7 +333,7 @@ claims.push({
   ],
   billedAmount: 1044.40, allowedAmount: 75.09, paidAmount: 73.61, medicareTotal: 100.14, underpayment: 26.53,
   payer: "Medicare Advantage (UnitedHealthcare)", payerCategory: "medicare_advantage",
-  provider: "Arturo Corces, MD", visitedProvider: "Arturo Corces, MD", serviceType: "pt",
+  provider: physicians[0].name, visitedProvider: physicians[0].name, serviceType: "pt",
   placeOfService: "office", denialReason: null, fileStatus: "submitted", paidDate: null, source: "seed",
 });
 
@@ -399,8 +399,8 @@ console.log(JSON.stringify({
   claims: claims.length,
   kendallJanuary: {
     scheduled: appointments.filter((item) => item.office === "kendall" && item.date.startsWith("2026-01")).length,
-    attended: kendallJanuaryVisits.length,
-    evals: kendallJanuaryVisits.filter((item) => item.eventType === "evaluation").length,
+    attended: visits.filter((item) => item.office === "kendall" && item.date.startsWith("2026-01")).length,
+    evals: visits.filter((item) => item.office === "kendall" && item.date.startsWith("2026-01") && item.eventType === "evaluation").length,
     missingWithoutClaims: missingVisits.length,
   },
   sampleRows: uploadRows.length,

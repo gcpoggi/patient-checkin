@@ -38,7 +38,6 @@ function physicianColumns(office: OfficeId, month: string): ExcelColumn<Physicia
         return <Link href={`/attendance/physicians?${params.toString()}`} className="font-semibold text-teal-700 hover:text-teal-500 hover:underline">{physician}</Link>;
       },
     },
-    { key: "specialty", header: "Specialty", width: 150 },
     { key: "patients", header: "Patients", align: "right", filter: "none" },
     { key: "doctorVisits", header: "Doctor Visits", align: "right", filter: "none" },
     { key: "ptVisits", header: "PT Visits", align: "right", filter: "none" },
