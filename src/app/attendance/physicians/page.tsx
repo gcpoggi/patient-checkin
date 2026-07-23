@@ -38,7 +38,10 @@ export default async function PhysiciansPage({ searchParams }: PhysiciansPagePro
 
   return (
     <AppShell>
-      <PageHeader title="Physician Attendance" subtitle="Attendance reports grouped by physician" />
+      <PageHeader
+        title="Doctor Visits — Physician Summary"
+        subtitle="Per-orthopedist activity: initial visits, follow-ups, PT therapies, evals"
+      />
       <SubNavTabs items={tabs} />
       <div className="mt-6"><OfficeMonthPicker current={office} month={month} /></div>
       <div className="mt-6">

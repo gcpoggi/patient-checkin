@@ -13,12 +13,17 @@ export function ProviderPatientsBarChart({ summary }: { summary: MonthlySummary 
   const data = summary.byPhysician.map((row) => ({
     physician: row.physician,
     axisLabel: shortenProviderName(row.physician),
-    "Doctor visits": row.doctorVisits,
-    "PT visits": row.ptVisits,
-    Evaluations: row.evals,
+    "Initial Visits": row.initialVisits,
+    "Follow-ups": row.followups,
+    "PT Therapies": row.ptVisits,
+    Evals: row.evals,
   }));
   const hasActivity = data.some(
-    (row) => row["Doctor visits"] > 0 || row["PT visits"] > 0 || row.Evaluations > 0,
+    (row) =>
+      row["Initial Visits"] > 0 ||
+      row["Follow-ups"] > 0 ||
+      row["PT Therapies"] > 0 ||
+      row.Evals > 0,
   );
 
   return (
@@ -30,7 +35,10 @@ export function ProviderPatientsBarChart({ summary }: { summary: MonthlySummary 
           No provider activity found for this period.
         </p>
       ) : (
-        <div className="mt-5 h-80 w-full" aria-label="Doctor, PT, and evaluation visits by physician">
+        <div
+          className="mt-5 h-80 w-full"
+          aria-label="Initial visits, follow-ups, PT therapies, and evals by physician"
+        >
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={data} margin={{ top: 8, right: 12, left: -12, bottom: 12 }}>
               <CartesianGrid stroke={CHART_GRID} strokeDasharray="3 3" vertical={false} />
@@ -43,9 +51,10 @@ export function ProviderPatientsBarChart({ summary }: { summary: MonthlySummary 
               />
               <YAxis allowDecimals={false} tick={{ fill: CHART_TEXT, fontSize: 11 }} axisLine={false} tickLine={false} />
               <Tooltip content={<ChartTooltip />} labelFormatter={(_, payload) => payload?.[0]?.payload?.physician ?? ""} />
-              <Bar dataKey="Doctor visits" stackId="visits" fill={CHART_COLORS.navy} radius={[0, 0, 3, 3]} />
-              <Bar dataKey="PT visits" stackId="visits" fill={CHART_COLORS.teal400} />
-              <Bar dataKey="Evaluations" stackId="visits" fill={CHART_COLORS.sky} radius={[3, 3, 0, 0]} />
+              <Bar dataKey="Initial Visits" stackId="visits" fill={CHART_COLORS.navy} radius={[0, 0, 3, 3]} />
+              <Bar dataKey="Follow-ups" stackId="visits" fill={CHART_COLORS.teal} />
+              <Bar dataKey="PT Therapies" stackId="visits" fill={CHART_COLORS.teal400} />
+              <Bar dataKey="Evals" stackId="visits" fill={CHART_COLORS.sky} radius={[3, 3, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>
