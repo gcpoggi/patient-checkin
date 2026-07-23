@@ -35,7 +35,7 @@ export default async function SummaryPage({ searchParams }: SummaryPageProps) {
 
       <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <StatCard label="Total patients" value={summary.combined.patients} sub="Distinct patients" variant="navy" />
-        <StatCard label="Doctor visits" value={summary.combined.doctorVisits} />
+        <StatCard label="Doctor visits" value={summary.combined.doctorVisits} sub="Initial + Follow-up" />
         <StatCard label="PT visits" value={summary.combined.ptVisits} />
         <StatCard label="Evaluations" value={summary.combined.evals} />
       </section>

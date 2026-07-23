@@ -7,11 +7,11 @@ import { formatPhone } from "@/lib/format";
 import type { EventType, OfficeId, Patient, TimeSlot } from "@/lib/types";
 
 const eventTypes: Array<{ value: EventType; label: string }> = [
-  { value: "therapy", label: "Therapy — PT service" },
-  { value: "doctor", label: "Service with Doctor" },
-  { value: "evaluation", label: "Evaluation (Atención)" },
-  { value: "followup", label: "Follow-up" },
-  { value: "account_only", label: "Account-only (billing/no clinical service)" },
+  { value: "therapy", label: "Therapy (PT)" },
+  { value: "evaluation", label: "Therapy evaluation (PT)" },
+  { value: "doctor", label: "Doctor — Initial visit" },
+  { value: "followup", label: "Doctor — Follow-up" },
+  { value: "account_only", label: "Account-only (billing / no clinical service)" },
 ];
 
 const timeSlots: TimeSlot[] = [
