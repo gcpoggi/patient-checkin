@@ -1,10 +1,10 @@
 claim_id,patient_name,dob,phone,office,date_of_service,cpt_code,description,billed_amount,paid_amount,payer,provider,place_of_service,claim_status,paid_date
-upload-001,Maria Rodriguez,1958-03-14,3055550147,kendall,2026-01-20,97110,Physical therapy treatment,150,95,BCBS FL,"Steven Marsh, MD",office,paid,2026-02-20
-upload-002,Rosa Sanchez,1963-07-04,3055550122,kendall,2026-01-20,97110,Physical therapy treatment,150,95,BCBS FL Marketplace,"Michael Bianchi, MD",office,paid,2026-02-20
-upload-003,Sofia Diaz,1949-03-22,3055550128,kendall,2026-01-16,97110,Physical therapy treatment,150,95,Medicare,"Karen Sullivan, MD",office,paid,2026-02-20
-upload-004,Elena Morales,1990-06-13,3055550130,kendall,2026-01-12,97110,Physical therapy treatment,150,95,Ambetter (ACA Marketplace),"Karen Sullivan, MD",office,paid,2026-02-20
-upload-005,Carmen Delgado,1949-09-06,3055550144,kendall,2026-01-02,97110,Physical therapy treatment,150,0,Zenith Insurance (Workers Comp),"Michael Bianchi, MD",office,submitted,
-upload-006,Rosa Suarez,1994-07-22,3055550140,kendall,2026-01-14,97110,Physical therapy treatment,150,0,AmTrust Workers Comp,"James Whitfield, MD",office,submitted,
+upload-001,Maria Rodriguez,1958-03-14,3055550147,kendall,2026-01-20,97110,Physical therapy treatment,150,95,BCBS FL Marketplace,"Steven Marsh, MD",office,paid,2026-02-20
+upload-002,Rosa Sanchez,1963-07-04,3055550122,kendall,2026-01-20,97110,Physical therapy treatment,150,95,Cigna,"Michael Bianchi, MD",office,paid,2026-02-20
+upload-003,Sofia Diaz,1949-03-22,3055550128,kendall,2026-01-16,97110,Physical therapy treatment,150,95,Cigna,"Karen Sullivan, MD",office,paid,2026-02-20
+upload-004,Elena Morales,1990-06-13,3055550130,kendall,2026-01-12,97110,Physical therapy treatment,150,95,BCBS FL Marketplace,"Karen Sullivan, MD",office,paid,2026-02-20
+upload-005,Carmen Delgado,1949-09-06,3055550144,kendall,2026-01-02,97110,Physical therapy treatment,150,0,BCBS FL,"Michael Bianchi, MD",office,submitted,
+upload-006,Rosa Suarez,1994-07-22,3055550140,kendall,2026-01-14,97110,Physical therapy treatment,150,0,BCBS FL,"James Whitfield, MD",office,submitted,
 upload-007,Victor Salas,1977-04-09,3055550188,kendall,2026-01-24,97140,Manual therapy,150,90,Cigna,"Steven Marsh, MD",office,paid,2026-02-21
 upload-invalid,Invalid Example,1960-01-01,3055550100,kendall,13/45/2026,97110,Invalid date demonstration,150,0,Aetna,"Daniel Okonkwo, MD",,submitted,
 clm-0010,Teresa Perez,1955-03-09,3055550120,kendall,2026-01-26,97140,Manual therapy,575.87,45.7,Cigna,"Michael Bianchi, MD",office,paid,2026-02-13

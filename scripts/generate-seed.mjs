@@ -222,9 +222,13 @@ const DENIAL_REASONS = [
 function proceduresForVisit(visit, serviceType, payer) {
   const isTraditionalMedicare = payer === "Medicare";
   let codes;
-  if (serviceType === "physician") codes = [pick(["99203", "99204", "99213", "99214"])];
-  else if (visit.eventType === "evaluation") codes = [pick(["97161", "97162", "97163"])];
-  else {
+  if (serviceType === "physician") {
+    codes = visit.eventType === "followup"
+      ? [pick(["99213", "99214"])]
+      : [pick(["99203", "99204"])];
+  } else if (visit.eventType === "evaluation") {
+    codes = [pick(["97161", "97162", "97163"])];
+  } else {
     const r = random();
     const count = r < 0.20 ? 1 : r < 0.65 ? 2 : 3;
     codes = shuffle(["97110", "97112", "97140", "97530"]).slice(0, count);
@@ -234,7 +238,7 @@ function proceduresForVisit(visit, serviceType, payer) {
 
 function claimForVisit(visit, id, fileStatus) {
   const patient = patientById.get(visit.patientId);
-  const serviceType = visit.eventType === "doctor" ? "physician" : "pt";
+  const serviceType = (visit.eventType === "doctor" || visit.eventType === "followup") ? "physician" : "pt";
   const payer = pick(payers);
   const procs = proceduresForVisit(visit, serviceType, payer).map((p) => ({
     ...p,
