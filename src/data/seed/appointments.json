@@ -181,7 +181,7 @@
     "office": "kendall",
     "date": "2026-01-13",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00024",
@@ -477,7 +477,7 @@
     "office": "kendall",
     "date": "2026-01-30",
     "slot": "09:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00061",
@@ -509,7 +509,7 @@
     "office": "kendall",
     "date": "2026-01-22",
     "slot": "10:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00065",
@@ -549,7 +549,7 @@
     "office": "kendall",
     "date": "2026-01-06",
     "slot": "14:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00070",
@@ -1029,7 +1029,7 @@
     "office": "kendall",
     "date": "2026-01-07",
     "slot": "16:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00130",
@@ -1237,7 +1237,7 @@
     "office": "kendall",
     "date": "2026-01-22",
     "slot": "15:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00156",
@@ -1285,7 +1285,7 @@
     "office": "kendall",
     "date": "2026-01-09",
     "slot": "14:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00162",
@@ -1341,7 +1341,7 @@
     "office": "kendall",
     "date": "2026-01-05",
     "slot": "11:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00169",
@@ -1373,7 +1373,7 @@
     "office": "kendall",
     "date": "2026-01-06",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00173",
@@ -1789,7 +1789,7 @@
     "office": "kendall",
     "date": "2026-01-15",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00225",
@@ -2077,7 +2077,7 @@
     "office": "kendall",
     "date": "2026-01-19",
     "slot": "13:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00261",
@@ -2405,7 +2405,7 @@
     "office": "kendall",
     "date": "2026-01-23",
     "slot": "17:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00302",
@@ -2461,7 +2461,7 @@
     "office": "kendall",
     "date": "2026-01-08",
     "slot": "07:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00309",
@@ -2477,7 +2477,7 @@
     "office": "kendall",
     "date": "2026-01-22",
     "slot": "11:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00311",
@@ -2749,7 +2749,7 @@
     "office": "kendall",
     "date": "2026-01-26",
     "slot": "15:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00345",
@@ -3029,7 +3029,7 @@
     "office": "kendall",
     "date": "2026-01-02",
     "slot": "16:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00380",
@@ -3125,7 +3125,7 @@
     "office": "kendall",
     "date": "2026-01-07",
     "slot": "08:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00392",
@@ -3517,7 +3517,7 @@
     "office": "kendall",
     "date": "2026-01-08",
     "slot": "11:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00441",
@@ -3541,7 +3541,7 @@
     "office": "kendall",
     "date": "2026-01-13",
     "slot": "08:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00444",
@@ -3989,7 +3989,7 @@
     "office": "ponce",
     "date": "2026-01-26",
     "slot": "11:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00500",
@@ -4101,7 +4101,7 @@
     "office": "ponce",
     "date": "2026-01-02",
     "slot": "10:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00514",
@@ -4181,7 +4181,7 @@
     "office": "ponce",
     "date": "2026-01-16",
     "slot": "16:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00524",
@@ -4253,7 +4253,7 @@
     "office": "ponce",
     "date": "2026-01-09",
     "slot": "17:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00533",
@@ -4669,7 +4669,7 @@
     "office": "ponce",
     "date": "2026-01-27",
     "slot": "10:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00585",
@@ -4733,7 +4733,7 @@
     "office": "ponce",
     "date": "2026-01-19",
     "slot": "14:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00593",
@@ -4853,7 +4853,7 @@
     "office": "ponce",
     "date": "2026-01-06",
     "slot": "07:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00608",
@@ -4925,7 +4925,7 @@
     "office": "ponce",
     "date": "2026-01-06",
     "slot": "11:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00617",
@@ -4941,7 +4941,7 @@
     "office": "ponce",
     "date": "2026-01-20",
     "slot": "15:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00619",
@@ -4965,7 +4965,7 @@
     "office": "ponce",
     "date": "2026-01-26",
     "slot": "07:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00622",
@@ -5029,7 +5029,7 @@
     "office": "ponce",
     "date": "2026-01-27",
     "slot": "09:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00630",
@@ -5077,7 +5077,7 @@
     "office": "ponce",
     "date": "2026-01-08",
     "slot": "14:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00636",
@@ -5093,7 +5093,7 @@
     "office": "ponce",
     "date": "2026-01-12",
     "slot": "07:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00638",
@@ -5181,7 +5181,7 @@
     "office": "ponce",
     "date": "2026-01-05",
     "slot": "07:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00649",
@@ -5205,7 +5205,7 @@
     "office": "ponce",
     "date": "2026-01-29",
     "slot": "11:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00652",
@@ -5365,7 +5365,7 @@
     "office": "ponce",
     "date": "2026-01-28",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00672",
@@ -5413,7 +5413,7 @@
     "office": "ponce",
     "date": "2026-01-13",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00678",
@@ -5485,7 +5485,7 @@
     "office": "ponce",
     "date": "2026-01-16",
     "slot": "14:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00687",
@@ -5589,7 +5589,7 @@
     "office": "ponce",
     "date": "2026-01-28",
     "slot": "09:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00700",
@@ -5637,7 +5637,7 @@
     "office": "ponce",
     "date": "2026-01-29",
     "slot": "13:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00706",
@@ -5965,7 +5965,7 @@
     "office": "ponce",
     "date": "2026-01-02",
     "slot": "16:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00747",
@@ -6093,7 +6093,7 @@
     "office": "ponce",
     "date": "2026-01-21",
     "slot": "15:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00763",
@@ -6101,7 +6101,7 @@
     "office": "ponce",
     "date": "2026-01-30",
     "slot": "10:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00764",
@@ -6317,7 +6317,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "14:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00791",
@@ -6341,7 +6341,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "07:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00794",
@@ -6381,7 +6381,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "09:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00799",
@@ -6405,7 +6405,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "11:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00802",
@@ -6413,7 +6413,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "07:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00803",
@@ -6437,7 +6437,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "07:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00806",
@@ -6525,7 +6525,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "17:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00817",
@@ -6533,7 +6533,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "16:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00818",
@@ -6589,7 +6589,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "17:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00825",
@@ -6613,7 +6613,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00828",
@@ -6637,7 +6637,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00831",
@@ -6685,7 +6685,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "16:00",
-    "type": "followup"
+    "type": "doctor"
   },
   {
     "id": "ap_00837",
@@ -6701,7 +6701,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "10:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00839",
@@ -6709,7 +6709,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "17:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00840",
@@ -6725,7 +6725,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "11:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00842",
@@ -6781,7 +6781,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "09:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00849",
@@ -6805,7 +6805,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "11:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00852",
@@ -6821,7 +6821,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "13:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00854",
@@ -6877,7 +6877,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00861",
@@ -6901,7 +6901,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "08:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00864",
@@ -7085,7 +7085,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "16:00",
-    "type": "doctor"
+    "type": "followup"
   },
   {
     "id": "ap_00887",

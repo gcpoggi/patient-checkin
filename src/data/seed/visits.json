@@ -237,7 +237,7 @@
     "office": "kendall",
     "date": "2026-01-13",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-13T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -644,7 +644,7 @@
     "office": "kendall",
     "date": "2026-01-30",
     "slot": "09:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-30T09:00:00.000-05:00",
     "source": "seed"
   },
@@ -688,7 +688,7 @@
     "office": "kendall",
     "date": "2026-01-22",
     "slot": "10:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-22T10:00:00.000-05:00",
     "source": "seed"
   },
@@ -743,7 +743,7 @@
     "office": "kendall",
     "date": "2026-01-06",
     "slot": "14:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-06T14:00:00.000-05:00",
     "source": "seed"
   },
@@ -1403,7 +1403,7 @@
     "office": "kendall",
     "date": "2026-01-07",
     "slot": "16:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-07T16:00:00.000-05:00",
     "source": "seed"
   },
@@ -1689,7 +1689,7 @@
     "office": "kendall",
     "date": "2026-01-22",
     "slot": "15:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-22T15:00:00.000-05:00",
     "source": "seed"
   },
@@ -1755,7 +1755,7 @@
     "office": "kendall",
     "date": "2026-01-09",
     "slot": "14:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-09T14:00:00.000-05:00",
     "source": "seed"
   },
@@ -1832,7 +1832,7 @@
     "office": "kendall",
     "date": "2026-01-05",
     "slot": "11:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-05T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -1876,7 +1876,7 @@
     "office": "kendall",
     "date": "2026-01-06",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-06T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -2448,7 +2448,7 @@
     "office": "kendall",
     "date": "2026-01-15",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-15T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -2844,7 +2844,7 @@
     "office": "kendall",
     "date": "2026-01-19",
     "slot": "13:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-19T13:00:00.000-05:00",
     "source": "seed"
   },
@@ -3295,7 +3295,7 @@
     "office": "kendall",
     "date": "2026-01-23",
     "slot": "17:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-23T17:00:00.000-05:00",
     "source": "seed"
   },
@@ -3372,7 +3372,7 @@
     "office": "kendall",
     "date": "2026-01-08",
     "slot": "07:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-08T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -3394,7 +3394,7 @@
     "office": "kendall",
     "date": "2026-01-22",
     "slot": "11:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-22T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -3768,7 +3768,7 @@
     "office": "kendall",
     "date": "2026-01-26",
     "slot": "15:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-26T15:00:00.000-05:00",
     "source": "seed"
   },
@@ -4153,7 +4153,7 @@
     "office": "kendall",
     "date": "2026-01-02",
     "slot": "16:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-02T16:00:00.000-05:00",
     "source": "seed"
   },
@@ -4285,7 +4285,7 @@
     "office": "kendall",
     "date": "2026-01-07",
     "slot": "08:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-07T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -4824,7 +4824,7 @@
     "office": "kendall",
     "date": "2026-01-08",
     "slot": "11:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-08T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -4857,7 +4857,7 @@
     "office": "kendall",
     "date": "2026-01-13",
     "slot": "08:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-13T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -5187,7 +5187,7 @@
     "office": "ponce",
     "date": "2026-01-26",
     "slot": "11:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-26T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -5341,7 +5341,7 @@
     "office": "ponce",
     "date": "2026-01-02",
     "slot": "10:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-02T10:00:00.000-05:00",
     "source": "seed"
   },
@@ -5451,7 +5451,7 @@
     "office": "ponce",
     "date": "2026-01-16",
     "slot": "16:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-16T16:00:00.000-05:00",
     "source": "seed"
   },
@@ -5550,7 +5550,7 @@
     "office": "ponce",
     "date": "2026-01-09",
     "slot": "17:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-09T17:00:00.000-05:00",
     "source": "seed"
   },
@@ -6122,7 +6122,7 @@
     "office": "ponce",
     "date": "2026-01-27",
     "slot": "10:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-27T10:00:00.000-05:00",
     "source": "seed"
   },
@@ -6210,7 +6210,7 @@
     "office": "ponce",
     "date": "2026-01-19",
     "slot": "14:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-19T14:00:00.000-05:00",
     "source": "seed"
   },
@@ -6375,7 +6375,7 @@
     "office": "ponce",
     "date": "2026-01-06",
     "slot": "07:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-06T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -6474,7 +6474,7 @@
     "office": "ponce",
     "date": "2026-01-06",
     "slot": "11:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-06T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -6496,7 +6496,7 @@
     "office": "ponce",
     "date": "2026-01-20",
     "slot": "15:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-20T15:00:00.000-05:00",
     "source": "seed"
   },
@@ -6529,7 +6529,7 @@
     "office": "ponce",
     "date": "2026-01-26",
     "slot": "07:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-26T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -6617,7 +6617,7 @@
     "office": "ponce",
     "date": "2026-01-27",
     "slot": "09:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-27T09:00:00.000-05:00",
     "source": "seed"
   },
@@ -6683,7 +6683,7 @@
     "office": "ponce",
     "date": "2026-01-08",
     "slot": "14:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-08T14:00:00.000-05:00",
     "source": "seed"
   },
@@ -6705,7 +6705,7 @@
     "office": "ponce",
     "date": "2026-01-12",
     "slot": "07:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-12T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -6826,7 +6826,7 @@
     "office": "ponce",
     "date": "2026-01-05",
     "slot": "07:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-05T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -6859,7 +6859,7 @@
     "office": "ponce",
     "date": "2026-01-29",
     "slot": "11:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-29T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -7079,7 +7079,7 @@
     "office": "ponce",
     "date": "2026-01-28",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-28T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -7145,7 +7145,7 @@
     "office": "ponce",
     "date": "2026-01-13",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-13T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -7244,7 +7244,7 @@
     "office": "ponce",
     "date": "2026-01-16",
     "slot": "14:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-16T14:00:00.000-05:00",
     "source": "seed"
   },
@@ -7387,7 +7387,7 @@
     "office": "ponce",
     "date": "2026-01-28",
     "slot": "09:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-28T09:00:00.000-05:00",
     "source": "seed"
   },
@@ -7453,7 +7453,7 @@
     "office": "ponce",
     "date": "2026-01-29",
     "slot": "13:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-01-29T13:00:00.000-05:00",
     "source": "seed"
   },
@@ -7904,7 +7904,7 @@
     "office": "ponce",
     "date": "2026-01-02",
     "slot": "16:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-02T16:00:00.000-05:00",
     "source": "seed"
   },
@@ -8080,7 +8080,7 @@
     "office": "ponce",
     "date": "2026-01-21",
     "slot": "15:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-21T15:00:00.000-05:00",
     "source": "seed"
   },
@@ -8091,7 +8091,7 @@
     "office": "ponce",
     "date": "2026-01-30",
     "slot": "10:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-01-30T10:00:00.000-05:00",
     "source": "seed"
   },
@@ -8124,7 +8124,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "14:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-04T14:00:00.000-05:00",
     "source": "seed"
   },
@@ -8157,7 +8157,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "07:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-02-02T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -8212,7 +8212,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "09:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-02T09:00:00.000-05:00",
     "source": "seed"
   },
@@ -8245,7 +8245,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "11:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-06T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -8256,7 +8256,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "07:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-04T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -8289,7 +8289,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "07:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-03T07:00:00.000-05:00",
     "source": "seed"
   },
@@ -8410,7 +8410,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "17:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-03T17:00:00.000-05:00",
     "source": "seed"
   },
@@ -8421,7 +8421,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "16:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-05T16:00:00.000-05:00",
     "source": "seed"
   },
@@ -8498,7 +8498,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "17:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-05T17:00:00.000-05:00",
     "source": "seed"
   },
@@ -8531,7 +8531,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-04T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -8564,7 +8564,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-05T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -8630,7 +8630,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "16:00",
-    "eventType": "followup",
+    "eventType": "doctor",
     "checkedInAt": "2026-02-04T16:00:00.000-05:00",
     "source": "seed"
   },
@@ -8652,7 +8652,7 @@
     "office": "kendall",
     "date": "2026-02-05",
     "slot": "10:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-05T10:00:00.000-05:00",
     "source": "seed"
   },
@@ -8663,7 +8663,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "17:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-06T17:00:00.000-05:00",
     "source": "seed"
   },
@@ -8685,7 +8685,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "11:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-03T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -8762,7 +8762,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "09:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-02T09:00:00.000-05:00",
     "source": "seed"
   },
@@ -8795,7 +8795,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "11:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-06T11:00:00.000-05:00",
     "source": "seed"
   },
@@ -8817,7 +8817,7 @@
     "office": "kendall",
     "date": "2026-02-06",
     "slot": "13:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-06T13:00:00.000-05:00",
     "source": "seed"
   },
@@ -8894,7 +8894,7 @@
     "office": "kendall",
     "date": "2026-02-02",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-02T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -8927,7 +8927,7 @@
     "office": "kendall",
     "date": "2026-02-03",
     "slot": "08:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-03T08:00:00.000-05:00",
     "source": "seed"
   },
@@ -9180,7 +9180,7 @@
     "office": "kendall",
     "date": "2026-02-04",
     "slot": "16:00",
-    "eventType": "doctor",
+    "eventType": "followup",
     "checkedInAt": "2026-02-04T16:00:00.000-05:00",
     "source": "seed"
   },

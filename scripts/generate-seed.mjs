@@ -175,6 +175,25 @@ generatePeriod("kendall", january, 492, 465, 71);
 generatePeriod("ponce", january, 295, 271, 43);
 generatePeriod("kendall", workdays("2026-02-02", "2026-02-06"), 110, 101, 15);
 
+// Enforce exactly one Initial visit per patient: the chronologically-first doctor-category
+// visit stays "doctor" (Initial), every later one becomes "followup" (Follow-up).
+const doctorVisitsByPatient = new Map();
+for (const v of visits) {
+  if (v.eventType === "doctor" || v.eventType === "followup") {
+    if (!doctorVisitsByPatient.has(v.patientId)) doctorVisitsByPatient.set(v.patientId, []);
+    doctorVisitsByPatient.get(v.patientId).push(v);
+  }
+}
+const apptById = new Map(appointments.map((a) => [a.id, a]));
+for (const vs of doctorVisitsByPatient.values()) {
+  vs.sort((a, b) => (a.date === b.date ? a.slot.localeCompare(b.slot) : a.date.localeCompare(b.date)));
+  vs.forEach((v, i) => {
+    v.eventType = i === 0 ? "doctor" : "followup";
+    const appt = v.appointmentId ? apptById.get(v.appointmentId) : null;
+    if (appt) appt.type = v.eventType;
+  });
+}
+
 const patientById = new Map(patients.map((patient) => [patient.id, patient]));
 const kendallJanuaryVisits = visits.filter((visit) => visit.office === "kendall" && visit.date.startsWith("2026-01"));
 const mariaVisit = (date) => kendallJanuaryVisits.find((visit) => visit.patientId === "pt_0001" && visit.date === date);
