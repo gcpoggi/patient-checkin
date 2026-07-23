@@ -148,6 +148,7 @@ export function buildServiceTransactions(office: OfficeId, month: string): Servi
       visitId: visit.id, patientId: patient.id, patientName: patient.fullName, dob: patient.dob,
       phone: patient.phone, office: visit.office, date: visit.date, slot: visit.slot,
       eventType: visit.eventType, serviceType, pcp: patient.pcp, physician: patient.physician,
+      claimNumber: claim?.claimNumber ?? null, procedureCount: claim?.procedures.length ?? 0,
       cptCode: claim?.cptCode ?? null, payer: claim?.payer ?? null,
       payerCategory: claim?.payerCategory ?? null, billedAmount: claim?.billedAmount ?? null,
       paidAmount: claim?.paidAmount ?? null, allowedAmount,

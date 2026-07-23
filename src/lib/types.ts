@@ -172,6 +172,8 @@ export interface ServiceTransaction {
   serviceType: ServiceType;
   pcp: string;
   physician: string;
+  claimNumber: string | null;
+  procedureCount: number;
   cptCode: string | null;
   payer: string | null;
   payerCategory: PayerCategory | null;

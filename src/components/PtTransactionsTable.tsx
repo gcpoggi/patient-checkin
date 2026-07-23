@@ -3,6 +3,7 @@
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
 import { formatPhone } from "@/lib/format";
 import type { BillingStatus, ServiceTransaction } from "@/lib/types";
+import Link from "next/link";
 
 const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 const statusLabels: Record<BillingStatus, string> = {
@@ -19,7 +20,16 @@ function money(value: ServiceTransaction[keyof ServiceTransaction]) {
 }
 
 const columns: ExcelColumn<ServiceTransaction>[] = [
-  { key: "patientName", header: "Patient", width: 180 },
+  {
+    key: "patientName",
+    header: "Patient",
+    width: 180,
+    render: (value, row) => row.claimNumber ? (
+      <Link href={`/claims/${row.claimNumber}`} className="font-medium text-teal-600 hover:underline">
+        {String(value)}
+      </Link>
+    ) : String(value),
+  },
   { key: "dob", header: "DOB", width: 100 },
   { key: "phone", header: "Phone", width: 110, render: (value) => formatPhone(String(value)) },
   { key: "office", header: "Office", filter: "select" },
@@ -28,7 +38,20 @@ const columns: ExcelColumn<ServiceTransaction>[] = [
   { key: "eventType", header: "Event Type", filter: "select" },
   { key: "pcp", header: "PCP", filter: "select", width: 140 },
   { key: "physician", header: "Physician", filter: "select", width: 170 },
-  { key: "cptCode", header: "CPT" },
+  {
+    key: "cptCode",
+    header: "CPT",
+    render: (_, row) => (
+      <span className="inline-flex items-center gap-1.5">
+        <span>{row.cptCode ?? "—"}</span>
+        {row.procedureCount > 1 ? (
+          <span className="rounded-full bg-mist-100 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">
+            +{row.procedureCount - 1}
+          </span>
+        ) : null}
+      </span>
+    ),
+  },
   { key: "payer", header: "Payer", filter: "select", width: 150 },
   { key: "payerCategory", header: "Payer Category", filter: "select" },
   { key: "billedAmount", header: "Billed", align: "right", render: money },
@@ -44,5 +67,6 @@ const columns: ExcelColumn<ServiceTransaction>[] = [
 export function PtTransactionsTable({ rows, exportFilename }: { rows: ServiceTransaction[]; exportFilename: string }) {
   return <ExcelTable columns={columns} rows={rows} rowKey={(row) => row.visitId} dense stickyFirstColumn
     exportFilename={exportFilename} title="PT service transactions"
+    caption="Click a patient to see all procedures (CPTs) billed that day."
     empty="No PT service transactions found for this office and month." />;
 }

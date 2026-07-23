@@ -27,6 +27,7 @@ export interface ExcelTableProps<T> {
   exportFilename?: string;
   empty?: string;
   title?: string;
+  caption?: string;
 }
 
 type SortDirection = "asc" | "desc";
@@ -62,6 +63,7 @@ export function ExcelTable<T>({
   exportFilename,
   empty = "No records found.",
   title,
+  caption,
 }: ExcelTableProps<T>): ReactElement {
   const [filters, setFilters] = useState<Record<string, string>>({});
   const [sort, setSort] = useState<{ key: keyof T | null; dir: SortDirection }>({
@@ -167,7 +169,12 @@ export function ExcelTable<T>({
   return (
     <div className="max-w-full overflow-hidden rounded-xl border border-mist-200 bg-white shadow-sm">
       <div className="flex flex-wrap items-center gap-2 border-b border-mist-200 px-3 py-2 text-sm">
-        {title ? <h2 className="mr-auto font-semibold text-navy">{title}</h2> : <span className="mr-auto" />}
+        {title || caption ? (
+          <div className="mr-auto">
+            {title ? <h2 className="font-semibold text-navy">{title}</h2> : null}
+            {caption ? <p className="mt-0.5 text-[11px] text-slate-500">{caption}</p> : null}
+          </div>
+        ) : <span className="mr-auto" />}
         <span className="text-slate-500">
           {visibleRows.length} of {rows.length} rows
         </span>
@@ -192,9 +199,9 @@ export function ExcelTable<T>({
         ) : null}
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="max-h-[70vh] overflow-auto">
         <table className={`min-w-max border-collapse ${textSize}`}>
-          <thead className="sticky top-0 z-10 bg-mist-100 text-navy">
+          <thead className="bg-mist-100 text-navy">
             <tr>
               {columns.map((column, columnIndex) => {
                 const activeSort = sort.key === column.key ? sort.dir : null;
@@ -203,8 +210,8 @@ export function ExcelTable<T>({
                     key={String(column.key)}
                     scope="col"
                     style={column.width ? { minWidth: column.width, width: column.width } : undefined}
-                    className={`border-b border-mist-200 font-semibold uppercase tracking-wider ${padding} ${alignment(column)} ${
-                      stickyFirstColumn && columnIndex === 0 ? "sticky left-0 z-20 bg-mist-100" : ""
+                    className={`sticky top-0 z-30 border-b border-mist-200 bg-mist-100 font-semibold uppercase tracking-wider ${padding} ${alignment(column)} ${
+                      stickyFirstColumn && columnIndex === 0 ? "left-0 z-40" : ""
                     }`}
                   >
                     <button
@@ -228,8 +235,8 @@ export function ExcelTable<T>({
                 return (
                   <th
                     key={key}
-                    className={`border-b border-mist-200 ${padding} ${
-                      stickyFirstColumn && columnIndex === 0 ? "sticky left-0 z-20 bg-mist-100" : ""
+                    className={`sticky top-[25px] z-20 border-b border-mist-200 bg-mist-100 ${padding} ${
+                      stickyFirstColumn && columnIndex === 0 ? "left-0 z-30" : ""
                     }`}
                   >
                     {filter === "text" ? (
@@ -277,7 +284,7 @@ export function ExcelTable<T>({
                         key={String(column.key)}
                         className={`whitespace-nowrap text-slate-700 ${padding} ${alignment(column)} ${
                           numeric ? "tabular-nums" : ""
-                        } ${stickyFirstColumn && columnIndex === 0 ? "sticky left-0 bg-inherit" : ""}`}
+                        } ${stickyFirstColumn && columnIndex === 0 ? "sticky left-0 z-10 bg-inherit" : ""}`}
                       >
                         {column.render ? column.render(value, row) : rawText(value)}
                       </td>

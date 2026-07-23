@@ -3,6 +3,7 @@
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
 import { DOCTOR_VISIT_TYPE_LABELS, formatPhone } from "@/lib/format";
 import type { BillingStatus, ServiceTransaction } from "@/lib/types";
+import Link from "next/link";
 
 const currency = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 const statusLabels: Record<BillingStatus, string> = {
@@ -26,7 +27,16 @@ function visitTypeLabel(value: ServiceTransaction["eventType"]): string {
 }
 
 const columns: ExcelColumn<ServiceTransaction>[] = [
-  { key: "patientName", header: "Patient", width: 180 },
+  {
+    key: "patientName",
+    header: "Patient",
+    width: 180,
+    render: (value, row) => row.claimNumber ? (
+      <Link href={`/claims/${row.claimNumber}`} className="font-medium text-teal-600 hover:underline">
+        {String(value)}
+      </Link>
+    ) : String(value),
+  },
   { key: "dob", header: "DOB", width: 100 },
   { key: "phone", header: "Phone", width: 110, render: (value) => formatPhone(String(value)) },
   { key: "office", header: "Office", filter: "select" },
