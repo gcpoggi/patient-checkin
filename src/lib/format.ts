@@ -12,3 +12,8 @@ export const CLAIM_FILE_STATUS_LABELS: Record<ClaimFileStatus, string> = {
   submitted: "Under review",
   denied: "Denied",
 };
+
+export const DOCTOR_VISIT_TYPE_LABELS: Record<"doctor" | "followup", string> = {
+  doctor: "Initial visit",
+  followup: "Follow-up",
+};

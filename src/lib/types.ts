@@ -13,6 +13,8 @@ export type EventType =
   | "followup"
   | "account_only";
 
+export type VisitCategory = "pt" | "doctor" | "excluded";
+
 export type TimeSlot =
   | "07:00"
   | "08:00"
@@ -130,6 +132,8 @@ export interface PhysicianSummary {
   physician: string;
   specialty: string | null;
   patients: number;
+  initialVisits: number;
+  followups: number;
   doctorVisits: number;
   ptVisits: number;
   evals: number;
@@ -145,6 +149,8 @@ export interface MonthlySummary {
   byPhysician: Array<{
     physician: string;
     patients: number;
+    initialVisits: number;
+    followups: number;
     doctorVisits: number;
     ptVisits: number;
     evals: number;

@@ -1,10 +1,20 @@
 import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
 import { getStore } from "@/lib/store";
 import { normalizeName, normalizePhone } from "@/lib/normalize";
-import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, MonthlySummary, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, SlotDayCell, TimeSlot, Visit } from "@/lib/types";
+import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, EventType, MonthlySummary, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, ServiceType, SlotDayCell, TimeSlot, Visit, VisitCategory } from "@/lib/types";
 
 const emptyCell = (): SlotDayCell => ({ attended: 0, evals: 0, scheduled: 0, noShows: 0 });
 const emptyTotals = (): AttendanceTotals => ({ ...emptyCell(), ptFu: 0 });
+
+export function visitCategory(eventType: EventType): VisitCategory {
+  if (eventType === "therapy" || eventType === "evaluation") return "pt";
+  if (eventType === "doctor" || eventType === "followup") return "doctor";
+  return "excluded";
+}
+
+export function serviceTypeForVisit(eventType: EventType): ServiceType {
+  return visitCategory(eventType) === "doctor" ? "physician" : "pt";
+}
 
 export function matchVisitForClaim(
   claim: Claim,
@@ -118,11 +128,11 @@ export function buildServiceTransactions(office: OfficeId, month: string): Servi
   const rows: ServiceTransaction[] = [];
 
   for (const visit of store.visits) {
-    if (visit.office !== office || !visit.date.startsWith(`${month}-`) || visit.eventType === "account_only") continue;
+    if (visit.office !== office || !visit.date.startsWith(`${month}-`) || visitCategory(visit.eventType) === "excluded") continue;
     const patient = store.patients.find((candidate) => candidate.id === visit.patientId);
     if (!patient) continue;
 
-    const serviceType = visit.eventType === "doctor" ? "physician" : "pt";
+    const serviceType = serviceTypeForVisit(visit.eventType);
     const claim = claims.find(
       (candidate) =>
         !matchedClaimIds.has(candidate.id) &&
@@ -150,6 +160,10 @@ export function buildServiceTransactions(office: OfficeId, month: string): Servi
   return rows.sort((left, right) => left.date.localeCompare(right.date) || left.patientName.localeCompare(right.patientName));
 }
 
+export function buildDoctorVisits(office: OfficeId, month: string): ServiceTransaction[] {
+  return buildServiceTransactions(office, month).filter((row) => visitCategory(row.eventType) === "doctor");
+}
+
 export function buildProviderAttendance(
   office: OfficeId,
   month: string,
@@ -164,19 +178,26 @@ export function buildProviderAttendance(
     byPhysician.set(transaction.physician, group);
   }
 
-  const physicians = [...byPhysician.entries()].map(([physician, rows]): PhysicianSummary => ({
-    physician,
-    specialty: store.physicians.find(
-      (candidate) => normalizeName(candidate.name) === normalizeName(physician),
-    )?.specialty ?? null,
-    patients: new Set(rows.map((row) => row.patientId)).size,
-    doctorVisits: rows.filter((row) => row.serviceType === "physician").length,
-    ptVisits: rows.filter((row) => row.serviceType === "pt" && row.eventType !== "evaluation").length,
-    evals: rows.filter((row) => row.eventType === "evaluation").length,
-    billedTotal: rows.reduce((sum, row) => sum + (row.billedAmount ?? 0), 0),
-    allowedTotal: rows.reduce((sum, row) => sum + (row.allowedAmount ?? 0), 0),
-    paidTotal: rows.reduce((sum, row) => sum + (row.paidAmount ?? 0), 0),
-  }));
+  const physicians = [...byPhysician.entries()].map(([physician, rows]): PhysicianSummary => {
+    const initialVisits = rows.filter((row) => row.eventType === "doctor").length;
+    const followups = rows.filter((row) => row.eventType === "followup").length;
+
+    return {
+      physician,
+      specialty: store.physicians.find(
+        (candidate) => normalizeName(candidate.name) === normalizeName(physician),
+      )?.specialty ?? null,
+      patients: new Set(rows.map((row) => row.patientId)).size,
+      initialVisits,
+      followups,
+      doctorVisits: initialVisits + followups,
+      ptVisits: rows.filter((row) => row.eventType === "therapy").length,
+      evals: rows.filter((row) => row.eventType === "evaluation").length,
+      billedTotal: rows.reduce((sum, row) => sum + (row.billedAmount ?? 0), 0),
+      allowedTotal: rows.reduce((sum, row) => sum + (row.allowedAmount ?? 0), 0),
+      paidTotal: rows.reduce((sum, row) => sum + (row.paidAmount ?? 0), 0),
+    };
+  });
 
   physicians.sort(
     (left, right) => left.physician.localeCompare(right.physician),
@@ -200,6 +221,8 @@ export function buildMonthlySummary(office: OfficeId, month: string): MonthlySum
     byPhysician: physicians.map((physician) => ({
       physician: physician.physician,
       patients: physician.patients,
+      initialVisits: physician.initialVisits,
+      followups: physician.followups,
       doctorVisits: physician.doctorVisits,
       ptVisits: physician.ptVisits,
       evals: physician.evals,
@@ -216,12 +239,20 @@ export function buildAttendanceMonth(office: OfficeId, month: string): Attendanc
   ) as Record<TimeSlot, Record<string, SlotDayCell>>;
 
   for (const appointment of store.appointments) {
-    if (appointment.office === office && dateSet.has(appointment.date)) {
+    if (
+      appointment.office === office &&
+      dateSet.has(appointment.date) &&
+      visitCategory(appointment.type) === "pt"
+    ) {
       grid[appointment.slot][appointment.date].scheduled += 1;
     }
   }
   for (const visit of store.visits) {
-    if (visit.office === office && dateSet.has(visit.date) && visit.eventType !== "account_only") {
+    if (
+      visit.office === office &&
+      dateSet.has(visit.date) &&
+      visitCategory(visit.eventType) === "pt"
+    ) {
       const cell = grid[visit.slot][visit.date];
       cell.attended += 1;
       if (visit.eventType === "evaluation") cell.evals += 1;
@@ -257,10 +288,18 @@ export function buildAttendanceMonth(office: OfficeId, month: string): Attendanc
   const year = month.slice(0, 4);
   const yearToDate = emptyTotals();
   for (const appointment of store.appointments) {
-    if (appointment.office === office && appointment.date.startsWith(`${year}-`)) yearToDate.scheduled += 1;
+    if (
+      appointment.office === office &&
+      appointment.date.startsWith(`${year}-`) &&
+      visitCategory(appointment.type) === "pt"
+    ) yearToDate.scheduled += 1;
   }
   for (const visit of store.visits) {
-    if (visit.office === office && visit.date.startsWith(`${year}-`) && visit.eventType !== "account_only") {
+    if (
+      visit.office === office &&
+      visit.date.startsWith(`${year}-`) &&
+      visitCategory(visit.eventType) === "pt"
+    ) {
       yearToDate.attended += 1;
       if (visit.eventType === "evaluation") yearToDate.evals += 1;
     }
