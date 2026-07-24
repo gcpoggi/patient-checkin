@@ -232,6 +232,34 @@ export function buildMonthlySummary(office: OfficeId, month: string): MonthlySum
   };
 }
 
+export interface VisitDateBucket {
+  date: string;
+  doctorVisits: number;
+  ptVisits: number;
+  evals: number;
+}
+
+/**
+ * Daily clinical-visit counts for an office across every month in the store
+ * (account-only encounters excluded). Feeds the Summary "visits by date" chart,
+ * which buckets these by week or by month client-side.
+ */
+export function buildVisitTimeline(office: OfficeId): VisitDateBucket[] {
+  const store = getStore();
+  const byDate = new Map<string, VisitDateBucket>();
+
+  for (const visit of store.visits) {
+    if (visit.office !== office || visitCategory(visit.eventType) === "excluded") continue;
+    const bucket = byDate.get(visit.date) ?? { date: visit.date, doctorVisits: 0, ptVisits: 0, evals: 0 };
+    if (visit.eventType === "evaluation") bucket.evals += 1;
+    else if (visitCategory(visit.eventType) === "doctor") bucket.doctorVisits += 1;
+    else bucket.ptVisits += 1;
+    byDate.set(visit.date, bucket);
+  }
+
+  return [...byDate.values()].sort((left, right) => left.date.localeCompare(right.date));
+}
+
 export function buildAttendanceMonth(office: OfficeId, month: string): AttendanceMonth {
   const store = getStore();
   const dates = workdaysInMonth(month);

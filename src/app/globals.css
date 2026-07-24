@@ -36,3 +36,22 @@
 body {
   @apply bg-mist-50 text-ink font-sans;
 }
+
+/* Always-visible thin horizontal scrollbar for wide data tables (top + body sync). */
+.hpp-xscroll {
+  scrollbar-width: thin;
+  scrollbar-color: #94A3B8 #EEF4F9;
+}
+.hpp-xscroll::-webkit-scrollbar {
+  height: 10px;
+}
+.hpp-xscroll::-webkit-scrollbar-track {
+  background: #EEF4F9;
+}
+.hpp-xscroll::-webkit-scrollbar-thumb {
+  background: #94A3B8;
+  border-radius: 9999px;
+}
+.hpp-xscroll::-webkit-scrollbar-thumb:hover {
+  background: #64748B;
+}

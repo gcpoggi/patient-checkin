@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { ReactElement, ReactNode } from "react";
 
 import { exportRowsToXlsx } from "@/lib/exportRows";
@@ -126,6 +126,39 @@ export function ExcelTable<T>({
     [columns, rows],
   );
 
+  const bodyScrollRef = useRef<HTMLDivElement | null>(null);
+  const topScrollRef = useRef<HTMLDivElement | null>(null);
+  const tableRef = useRef<HTMLTableElement | null>(null);
+  const [scrollWidth, setScrollWidth] = useState(0);
+  const [needsScroll, setNeedsScroll] = useState(false);
+
+  useEffect(() => {
+    const table = tableRef.current;
+    const body = bodyScrollRef.current;
+    if (!table || !body) return;
+    const measure = () => {
+      const width = table.scrollWidth;
+      setScrollWidth(width);
+      setNeedsScroll(width > body.clientWidth + 1);
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(table);
+    observer.observe(body);
+    return () => observer.disconnect();
+  }, [columns, visibleRows.length]);
+
+  function syncFromTop(): void {
+    const top = topScrollRef.current;
+    const body = bodyScrollRef.current;
+    if (top && body && body.scrollLeft !== top.scrollLeft) body.scrollLeft = top.scrollLeft;
+  }
+  function syncFromBody(): void {
+    const top = topScrollRef.current;
+    const body = bodyScrollRef.current;
+    if (top && body && top.scrollLeft !== body.scrollLeft) top.scrollLeft = body.scrollLeft;
+  }
+
   const hasFilters = Object.values(filters).some(Boolean);
   const padding = dense ? "px-2 py-1" : "px-4 py-3";
   const textSize = dense ? "text-xs" : "text-sm";
@@ -199,8 +232,18 @@ export function ExcelTable<T>({
         ) : null}
       </div>
 
-      <div className="max-h-[70vh] overflow-auto">
-        <table className={`min-w-max border-collapse ${textSize}`}>
+      {/* Synced top scrollbar so horizontal scroll is reachable without scrolling to the bottom of the table */}
+      <div
+        ref={topScrollRef}
+        onScroll={syncFromTop}
+        aria-hidden="true"
+        className={`hpp-xscroll overflow-x-auto overflow-y-hidden border-b border-mist-200 ${needsScroll ? "" : "hidden"}`}
+      >
+        <div style={{ width: scrollWidth, height: 1 }} />
+      </div>
+
+      <div ref={bodyScrollRef} onScroll={syncFromBody} className="hpp-xscroll max-h-[70vh] overflow-auto">
+        <table ref={tableRef} className={`min-w-max border-collapse ${textSize}`}>
           <thead className="bg-mist-100 text-navy">
             <tr>
               {columns.map((column, columnIndex) => {

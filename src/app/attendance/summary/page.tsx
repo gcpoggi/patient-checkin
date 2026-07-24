@@ -4,7 +4,8 @@ import { PageHeader } from "@/components/PageHeader";
 import { StatCard } from "@/components/StatCard";
 import { SubNavTabs } from "@/components/SubNavTabs";
 import { ProviderPatientsBarChart } from "@/components/charts/ProviderPatientsBarChart";
-import { buildMonthlySummary } from "@/lib/reconcile";
+import { VisitsByDateChart } from "@/components/charts/VisitsByDateChart";
+import { buildMonthlySummary, buildVisitTimeline } from "@/lib/reconcile";
 import type { OfficeId } from "@/lib/types";
 
 interface SummaryPageProps {
@@ -25,6 +26,7 @@ export default async function SummaryPage({ searchParams }: SummaryPageProps) {
   const requestedMonth = typeof query.month === "string" ? query.month : "2026-01";
   const month = /^\d{4}-(0[1-9]|1[0-2])$/.test(requestedMonth) ? requestedMonth : "2026-01";
   const summary = buildMonthlySummary(office, month);
+  const timeline = buildVisitTimeline(office);
   const combinedVisits = summary.combined.doctorVisits + summary.combined.ptVisits + summary.combined.evals;
 
   return (
@@ -41,6 +43,7 @@ export default async function SummaryPage({ searchParams }: SummaryPageProps) {
       </section>
 
       <div className="mt-6"><ProviderPatientsBarChart summary={summary} /></div>
+      <div className="mt-6"><VisitsByDateChart timeline={timeline} month={month} /></div>
       <p className="mt-3 text-sm text-slate-600">
         Combined total: <span className="font-mono font-semibold tabular-nums text-navy">{summary.combined.patients}</span>{" "}
         distinct patients and <span className="font-mono font-semibold tabular-nums text-navy">{combinedVisits}</span> visits.
