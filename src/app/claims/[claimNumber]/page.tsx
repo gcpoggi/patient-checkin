@@ -3,7 +3,9 @@ import { AppShell } from "@/components/AppShell";
 import { ClaimProceduresTable } from "@/components/ClaimProceduresTable";
 import { PageHeader } from "@/components/PageHeader";
 import { StatCard } from "@/components/StatCard";
+import { StatusBadge } from "@/components/StatusBadge";
 import { CLAIM_FILE_STATUS_LABELS, formatPatientId, formatPhone } from "@/lib/format";
+import { reconcileClaims } from "@/lib/reconcile";
 import { getStore } from "@/lib/store";
 
 interface ClaimDetailPageProps {
@@ -20,8 +22,10 @@ export default async function ClaimDetailPage({ params }: ClaimDetailPageProps) 
     return <AppShell><PageHeader title="Claim not found" subtitle="The requested claim does not exist or is no longer available." /><Link href="/claims" className="mt-6 inline-flex text-sm font-semibold text-teal-700 hover:underline">Return to claims</Link></AppShell>;
   }
 
+  const recon = reconcileClaims(claim.dateOfService.slice(0, 7), claim.office).rows.find((row) => row.claim.id === claim.id);
+  const contested = recon?.contested ?? false;
   const isDenied = claim.fileStatus === "denied";
-  const isUnderpayment = !isDenied && claim.paidAmount < claim.medicareTotal;
+  const isUnderpayment = !isDenied && claim.fileStatus === "paid" && claim.paidAmount < claim.medicareTotal;
   const contestReason = isDenied ? "denied" : "underpayment";
   const contestAmount = isDenied ? claim.billedAmount : claim.underpayment;
   const contestHref = `/contestations/new?claimIds=${encodeURIComponent(claim.id)}&insurer=${encodeURIComponent(claim.payer)}&reason=${contestReason}&amount=${contestAmount}`;
@@ -40,7 +44,15 @@ export default async function ClaimDetailPage({ params }: ClaimDetailPageProps) 
 
   return (
     <AppShell>
-      <PageHeader title={`Claim #${claim.claimNumber}`} subtitle={`${claim.patientName} · ${claim.payer}`} actions={<span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${pillColor}`}>{CLAIM_FILE_STATUS_LABELS[claim.fileStatus]}</span>} />
+      <PageHeader title={`Claim #${claim.claimNumber}`} subtitle={`${claim.patientName} · ${claim.payer}`} actions={<div className="flex flex-wrap items-center gap-2">{recon ? <StatusBadge status={recon.status} /> : null}{contested ? <span className="inline-flex rounded-full bg-mist-100 px-2.5 py-1 text-xs font-semibold text-contest-submitted">Contested</span> : null}<span className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${pillColor}`}>Plan: {CLAIM_FILE_STATUS_LABELS[claim.fileStatus]}</span></div>} />
+
+      {isDenied ? (
+        <section className="mt-6 rounded-xl border border-denied/30 bg-denied-bg px-5 py-4">
+          <p className="text-xs font-semibold uppercase tracking-widest text-denied">Denial from payer</p>
+          <p className="mt-1 text-sm font-semibold text-denied">{claim.denialCode ? `${claim.denialCode} · ` : ""}{claim.denialReason ?? "Denied by payer"}</p>
+          <p className="mt-1 text-xs text-denied/80">Denied claims must be contested: refute the denial with the missing information or a letter of medical necessity requesting approval.</p>
+        </section>
+      ) : null}
 
       <section className="mt-6 rounded-xl border border-mist-200 bg-white p-5 shadow-sm">
         <h2 className="font-display text-2xl font-semibold text-navy">Payment breakdown</h2>
@@ -64,7 +76,7 @@ export default async function ClaimDetailPage({ params }: ClaimDetailPageProps) 
         <dl className="mt-4 grid gap-x-8 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">{info.map(([label, value]) => <div key={label}><dt className="text-xs font-semibold uppercase tracking-widest text-teal-600">{label}</dt><dd className={`mt-1 text-sm text-navy ${label === "Office" ? "capitalize" : ""}`}>{value}</dd></div>)}</dl>
       </section>
 
-      {(isUnderpayment || isDenied) ? <div className="mt-6"><Link href={contestHref} className="inline-flex rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-600">Contest this claim</Link></div> : null}
+      {contested ? <div className="mt-6 inline-flex items-center gap-2 rounded-lg border border-mist-200 bg-mist-50 px-4 py-2.5 text-sm font-semibold text-contest-submitted">This claim has been contested.</div> : (isUnderpayment || isDenied) ? <div className="mt-6"><Link href={contestHref} className="inline-flex rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-600">Contest this claim</Link></div> : null}
       <p className="mt-6 text-xs text-slate-500">This view mirrors a real Medicare Advantage claim breakdown for demonstration purposes.</p>
     </AppShell>
   );

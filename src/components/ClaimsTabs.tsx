@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ExcelTable, type ExcelColumn } from "@/components/ExcelTable";
-import { CLAIM_FILE_STATUS_LABELS, formatPatientId } from "@/lib/format";
+import { StatusBadge } from "@/components/StatusBadge";
+import { CLAIM_FILE_STATUS_LABELS, CLAIM_STATUS_LABELS, formatPatientId } from "@/lib/format";
 import type { ClaimStatus, ReconciledClaimRow } from "@/lib/types";
 
 type TabStatus = Exclude<ClaimStatus, "paid_full">;
@@ -16,19 +17,28 @@ interface ClaimsTabsProps {
 }
 
 const labels: Record<TabStatus, { short: string; long: string }> = {
-  unpaid: { short: "Unpaid", long: "Matched services with no payment received" },
-  underpayment: { short: "Underpayment", long: "Plan payments below 100% Medicare" },
+  partial_paid: { short: "Partial Paid", long: "Plan issued a partial payment, balance still under review" },
+  unpaid: { short: "Unpaid", long: "Received by the plan, no payment yet (plan may label it Under review)" },
+  underpayment: { short: "Underpaid", long: "Plan payment finalized below 100% Medicare / Workers Comp" },
   phantom: { short: "Phantom", long: "Claims with no visit on record" },
-  denied: { short: "Denied", long: "Claims denied by the payer" },
+  denied: { short: "Denied", long: "Claims the payer refused to pay; must be contested" },
 };
 const statuses = Object.keys(labels) as TabStatus[];
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
 
 function statusPill(row: ReconciledClaimRow) {
-  const status = row.claim.fileStatus;
-  const colors = status === "paid" ? "bg-emerald-100 text-emerald-700" : status === "submitted" ? "bg-amber-100 text-amber-700" : "bg-rose-100 text-rose-700";
-  const note = row.status === "phantom" ? "No visit on record" : row.status === "denied" ? row.claim.denialReason : null;
-  return <div title={row.status === "denied" ? row.claim.denialReason ?? undefined : undefined}><span className={`inline-flex rounded-full px-2 py-0.5 text-[11px] font-semibold ${colors}`}>{CLAIM_FILE_STATUS_LABELS[status]}</span>{note ? <p className="mt-1 max-w-48 whitespace-normal text-[11px] text-slate-500">{note}</p> : null}</div>;
+  const denial = row.status === "denied" && row.claim.denialReason
+    ? `${row.claim.denialCode ? `${row.claim.denialCode}: ` : ""}${row.claim.denialReason}`
+    : null;
+  const note = row.status === "phantom" ? "No visit on record" : denial;
+  return (
+    <div className="space-y-1">
+      <StatusBadge status={row.status} />
+      <p className="text-[10px] uppercase tracking-wide text-slate-400">Plan: {CLAIM_FILE_STATUS_LABELS[row.claim.fileStatus]}</p>
+      {row.contested ? <span className="inline-flex rounded-full bg-mist-100 px-2 py-0.5 text-[10px] font-semibold text-contest-submitted">Contested</span> : null}
+      {note ? <p className="max-w-48 whitespace-normal text-[11px] text-slate-500">{note}</p> : null}
+    </div>
+  );
 }
 
 const columns: ExcelColumn<ReconciledClaimRow>[] = [
@@ -38,7 +48,7 @@ const columns: ExcelColumn<ReconciledClaimRow>[] = [
   { key: "office", header: "Office", filter: "select", render: (value) => <span className="capitalize">{String(value)}</span> },
   { key: "dateOfService", header: "Date Visited", width: 14 },
   { key: "visitedProvider", header: "Physician", filter: "select", width: 24 },
-  { key: "status", header: "Claim Status", render: (_, row) => statusPill(row), sortValue: (row) => CLAIM_FILE_STATUS_LABELS[row.claim.fileStatus], exportValue: (row) => CLAIM_FILE_STATUS_LABELS[row.claim.fileStatus] },
+  { key: "status", header: "Claim Status", render: (_, row) => statusPill(row), sortValue: (row) => CLAIM_STATUS_LABELS[row.status], exportValue: (row) => `${CLAIM_STATUS_LABELS[row.status]}${row.contested ? " (Contested)" : ""}` },
   { key: "dateProcessed", header: "Date Processed", width: 14 },
   { key: "totalDays", header: "Total Days", align: "right" },
   { key: "billedAmount", header: "Total Billed", align: "right", render: (value) => <span className="font-mono tabular-nums">{money.format(Number(value))}</span> },
@@ -46,7 +56,7 @@ const columns: ExcelColumn<ReconciledClaimRow>[] = [
   { key: "paidAmount", header: "Plan Paid", align: "right", render: (value) => <span className="font-mono tabular-nums">{money.format(Number(value))}</span> },
   { key: "medicareTotal", header: "100% Medicare", align: "right", render: (value) => <span className="font-mono tabular-nums">{money.format(Number(value))}</span> },
   { key: "underpayment", header: "Underpayment", align: "right", render: (value) => <span className="rounded bg-underpayment-bg px-2 py-0.5 font-mono font-semibold tabular-nums text-underpayment">{money.format(Number(value))}</span> },
-  { key: "visit", header: "Action", filter: "none", sortable: false, render: (_, row) => row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.claim.id)}&insurer=${encodeURIComponent(row.claim.payer)}&reason=${row.status === "denied" ? "denied" : "underpayment"}&amount=${row.status === "denied" ? row.billedAmount : row.underpayment}`}>Contest</Link> : null, exportValue: () => "" },
+  { key: "visit", header: "Action", filter: "none", sortable: false, render: (_, row) => row.contested ? <span className="text-xs font-semibold text-contest-submitted">Contested</span> : row.status === "underpayment" || row.status === "denied" ? <Link className="font-semibold text-teal-700 hover:underline" href={`/contestations/new?claimIds=${encodeURIComponent(row.claim.id)}&insurer=${encodeURIComponent(row.claim.payer)}&reason=${row.status === "denied" ? "denied" : "underpayment"}&amount=${row.status === "denied" ? row.billedAmount : row.underpayment}`}>Contest</Link> : null, exportValue: (row) => row.contested ? "Contested" : "" },
 ];
 
 export function ClaimsTabs({ rows, activeStatus, counts, month }: ClaimsTabsProps) {

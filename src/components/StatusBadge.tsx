@@ -5,9 +5,10 @@ export interface StatusBadgeProps {
 }
 
 const statusStyles: Record<ClaimStatus | ContestationStatus, { label: string; classes: string; dot: string }> = {
-  paid_full: { label: "Paid in full", classes: "bg-paid-bg text-paid", dot: "bg-paid" },
+  paid_full: { label: "Paid", classes: "bg-paid-bg text-paid", dot: "bg-paid" },
+  partial_paid: { label: "Partial Paid", classes: "bg-partial-bg text-partial", dot: "bg-partial" },
   unpaid: { label: "Unpaid", classes: "bg-pending-bg text-pending", dot: "bg-pending" },
-  underpayment: { label: "Underpayment", classes: "bg-underpayment-bg text-underpayment", dot: "bg-underpayment" },
+  underpayment: { label: "Underpaid", classes: "bg-underpayment-bg text-underpayment", dot: "bg-underpayment" },
   phantom: { label: "Phantom", classes: "bg-phantom-bg text-phantom", dot: "bg-phantom" },
   denied: { label: "Denied", classes: "bg-denied-bg text-denied", dot: "bg-denied" },
   draft: { label: "Draft", classes: "bg-slate-100 text-contest-draft", dot: "bg-contest-draft" },

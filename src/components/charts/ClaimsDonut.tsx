@@ -6,9 +6,10 @@ import type { ClaimsFinancialKpis } from "@/lib/types";
 
 export function ClaimsDonut({ kpis }: { kpis: ClaimsFinancialKpis }) {
   const data = [
-    { name: "Paid in full", value: kpis.paidFull, color: CHART_COLORS.paid },
+    { name: "Paid", value: kpis.paidFull, color: CHART_COLORS.paid },
+    { name: "Partial Paid", value: kpis.partialPaid, color: "#0369A1" },
     { name: "Unpaid", value: kpis.unpaid, color: CHART_COLORS.pending },
-    { name: "Underpayment", value: kpis.underpayment, color: "#C2410C" },
+    { name: "Underpaid", value: kpis.underpayment, color: "#C2410C" },
     { name: "Phantom", value: kpis.phantom, color: CHART_COLORS.phantom },
     { name: "Denied", value: kpis.denied, color: "#B91C1C" },
   ];

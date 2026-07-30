@@ -6,7 +6,7 @@ import { reconcileClaims } from "@/lib/reconcile";
 import type { ClaimStatus, OfficeId } from "@/lib/types";
 
 interface ClaimsAnalysisPageProps { searchParams: Promise<{ month?: string | string[]; office?: string | string[] }>; }
-const statuses: ClaimStatus[] = ["paid_full", "unpaid", "underpayment", "phantom", "denied"];
+const statuses: ClaimStatus[] = ["paid_full", "partial_paid", "unpaid", "underpayment", "phantom", "denied"];
 
 export default async function ClaimsAnalysisPage({ searchParams }: ClaimsAnalysisPageProps) {
   const query = await searchParams;
@@ -46,8 +46,8 @@ export default async function ClaimsAnalysisPage({ searchParams }: ClaimsAnalysi
     </form>
     <section className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-9" aria-label="Claims analysis key performance indicators">
       <StatCard label="Total claims" value={rows.length} sub="All claims received" variant="navy" />
-      <StatCard label="Paid in full" value={kpis.paidFull} /><StatCard label="Unpaid" value={kpis.unpaid} />
-      <StatCard label="Underpayment claims" value={kpis.underpayment} /><StatCard label="Phantom" value={kpis.phantom} />
+      <StatCard label="Paid" value={kpis.paidFull} /><StatCard label="Partial Paid" value={kpis.partialPaid} /><StatCard label="Unpaid" value={kpis.unpaid} />
+      <StatCard label="Underpaid claims" value={kpis.underpayment} /><StatCard label="Phantom" value={kpis.phantom} />
       <StatCard label="Denied" value={kpis.denied} /><StatCard label="Collection rate" value={`${(kpis.collectionRate * 100).toFixed(1)}%`} />
       <StatCard label="100% Medicare" value={new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(kpis.medicareTotal)} />
       <StatCard label="Total underpayment" value={new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(kpis.underpaymentTotal)} variant="warning" />

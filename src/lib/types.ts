@@ -108,6 +108,7 @@ export interface Claim {
   serviceType: ServiceType;
   placeOfService: PlaceOfService;
   denialReason: string | null;
+  denialCode: string | null;
   fileStatus: ClaimFileStatus;
   paidDate: string | null;
   source: string;
@@ -185,7 +186,7 @@ export interface ServiceTransaction {
   billingStatus: BillingStatus;
 }
 
-export type ClaimStatus = "paid_full" | "unpaid" | "underpayment" | "phantom" | "denied";
+export type ClaimStatus = "paid_full" | "partial_paid" | "unpaid" | "underpayment" | "phantom" | "denied";
 
 export interface ReconciledClaimRow {
   status: ClaimStatus;
@@ -204,10 +205,12 @@ export interface ReconciledClaimRow {
   totalDays: number;
   visitedProvider: string;
   collectionPct: number;
+  contested: boolean;
 }
 
 export interface ClaimsFinancialKpis {
   paidFull: number;
+  partialPaid: number;
   unpaid: number;
   underpayment: number;
   phantom: number;

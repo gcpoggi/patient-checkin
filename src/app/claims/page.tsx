@@ -14,7 +14,7 @@ interface ClaimsPageProps {
 
 type TabStatus = Exclude<ClaimStatus, "paid_full">;
 const money = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
-const statuses: TabStatus[] = ["unpaid", "underpayment", "phantom", "denied"];
+const statuses: TabStatus[] = ["partial_paid", "unpaid", "underpayment", "phantom", "denied"];
 
 export default async function ClaimsPage({ searchParams }: ClaimsPageProps) {
   const query = await searchParams;
@@ -24,15 +24,16 @@ export default async function ClaimsPage({ searchParams }: ClaimsPageProps) {
   const requestedStatus = typeof query.status === "string" ? query.status as TabStatus : "unpaid";
   const activeStatus: TabStatus = statuses.includes(requestedStatus) ? requestedStatus : "unpaid";
   const { rows, kpis }: { rows: ReconciledClaimRow[]; kpis: ClaimsFinancialKpis } = reconcileClaims(month, office);
-  const counts = { unpaid: kpis.unpaid, underpayment: kpis.underpayment, phantom: kpis.phantom, denied: kpis.denied };
+  const counts = { partial_paid: kpis.partialPaid, unpaid: kpis.unpaid, underpayment: kpis.underpayment, phantom: kpis.phantom, denied: kpis.denied };
   const errorsHref = `/claims/errors?month=${month}${office ? `&office=${office}` : ""}`;
 
   return (
     <AppShell>
-      <PageHeader title="Claims" subtitle="Financial reconciliation: Paid in full · Unpaid · Underpayment · Phantom · Denied" actions={<Link href="/claims/upload" className="rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-600">Feed Claims Data</Link>} />
-      <div className="mt-4 flex items-center gap-3 text-xs uppercase tracking-widest">
+      <PageHeader title="Claims" subtitle="Financial reconciliation: Paid · Partial Paid · Unpaid · Underpaid · Denied" actions={<Link href="/claims/upload" className="rounded-lg bg-teal-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-teal-600">Feed Claims Data</Link>} />
+      <div className="mt-4 flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest">
         <span className="font-semibold text-teal-600">Related reports</span>
         <Link href={errorsHref} className="font-semibold normal-case tracking-normal text-navy underline decoration-mist-200 underline-offset-4 transition hover:text-teal-600 hover:decoration-teal-400">Errors - Place of Service</Link>
+        <Link href="/claims/adjudication-rules" className="font-semibold normal-case tracking-normal text-navy underline decoration-mist-200 underline-offset-4 transition hover:text-teal-600 hover:decoration-teal-400">Adjudication Rules</Link>
       </div>
       <form className="mt-6 flex flex-wrap items-end gap-4 rounded-xl border border-mist-200 bg-white p-4 shadow-sm">
         <label className="text-sm font-semibold text-navy">Month<select name="month" defaultValue={month} className="mt-1 block rounded-lg border border-mist-200 bg-white px-3 py-2 font-normal outline-none focus:border-sky-hpp focus:ring-2 focus:ring-sky-hpp/20"><option value="2026-01">January 2026</option><option value="2026-02">February 2026</option></select></label>

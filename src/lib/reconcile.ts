@@ -1,7 +1,7 @@
 import { TIME_SLOTS, workdaysInMonth } from "@/lib/dates";
 import { getStore } from "@/lib/store";
 import { normalizeName, normalizePhone } from "@/lib/normalize";
-import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimsFinancialKpis, EventType, MonthlySummary, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, ServiceType, SlotDayCell, TimeSlot, Visit, VisitCategory } from "@/lib/types";
+import type { AttendanceMonth, AttendanceTotals, Claim, ClaimError, ClaimStatus, ClaimsFinancialKpis, EventType, MonthlySummary, OfficeId, Patient, PhysicianSummary, ReconciledClaimRow, ServiceTransaction, ServiceType, SlotDayCell, TimeSlot, Visit, VisitCategory } from "@/lib/types";
 
 const emptyCell = (): SlotDayCell => ({ attended: 0, evals: 0, scheduled: 0, noShows: 0 });
 const emptyTotals = (): AttendanceTotals => ({ ...emptyCell(), ptFu: 0 });
@@ -40,6 +40,23 @@ export function matchVisitForClaim(
   return visit;
 }
 
+/**
+ * HPP Adjudication Scrubber: assigns the HPP claim status from the plan's file
+ * status and the payment. Precedence:
+ *   Denied > Phantom (no visit on record) > Unpaid (nothing paid) >
+ *   Partial Paid (plan still reviewing but issued a partial payment) >
+ *   Underpaid (finalized below 100% Medicare/WC) > Paid.
+ * "Under review" from the plan maps here to Unpaid or Partial Paid.
+ */
+export function adjudicateClaimStatus(claim: Claim, hasVisit: boolean): ClaimStatus {
+  if (claim.fileStatus === "denied") return "denied";
+  if (!hasVisit) return "phantom";
+  if (claim.paidAmount === 0) return "unpaid";
+  if (claim.fileStatus === "submitted") return "partial_paid";
+  if (claim.paidAmount < claim.medicareTotal) return "underpayment";
+  return "paid_full";
+}
+
 export function reconcileClaims(month: string, office?: OfficeId): { rows: ReconciledClaimRow[]; kpis: ClaimsFinancialKpis } {
   const store = getStore();
   const claims = store.claims.filter(
@@ -48,20 +65,13 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
   const visits = store.visits.filter(
     (visit) => visit.date.startsWith(`${month}-`) && (!office || visit.office === office),
   );
+  const contestedIds = new Set(store.contestations.flatMap((contestation) => contestation.claimIds));
   const matchedVisitIds = new Set<string>();
   const rows: ReconciledClaimRow[] = [];
 
   for (const claim of claims) {
     const visit = matchVisitForClaim(claim, visits, store.patients, matchedVisitIds);
-    const status = claim.fileStatus === "denied"
-      ? "denied"
-      : !visit
-        ? "phantom"
-        : claim.paidAmount === 0
-          ? "unpaid"
-          : claim.paidAmount < claim.medicareTotal
-            ? "underpayment"
-            : "paid_full";
+    const status = adjudicateClaimStatus(claim, Boolean(visit));
     rows.push({
       status,
       claim,
@@ -79,15 +89,17 @@ export function reconcileClaims(month: string, office?: OfficeId): { rows: Recon
       medicareTotal: claim.medicareTotal,
       underpayment: claim.underpayment,
       collectionPct: claim.medicareTotal ? claim.paidAmount / claim.medicareTotal : 0,
+      contested: contestedIds.has(claim.id),
     });
   }
 
   const counts = (status: ReconciledClaimRow["status"]) => rows.filter((row) => row.status === status).length;
-  const collectibleRows = rows.filter((row) => row.status === "paid_full" || row.status === "underpayment" || row.status === "unpaid");
+  const collectibleRows = rows.filter((row) => row.status === "paid_full" || row.status === "partial_paid" || row.status === "underpayment" || row.status === "unpaid");
   const collectionBase = collectibleRows.reduce((sum, row) => sum + row.medicareTotal, 0);
   const collectedTotal = rows.reduce((sum, row) => sum + row.paidAmount, 0);
   const kpis: ClaimsFinancialKpis = {
     paidFull: counts("paid_full"),
+    partialPaid: counts("partial_paid"),
     unpaid: counts("unpaid"),
     underpayment: counts("underpayment"),
     phantom: counts("phantom"),

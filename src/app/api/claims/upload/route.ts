@@ -182,6 +182,7 @@ function claimFromRow(row: SheetRow): Claim {
       status === "denied"
         ? textValue(getValue(row, aliases.denialReason)) || "Denied on upload"
         : null,
+    denialCode: null,
     fileStatus: status as ClaimFileStatus,
     paidDate,
     source: "upload",

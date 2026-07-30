@@ -230,12 +230,14 @@ const payers = [
   "AmTrust Workers Comp",
   "Zenith Insurance (Workers Comp)",
 ];
-const DENIAL_REASONS = [
-  "Prior authorization missing",
-  "Timely filing limit exceeded",
-  "Non-covered service for plan",
-  "Duplicate claim",
-  "Medical necessity not established",
+// Realistic CARC-style denial codes paired with their explanation. The plan
+// prints one of these on the statement; it is what the provider contests.
+const DENIALS = [
+  { code: "CO-197", reason: "Prior authorization missing" },
+  { code: "CO-29", reason: "Timely filing limit exceeded" },
+  { code: "CO-96", reason: "Non-covered service for plan" },
+  { code: "CO-18", reason: "Duplicate claim" },
+  { code: "CO-50", reason: "Medical necessity not established" },
 ];
 
 function proceduresForVisit(visit, serviceType, payer) {
@@ -255,16 +257,21 @@ function proceduresForVisit(visit, serviceType, payer) {
   return codes.map((cptCode, rank) => buildProcedureLineJs(cptCode, rank, isTraditionalMedicare));
 }
 
-function claimForVisit(visit, id, fileStatus) {
+function claimForVisit(visit, id, fileStatus, partial = false) {
   const patient = patientById.get(visit.patientId);
   const serviceType = (visit.eventType === "doctor" || visit.eventType === "followup") ? "physician" : "pt";
   const payer = pick(payers);
   const procs = proceduresForVisit(visit, serviceType, payer).map((p) => ({
     ...p,
-    planPaid: fileStatus === "paid" ? round2(p.allowedAmount * (0.96 + random() * 0.03)) : 0,
+    planPaid: fileStatus === "paid"
+      ? round2(p.allowedAmount * (0.96 + random() * 0.03))
+      : partial
+        ? round2(p.allowedAmount * (0.4 + random() * 0.2))
+        : 0,
   }));
   const agg = aggregateClaimAmountsJs(procs);
   const dateProcessed = addDaysIso(visit.date, 8 + Math.floor(random() * 15));
+  const denial = fileStatus === "denied" ? pick(DENIALS) : null;
   return {
     id, claimNumber: nextClaimNumber(),
     patientId: visit.patientId,
@@ -281,7 +288,8 @@ function claimForVisit(visit, id, fileStatus) {
     provider: patient.physician, visitedProvider: patient.physician,
     serviceType,
     placeOfService: "office",
-    denialReason: fileStatus === "denied" ? pick(DENIAL_REASONS) : null,
+    denialReason: denial ? denial.reason : null,
+    denialCode: denial ? denial.code : null,
     fileStatus,
     paidDate: fileStatus === "paid" ? dateProcessed : null,
     source: "seed",
@@ -292,13 +300,18 @@ let claimSeq = 0;
 const claims = billedVisits.map((visit) => {
   claimSeq += 1;
   let fileStatus;
+  let partial = false;
   if (visit.id === paidMandatoryId) fileStatus = "paid";
   else if (visit.id === pendingMandatoryId) fileStatus = "submitted";
   else {
     const r = random();
-    fileStatus = r < 0.70 ? "paid" : r < 0.92 ? "submitted" : "denied";
+    // paid (mostly underpaid vs Medicare) / partial payment / under review (unpaid) / denied
+    if (r < 0.58) fileStatus = "paid";
+    else if (r < 0.72) { fileStatus = "submitted"; partial = true; }
+    else if (r < 0.90) fileStatus = "submitted";
+    else fileStatus = "denied";
   }
-  return claimForVisit(visit, `clm-${String(claimSeq).padStart(4, "0")}`, fileStatus);
+  return claimForVisit(visit, `clm-${String(claimSeq).padStart(4, "0")}`, fileStatus, partial);
 });
 
 const phantomPatient = patientById.get("pt_0003");
@@ -314,7 +327,7 @@ function buildManualClaim({ id, patient, patientId, patientName, patientDob, pat
     office, dateOfService, dateProcessed, totalDays: daysBetweenIso(dateOfService, dateProcessed),
     cptCode, description: procedure.description, procedures, ...agg, payer,
     payerCategory: feeSchedule.payerCategories[payer], provider, visitedProvider: provider,
-    serviceType, placeOfService, denialReason: null, fileStatus,
+    serviceType, placeOfService, denialReason: null, denialCode: null, fileStatus,
     paidDate: fileStatus === "paid" ? dateProcessed : null, source: "seed",
   };
 }
@@ -359,7 +372,7 @@ claims.push({
   billedAmount: 1044.40, allowedAmount: 75.09, paidAmount: 73.61, medicareTotal: 100.14, underpayment: 26.53,
   payer: "Medicare Advantage (UnitedHealthcare)", payerCategory: "medicare_advantage",
   provider: physicians[0].name, visitedProvider: physicians[0].name, serviceType: "pt",
-  placeOfService: "office", denialReason: null, fileStatus: "submitted", paidDate: null, source: "seed",
+  placeOfService: "office", denialReason: null, denialCode: null, fileStatus: "paid", paidDate: "2026-01-21", source: "seed",
 });
 
 const uploadVisits = [mariaVisit("2026-01-20"), ...otherMissing.slice(0, 5)].filter(Boolean);
